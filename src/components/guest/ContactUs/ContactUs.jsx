@@ -2,13 +2,11 @@ import React from "react";
 import underline from "../../../images/line.svg";
 import DetailsButton from "../DetailsButton";
 import styles from "./ContactUs.module.css";
-import splash from '../../../images/contactUsSplash.svg';
-import splashTwo from '../../../images/contactUsSplashTwo.svg';
 
 const ContactUs = () => {
   return (
-    <section className="py-20 relative">
-      <div className="myWrapper relative z-10">
+    <section className="py-20">
+      <div className="myWrapper">
         <form className="bg-[#F2F1FA] w-full max-w-[1400px] mx-auto p-20 text-center rounded-[100px]">
           <h2 className="mySubtitle">Обратная связь</h2>
           <img src={underline} alt="underline" className="mx-auto my-4" />
@@ -62,8 +60,6 @@ const ContactUs = () => {
           </div>
         </form>
       </div>
-      <img src={splash} alt="splash" className="absolute left-0 top-0 z-0 border"/>
-      <img src={splashTwo} alt="splash" className="absolute right-0 top-[30%] z-0 border"/>
     </section>
   );
 };

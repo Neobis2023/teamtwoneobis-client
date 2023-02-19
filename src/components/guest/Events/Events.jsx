@@ -7,8 +7,6 @@ import thirdFutureE from "../../../images/thirdFutureE.png";
 import firstPastE from "../../../images/firstPastE.png";
 import secondPastE from "../../../images/secondPastE.png";
 import thirdPastE from "../../../images/thirdPastE.png";
-import splash from '../../../images/futureESplash.svg';
-import splashTwo from '../../../images/pastESplash.svg';
 
 const data = {
   futureEvents: [
@@ -67,7 +65,7 @@ const data = {
 
 export const FutureEvents = () => {
   return (
-    <section className="py-20 events relative">
+    <section className="py-20 events">
       <div className="myWrapper pb-16">
         <h2 className="mySubtitle text-center future-events-title">
           Предстоящие события
@@ -75,14 +73,13 @@ export const FutureEvents = () => {
       </div>
       <MySlider events={data.futureEvents} />
       <DetailsButton className="mx-auto mt-14" text='Узнать подробнее'/>
-      <img src={splash} alt="splash" className="absolute left-1 top-[8%] w-[35%] h-auto border"/>
     </section>
   );
 };
 
 export const PastEvents = () => {
   return (
-    <section className="pb-20 relative">
+    <section className="pb-20">
       <div className="myWrapper pb-16">
         <h2 className="mySubtitle text-center future-events-title">
           Прошедшие события
@@ -90,7 +87,6 @@ export const PastEvents = () => {
       </div>
       <MySlider events={data.pastEvents} />
       <DetailsButton text='Узнать подробнее' className="mx-auto mt-14" />
-      <img src={splashTwo} alt="splash" className="absolute right-[1%] -top-[35%] w-[35%] h-auto border"/>
     </section>
   );
 };

@@ -9,11 +9,11 @@ const Header = () => {
 
   return (
     // bg-[#EDEDED]
-    <header className="h-fit py-4">
+    <header className={`h-fit py-4 bg-[#FAFAFA]`}>
       <div className="myWrapper h-[inherit] flex justify-between gap-2 items-center">
-        <div className="header__logo basis-1/6">
-          <img src={logo} alt="logo" className="h-fit w-[50%]"/>
-        </div>
+        <NavLink to='/' className="header__logo basis-1/6">
+          <img src={logo} alt="logo" className="h-fit w-[50%] min-w-[5rem]"/>
+        </NavLink>
         <nav className="header__nav basis-3/6">
           <ul className="header__links flex justify-between gap-4">
             <li className={styles.header__link}>
@@ -34,7 +34,7 @@ const Header = () => {
           </ul>
         </nav>
         <div className="header__lang-login basis-1/6 flex gap-1 h-fit items-center">
-        <button className="header__login border py-2 px-6 bg-[#8860C3] rounded-[20px] text-white">Вход</button>
+        <NavLink to='/signin'><button className="header__login border py-2 px-6 bg-[#8860C3] rounded-[20px] text-white">Вход</button></NavLink>
           <div className="header__lang ml-auto flex gap-2">
             <NavLink to={'/'} className={`${styles.language} hover:cursor-pointer ${language==='РУС' ? 'text-[#662D91]' : 'text-[rgba(102,_45,_145,_0.6)]'}`} onClick={() => setLanguage('РУС')}>РУС</NavLink>
             <NavLink to={'/'} className={`${styles.language} hover:cursor-pointer ${language==='КЫРГ' ? 'text-[#662D91]' : 'text-[rgba(102,_45,_145,_0.6)]'}`} onClick={() => setLanguage('КЫРГ')}>КЫРГ</NavLink>

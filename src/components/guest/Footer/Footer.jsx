@@ -12,7 +12,9 @@ const Footer = () => {
     <footer className='pt-20'>
         <div className="myWrapper">
             <div className='grid grid-cols-4 gap-4 mb-6'>
-                <img src={logo} alt="logo" className='w-[60%] h-[100%] min-w-[170px] max-w-[200px] mx-auto my-auto'/>
+                <NavLink to='/'>
+                    <img src={logo} alt="logo" className='w-[60%] h-[100%] min-w-[170px] max-w-[200px] mx-auto my-auto'/>
+                </NavLink>
                 <div className='relative'>
                     <div className='flex flex-col w-fit mx-auto gap-4'>
                         <NavLink to='/' className='text-[#292D32] font-semibold'>Менторство</NavLink>

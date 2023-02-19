@@ -7,7 +7,6 @@ import simple from '../../../images/simple.png';
 import thoughts from '../../../images/thoughts.png';
 import stars from '../../../images/stars.png';
 import hearts from '../../../images/hearts.png';
-import splash from '../../../images/forumSplash.svg';
 
 const Forum = () => {
   return (
@@ -26,7 +25,6 @@ const Forum = () => {
             </div>
             <div className="flex gap-4 relative">
                 <img src={hearts} alt="hearts" className="absolute -bottom-[10%] -left-5 z-10 w-[20%] h-auto"/>
-                <img src={splash} alt="splash" className="absolute -bottom-[60%] -left-[10%] z-10 h-auto border w-[50%]"/>
                 <img src={simple} alt="simple" className="h-fit w-[50%]"/>
                 <img src={neutral} alt="neutral" className="h-fit w-[30%]"/>
             </div>
