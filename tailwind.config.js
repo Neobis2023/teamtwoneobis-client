@@ -7,6 +7,9 @@ module.exports = {
     extend: {
       backgroundImage: {
         'education': "url('./images/main.png')",
+      },
+      gridTemplateColumns: {
+        footer: 'repeat(auto-fill, minmax(200px, 1fr))',
       }
     },
   },

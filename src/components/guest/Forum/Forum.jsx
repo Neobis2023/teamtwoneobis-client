@@ -7,6 +7,7 @@ import simple from '../../../images/simple.png';
 import thoughts from '../../../images/thoughts.png';
 import stars from '../../../images/stars.png';
 import hearts from '../../../images/hearts.png';
+import splash from '../../../images/forumSplash.svg';
 
 const Forum = () => {
   return (
@@ -16,17 +17,18 @@ const Forum = () => {
           <h2 className="mySubtitle">Форум</h2>
           <img src={check} alt="check" />
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 justify-between items-center">
           <div className="basis-[48%]">
             <div className="flex relative">
-                <img src={thoughts} alt="thoughts" className="h-fit"/>
-                <img src={black} alt="first" className="mr-auto "/>
-                <img src={stars} alt="stars" className="absolute left-80"/>
+                <img src={thoughts} alt="thoughts" className="h-fit w-[20%]"/>
+                <img src={black} alt="first" className="mr-auto h-fit w-[50%]"/>
+                <img src={stars} alt="stars" className="absolute left-[60%] w-[15%] h-auto"/>
             </div>
             <div className="flex gap-4 relative">
-                <img src={hearts} alt="hearts" className="absolute -bottom-10 -left-5 z-10"/>
-                <img src={simple} alt="simple" />
-                <img src={neutral} alt="neutral" className="h-fit"/>
+                <img src={hearts} alt="hearts" className="absolute -bottom-[10%] -left-5 z-10 w-[20%] h-auto"/>
+                <img src={splash} alt="splash" className="absolute -bottom-[60%] -left-[10%] z-10 h-auto border w-[50%]"/>
+                <img src={simple} alt="simple" className="h-fit w-[50%]"/>
+                <img src={neutral} alt="neutral" className="h-fit w-[30%]"/>
             </div>
           </div>
           <div className="flex flex-col gap-5 basis-[48%]">
@@ -37,7 +39,7 @@ const Forum = () => {
               достичь как можно большего числа девушек и помочь им развить свой
               потенциал.
             </p>
-            <DetailsButton />
+            <DetailsButton text='Узнать подробнее'/>
           </div>
         </div>
       </div>

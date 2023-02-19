@@ -7,13 +7,15 @@ import arrowDown from '../../../images/arrowdown.svg';
 import mug from '../../../images/mug.png'
 import circle from '../../../images/circle.png'
 import circleTrain from '../../../images/circle-train.png'
+import splash from '../../../images/projectsSplash.svg'
+import splashTwo from '../../../images/projectsSplashTwo.svg'
 
 export const Results = () => {
   return (
-    <section className="bg-[#EDEDED] h-auto py-16">
-      <div className="myWrapper text-[#471280] font-bold h-[inherit]">
-        <div className="text-center text-4xl pb-10">Наши результаты в цифрах</div>
-        <div className="flex justify-around">
+    <section className="bg-[#A082DA] h-auto py-16">
+      <div className="myWrapper text-white font-bold h-[inherit] flex justify-between gap-6">
+        <div className="text-4xl basis-[30%]">Наши результаты в цифрах</div>
+        <div className="flex justify-between basis-[50%] items-center">
           <div className="text-center">
             <p className="text-[2.7rem] leading-[40px]">200+</p>
             <p className="text-2xl">тренингов</p>
@@ -44,6 +46,7 @@ const Projects = () => {
           <div className="basis-2/5 relative">
             <img src={programs} alt="mentor" className="relative z-10 w-[85%] h-[85%] mx-auto" />
             <img src={circle} alt="circle" className="absolute top-0 !-z-5"/>
+            <img src={splash} alt="splash" className="absolute border top-[20%] -left-[10%] h-auto w-[60%]"/>
           </div>
           <div className="basis-3/5 flex flex-col gap-4">
             <p className="text-4xl font-bold">Менторская программа</p>
@@ -71,6 +74,7 @@ const Projects = () => {
           <div className='basis-2/5 relative'>
             <img src={trainings} alt="mentor" className="mx-auto relative z-10 w-[85%] h-[85%]"/>
             <img src={circleTrain} alt="cicrle" className="absolute top-0 z-0"/>
+            <img src={splashTwo} alt="splash" className="absolute border top-[40%] -right-[10%] h-auto w-[60%]"/>
           </div>
         </div>
       </div>
