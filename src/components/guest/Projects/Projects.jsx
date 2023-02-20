@@ -9,10 +9,11 @@ import circle from '../../../images/circle.png'
 import circleTrain from '../../../images/circle-train.png'
 
 
-export const Results = () => {
+export const Results = ({ ...animation }) => {
+
   return (
     <section className="bg-[#A082DA] h-auto py-16">
-      <div className="myWrapper text-white font-bold h-[inherit] flex justify-between gap-6">
+      <div className="myWrapper text-white font-bold h-[inherit] flex justify-between gap-6" {...animation}>
         <div className="text-4xl basis-[30%]">Наши результаты в цифрах</div>
         <div className="flex justify-between basis-[50%] items-center">
           <div className="text-center">
@@ -33,10 +34,10 @@ export const Results = () => {
   );
 };
 
-const Projects = () => {
+const Projects = ({ ...animation }) => {
   return (
     <section className="bg-[#EDEDED] py-12">
-      <div className="myWrapper text-[#662D91]">
+      <div className="myWrapper text-[#662D91]" {...animation}>
         <div className="flex gap-5">
           <h2 className="font-medium text-8xl">Наши проекты</h2>
           <img src={arrowRight} className='pt-10' alt="arrow" />

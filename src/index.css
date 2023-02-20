@@ -50,13 +50,14 @@ body {
 .swiper {
   width: 70%;
   position: static!important;
+  padding-bottom: 2rem!important;
 }
 
 .videoblog .swiper {
   width: 90%;
-  padding: 5rem 0;
+  padding: 5rem 0 2rem;
   height: 30vw;
-  min-height: 25rem;
+  min-height: 20rem;
 }
 
 .videoblog .swiper .swiper-wrapper{

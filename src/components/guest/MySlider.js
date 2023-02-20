@@ -44,7 +44,10 @@ const MySlider = ({ videoblog = null, events = null }) => {
         // slidesPerGroup={3}
         spaceBetween={60}
         navigation
-        // pagination={{ clickable: true }}
+        pagination={{
+          dynamicBullets: true,
+          clickable: true
+        }}
         // scrollbar={{ draggable: true }}
         // onSlideChange={() => console.log("slide change")}
         // onSwiper={(swiper) => console.log(swiper)}

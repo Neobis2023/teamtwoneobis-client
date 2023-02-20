@@ -5,10 +5,10 @@ import talas from '../../../images/talas.png';
 import chui from '../../../images/chui.png';
 import issyk from '../../../images/issyk.png';
 
-const Map = () => {
+const Map = ({ ...animation }) => {
   return (
     <section className="py-20">
-      <div className="myWrapper flex flex-col gap-16">
+      <div className="myWrapper flex flex-col gap-16" {...animation}>
         <div className="text-center">
           <div className="pb-8">
             <h2 className="mySubtitle pb-2">Мы на карте</h2>

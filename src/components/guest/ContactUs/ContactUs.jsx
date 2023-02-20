@@ -3,11 +3,11 @@ import underline from "../../../images/line.svg";
 import DetailsButton from "../DetailsButton";
 import styles from "./ContactUs.module.css";
 
-const ContactUs = () => {
+const ContactUs = ({ ...animation }) => {
   return (
     <section className="py-20">
       <div className="myWrapper">
-        <form className="bg-[#F2F1FA] w-full max-w-[1400px] mx-auto p-20 text-center rounded-[100px]">
+        <form className="bg-[#F2F1FA] w-full max-w-[1400px] mx-auto p-20 text-center rounded-[100px]" {...animation}>
           <h2 className="mySubtitle">Обратная связь</h2>
           <img src={underline} alt="underline" className="mx-auto my-4" />
           <p className="font-light text-3xl text-[rgba(71,_18,_128,_0.8)] mb-4">

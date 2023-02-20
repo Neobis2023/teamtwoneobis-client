@@ -60,33 +60,37 @@ const data = {
       img: thirdPastE,
       title: "Выпуск менти 1 потока",
     },
-  ]
+  ],
 };
 
-export const FutureEvents = () => {
+export const FutureEvents = ({ ...animation }) => {
   return (
     <section className="py-20 events">
-      <div className="myWrapper pb-16">
-        <h2 className="mySubtitle text-center future-events-title">
-          Предстоящие события
-        </h2>
+      <div {...animation}>
+        <div className="myWrapper pb-16">
+          <h2 className="mySubtitle text-center future-events-title">
+            Предстоящие события
+          </h2>
+        </div>
+        <MySlider events={data.futureEvents} />
+        <DetailsButton className="mx-auto mt-14" text="Узнать подробнее" />
       </div>
-      <MySlider events={data.futureEvents} />
-      <DetailsButton className="mx-auto mt-14" text='Узнать подробнее'/>
     </section>
   );
 };
 
-export const PastEvents = () => {
+export const PastEvents = ({ ...animation }) => {
   return (
     <section className="pb-20">
-      <div className="myWrapper pb-16">
-        <h2 className="mySubtitle text-center future-events-title">
-          Прошедшие события
-        </h2>
+      <div {...animation}>
+        <div className="myWrapper pb-16">
+          <h2 className="mySubtitle text-center future-events-title">
+            Прошедшие события
+          </h2>
+        </div>
+        <MySlider events={data.pastEvents} />
+        <DetailsButton text="Узнать подробнее" className="mx-auto mt-14" />
       </div>
-      <MySlider events={data.pastEvents} />
-      <DetailsButton text='Узнать подробнее' className="mx-auto mt-14" />
     </section>
   );
 };

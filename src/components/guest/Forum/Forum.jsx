@@ -8,10 +8,10 @@ import thoughts from '../../../images/thoughts.png';
 import stars from '../../../images/stars.png';
 import hearts from '../../../images/hearts.png';
 
-const Forum = () => {
+const Forum = ({ ...animation }) => {
   return (
     <section className="bg-[#EDEDED] py-20">
-      <div className="myWrapper">
+      <div className="myWrapper" {...animation}>
         <div className="flex justify-center gap-4 mb-20">
           <h2 className="mySubtitle">Форум</h2>
           <img src={check} alt="check" />
