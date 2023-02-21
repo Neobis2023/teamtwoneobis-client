@@ -16,7 +16,7 @@
   }
 }
 
-a {
+/* a {
   position: relative;
 }
 
@@ -35,7 +35,7 @@ a::before {
 
 a:active::before {
   transform: scale(1);
-}
+} */
 
 
 *,
