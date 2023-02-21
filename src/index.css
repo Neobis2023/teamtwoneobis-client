@@ -14,6 +14,9 @@
   a {
     @apply transition hover:text-[rgba(102,_45,_145,_0.6)]
   }
+  input, textarea {
+    @apply outline-[#662D91]
+  }
 }
 
 /* a {

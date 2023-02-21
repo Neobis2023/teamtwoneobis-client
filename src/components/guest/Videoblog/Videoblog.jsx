@@ -1,7 +1,7 @@
 import React from "react";
-import curlyArrow from "../../../images/arrowcurly.svg";
+import curlyArrow from "../../../images/landing/arrowcurly.svg";
 import DetailsButton from "../DetailsButton";
-import computer from "../../../images/computer.png";
+import computer from "../../../images/landing/computer.png";
 import MySlider from "../MySlider";
 
 const Videoblog = ({ ...animation }) => {

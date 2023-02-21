@@ -1,14 +1,14 @@
 import React from 'react'
 import Header from '../../components/guest/Header/Header'
 import Signin from '../../components/guest/Signin/Signin'
-import FooterSecond from '../../components/guest/FooterSecond/FooterSecond'
+import FooterSignin from '../../components/guest/FooterSignin/FooterSignin'
 
 const SigninPage = () => {
   return (
     <>
     <Header />
     <Signin />
-    <FooterSecond/>
+    <FooterSignin/>
     </>
   )
 }

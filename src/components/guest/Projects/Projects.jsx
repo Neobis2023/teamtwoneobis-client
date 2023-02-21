@@ -1,12 +1,12 @@
 import React from "react";
 import DetailsButton from "../DetailsButton";
-import programs from "../../../images/mentor-programs.png";
-import trainings from "../../../images/trainings.png";
-import arrowRight from '../../../images/arrowright.svg';
-import arrowDown from '../../../images/arrowdown.svg';
-import mug from '../../../images/mug.png'
-import circle from '../../../images/circle.png'
-import circleTrain from '../../../images/circle-train.png'
+import programs from "../../../images/landing/mentor-programs.png";
+import trainings from "../../../images/landing/trainings.png";
+import arrowRight from '../../../images/landing/arrowright.svg';
+import arrowDown from '../../../images/landing/arrowdown.svg';
+import mug from '../../../images/landing/mug.png'
+import circle from '../../../images/landing/circle.png'
+import circleTrain from '../../../images/landing/circle-train.png'
 
 
 export const Results = ({ ...animation }) => {

@@ -1,11 +1,11 @@
 import React from 'react';
-import downloadHeart from '../../../images/download-heart.png';
-import googlePlay from '../../../images/googleplay.png';
-import eclipse from '../../../images/eclipse.png';
-import phone from '../../../images/phone.svg';
-import splashOne from '../../../images/splash-one.png';
-import splashTwo from '../../../images/splash-two.png';
-import splashThree from '../../../images/splash-three.png';
+import downloadHeart from '../../../images/landing/download-heart.png';
+import googlePlay from '../../../images/landing/googleplay.png';
+import eclipse from '../../../images/landing/eclipse.png';
+import phone from '../../../images/landing/phone.svg';
+import splashOne from '../../../images/landing/splash-one.png';
+import splashTwo from '../../../images/landing/splash-two.png';
+import splashThree from '../../../images/landing/splash-three.png';
 
 
 const Download = ({ ...animation }) => {

@@ -1,10 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from '../../../images/logo.svg';
-import lineFooter from '../../../images/line-footer.png';
-import linkedin from '../../../images/linkedin.svg';
-import youtube from '../../../images/youtube.svg';
-import instagram from '../../../images/instagram.svg';
+import logo from '../../../images/landing/logo.svg';
+import lineFooter from '../../../images/landing/line-footer.png';
+import linkedin from '../../../images/landing/linkedin.svg';
+import youtube from '../../../images/landing/youtube.svg';
+import instagram from '../../../images/landing/instagram.svg';
 
 
 const Footer = () => {

@@ -1,5 +1,5 @@
 .education {
-    background: linear-gradient(180deg, rgba(208, 148, 232, 0) 0%, rgba(186, 148, 232, 0.81) 100%), url('../../../images/main.png');
+    background: linear-gradient(180deg, rgba(208, 148, 232, 0) 0%, rgba(186, 148, 232, 0.81) 100%), url('../../../images/landing/main.png');
     backdrop-filter: blur(0.5px);
     background-position: center center;
     /* background-attachment: fixed; */

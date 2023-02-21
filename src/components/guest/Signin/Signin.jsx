@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './Signin.module.css';
-import google from '../../../images/google.svg';
-import facebook from '../../../images/facebook.svg';
+import google from '../../../images/signin/google.svg';
+import facebook from '../../../images/signin/facebook.svg';
 import { NavLink } from 'react-router-dom';
-import line from '../../../images/line-signin.png';
+import line from '../../../images/signin/line-signin.png';
 
 const Signin = () => {
   return (

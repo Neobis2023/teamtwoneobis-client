@@ -1,5 +1,5 @@
 import React from "react";
-import underline from "../../../images/line.svg";
+import underline from "../../../images/landing/line.svg";
 import DetailsButton from "../DetailsButton";
 import styles from "./ContactUs.module.css";
 

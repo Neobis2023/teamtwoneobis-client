@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Signup.module.css';
-import google from '../../../images/google.svg';
-import facebook from '../../../images/facebook.svg';
+import google from '../../../images/signin/google.svg';
+import facebook from '../../../images/signin/facebook.svg';
 import { NavLink } from 'react-router-dom';
 
 export const Signup = () => {

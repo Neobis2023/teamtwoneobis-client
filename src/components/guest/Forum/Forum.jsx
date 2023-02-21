@@ -1,20 +1,20 @@
 import React from "react";
-import check from "../../../images/check.png";
+import check from "../../../images/landing/check.png";
 import DetailsButton from "../DetailsButton";
-import black from '../../../images/black.png';
-import neutral from '../../../images/neutral.png';
-import simple from '../../../images/simple.png';
-import thoughts from '../../../images/thoughts.png';
-import stars from '../../../images/stars.png';
-import hearts from '../../../images/hearts.png';
+import black from '../../../images/landing/black.png';
+import neutral from '../../../images/landing/neutral.png';
+import simple from '../../../images/landing/simple.png';
+import thoughts from '../../../images/landing/thoughts.png';
+import stars from '../../../images/landing/stars.png';
+import hearts from '../../../images/landing/hearts.png';
 
 const Forum = ({ ...animation }) => {
   return (
     <section className="bg-[#EDEDED] py-20">
       <div className="myWrapper" {...animation}>
-        <div className="flex justify-center gap-4 mb-16">
+        <div className="flex justify-center gap-4 mb-16 items-center">
           <h2 className="mySubtitle">Форум</h2>
-          <img src={check} alt="check" />
+          <img src={check} alt="check" className="h-fit w-[5%]"/>
         </div>
         <div className="flex gap-2 justify-between items-center">
           <div className="basis-[48%]">

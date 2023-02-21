@@ -1,10 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import instagram from "../../../images/instagram-footer.svg";
-import youtube from "../../../images/youtube-footer.svg";
-import logo from "../../../images/logo-footer.svg";
+import instagram from "../../../images/signin/instagram-footer.svg";
+import youtube from "../../../images/signin/youtube-footer.svg";
+import logo from "../../../images/signin/logo-footer.svg";
 
-const FooterSecond = () => {
+const FooterSignin = () => {
   return (
     <footer className="bg-[#FFFFFF] relative z-20">
       <div className="myWrapper flex justify-between items-center py-6">
@@ -25,4 +25,4 @@ const FooterSecond = () => {
   );
 };
 
-export default FooterSecond;
+export default FooterSignin;

@@ -1,5 +1,5 @@
 import React from 'react'
-import FooterSecond from '../../components/guest/FooterSecond/FooterSecond'
+import FooterSignin from '../../components/guest/FooterSignin/FooterSignin'
 import Header from '../../components/guest/Header/Header'
 import { Signup } from '../../components/guest/Signup/Signup'
 
@@ -8,7 +8,7 @@ const SignupPage = () => {
     <>
         <Header />
         <Signup />
-        <FooterSecond />
+        <FooterSignin />
     </>
   )
 }
