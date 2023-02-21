@@ -14,19 +14,19 @@ export const Results = ({ ...animation }) => {
   return (
     <section className="bg-[#A082DA] h-auto py-16">
       <div className="myWrapper text-white font-bold h-[inherit] flex justify-between gap-6" {...animation}>
-        <div className="text-4xl basis-[30%]">Наши результаты в цифрах</div>
-        <div className="flex justify-between basis-[50%] items-center">
+        <div className="text-[clamp(1.5rem,_2.8vw,_3rem)] basis-[40%]">Наши результаты в цифрах</div>
+        <div className="flex justify-between basis-[50%] items-center gap-4">
           <div className="text-center">
-            <p className="text-[2.7rem] leading-[40px]">200+</p>
-            <p className="text-2xl">тренингов</p>
+            <p className="text-[clamp(1.5rem,_5.5vw,_3rem)] leading-[40px]">200+</p>
+            <p className="text-2xl text-[clamp(1rem,_2.2vw,_2rem)]">тренингов</p>
           </div>
           <div className="text-center">
-            <p className="text-[2.7rem] leading-[40px]">10</p>
-            <p className="text-2xl">выпускниц</p>
+            <p className="text-[clamp(1.5rem,_5.5vw,_3rem)] leading-[40px]">10</p>
+            <p className="text-2xl text-[clamp(1rem,_2.2vw,_2rem)]">выпускниц</p>
           </div>
           <div className="text-center">
-            <p className="text-[2.7rem] leading-[40px]">6</p>
-            <p className="text-2xl">регионов</p>
+            <p className="text-[clamp(1.5rem,_5.5vw,_3rem)] leading-[40px]">6</p>
+            <p className="text-2xl text-[clamp(1rem,_2.2vw,_2rem)]">регионов</p>
           </div>
         </div>
       </div>
@@ -39,8 +39,8 @@ const Projects = ({ ...animation }) => {
     <section className="bg-[#EDEDED] py-12">
       <div className="myWrapper text-[#662D91]" {...animation}>
         <div className="flex gap-5">
-          <h2 className="font-medium text-8xl">Наши проекты</h2>
-          <img src={arrowRight} className='pt-10' alt="arrow" />
+          <p className="font-medium text-[clamp(4rem,_6.5vw,_6.6rem)] leading-[7.5vw]">Наши проекты</p>
+          <img src={arrowRight} className='pt-10 h-fit w-[10%]' alt="arrow" />
         </div>
         <div className="mentor-program flex justify-between items-center gap-5 mt-10">
           <div className="basis-2/5 relative">
@@ -48,7 +48,7 @@ const Projects = ({ ...animation }) => {
             <img src={circle} alt="circle" className="absolute top-0 !-z-5"/>
           </div>
           <div className="basis-3/5 flex flex-col gap-4">
-            <p className="text-4xl font-bold">Менторская программа</p>
+            <p className="text-[clamp(1.2rem,_2.7vw,_3.2rem)] font-bold">Менторская программа</p>
             <p className="we-do">
               Программа индивидуального наставничества поможет вам поставить
               личные и профессиональные цели и достичь их
@@ -59,14 +59,14 @@ const Projects = ({ ...animation }) => {
         <div className="trainings flex justify-between items-center gap-5 mt-12">
           <div className="basis-3/5 flex flex-col gap-4">
             <img src={arrowDown} alt="arrowDown" className='ml-32 w-[25px] h-[79px]'/>
-            <p className="text-4xl font-bold">Тренинги</p>
+            <p className="text-[clamp(1.2rem,_2.7vw,_3.2rem)] font-bold">Тренинги</p>
             <p className="we-do">
               Мы покрываем широкий спектр тем в нашей обучающей программе,
               которые образовывают девушек в личных и профессиональных областях.
             </p>
-            <div className='flex gap-12'>
+            <div className='flex gap-x-12'>
               <DetailsButton text="Узнать подробнее" to={"/"} className='h-fit self-end'/>
-              <img src={mug} alt="mug"/>
+              <img src={mug} alt="mug" className="h-fit w-[15%]"/>
             </div>
             
           </div>

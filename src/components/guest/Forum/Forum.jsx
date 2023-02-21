@@ -12,7 +12,7 @@ const Forum = ({ ...animation }) => {
   return (
     <section className="bg-[#EDEDED] py-20">
       <div className="myWrapper" {...animation}>
-        <div className="flex justify-center gap-4 mb-20">
+        <div className="flex justify-center gap-4 mb-16">
           <h2 className="mySubtitle">Форум</h2>
           <img src={check} alt="check" />
         </div>

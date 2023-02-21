@@ -72,7 +72,7 @@ const MySlider = ({ videoblog = null, events = null }) => {
                     alt={el.title}
                     className="mx-auto w-full rounded"
                   />
-                  <div className="rounded-b w-full text-center absolute bottom-0 left-0 right-0 font-semibold text-xl backdrop-blur-md h-[20%] flex items-center justify-center">
+                  <div className="rounded-b w-full text-center absolute bottom-0 left-0 right-0 font-semibold text-[clamp(90%,_1.5vw,_2rem)] leading-[2vw] backdrop-blur-md h-[20%] flex items-center justify-center">
                     {el.title}
                   </div>
                 </div>

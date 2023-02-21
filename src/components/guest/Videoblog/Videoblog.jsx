@@ -21,7 +21,7 @@ const Videoblog = ({ ...animation }) => {
       <div {...animation}>
         <div className="flex gap-5 myWrapper videoblog-title">
           <h2 className="mySubtitle">Видеоблог/Study plan</h2>
-          <img src={curlyArrow} alt="curly" />
+          <img src={curlyArrow} alt="curly" className="h-fit w-[30%]"/>
         </div>
         <MySlider videoblog={videoUrls} />
         <div className="relative">

@@ -1,6 +1,6 @@
 .header__link {
     font-weight: 400;
-    font-size: 1.1rem;
+    font-size: 1.7vw;
     /* line-height: 18px; */
     color: #662D91;
 }
@@ -26,6 +26,10 @@
     transform: scaleX(1);
 }
 
-.language:focus::before {
+/* .language:focus::before {
+    transform: scaleX(1);
+} */
+
+.language.chosen::before {
     transform: scaleX(1);
 }
