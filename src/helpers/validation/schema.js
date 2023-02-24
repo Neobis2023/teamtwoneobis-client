@@ -53,5 +53,7 @@ export const signinSchema = yup.object().shape({
 export const confirmSchema = yup.object().shape({
     code: yup
         .string()
+        .min(6, 'Введите действительный код подтверждения')
+        .max(10, 'Введите действительный код подтверждения')
         .required('Введите код подтверждения'),
 });

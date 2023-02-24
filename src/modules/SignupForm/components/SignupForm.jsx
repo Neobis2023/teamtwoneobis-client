@@ -1,12 +1,15 @@
 import { useFormik } from "formik";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import useLocalStorage from "../../../helpers/hooks/useLocalStorage";
 import { signupSchema } from "../../../helpers/validation/schema";
 import Button from "../../../UI/Button/Button";
 import Input from "../../../UI/Input/Input";
 import axios from "../api/axios";
 const SignupForm = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useLocalStorage('email', '');
+  const [phoneNumber, setPhoneNumber] = useLocalStorage('phoneNumber', '');
 
   const onSubmit = async (values, actions) => {
     handleSignup(values);
@@ -23,8 +26,8 @@ const SignupForm = () => {
         console.log(response)
         throw new Error("Network response was not ok");
       }
-
-      navigate("/successfullysignup");
+      
+      navigate("/signup/confirm");
       console.log(response);
       return response;
     } catch (error) {
@@ -42,7 +45,7 @@ const SignupForm = () => {
     handleSubmit,
   } = useFormik({
     initialValues: {
-      email: "",
+      email: "", // only gmail for that
       password: "",
       firstName: "",
       lastName: "",
@@ -63,7 +66,10 @@ const SignupForm = () => {
           name="email"
           type="email"
           value={values.email}
-          onChange={handleChange}
+          onChange={(e) => {
+            handleChange(e)
+            setEmail(e.target.value)
+          }} 
           onBlur={handleBlur}
         />
       </div>
@@ -74,7 +80,10 @@ const SignupForm = () => {
           name="phoneNumber"
           type="text"
           value={values.phoneNumber}
-          onChange={handleChange}
+          onChange={(e) => {
+            handleChange(e)
+            setPhoneNumber(e.target.value)
+          }} 
           onBlur={handleBlur}
         />
       </div>

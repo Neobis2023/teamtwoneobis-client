@@ -58,9 +58,9 @@ html, body {
   font-family: 'Mulish', sans-serif;
 }
 
-body {
+/* body {
   overflow-y: hidden;
-}
+} */
 
 .myWrapper {
   width: 90%;
