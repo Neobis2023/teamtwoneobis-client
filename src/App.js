@@ -5,6 +5,7 @@ import RootLayout from './components/layouts/RootLaytout';
 import Signup  from './pages/Signup';
 import Signin from './pages/Signin';
 import AuthLayout from './components/layouts/AuthLayout';
+import Confirm from './pages/Confirm';
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,8 @@ const router = createBrowserRouter([
     element: <AuthLayout />, 
     children: [
       { path: 'signup', element: <Signup /> },
-      { path: 'signin', element: <Signin /> }
+      { path: 'signin', element: <Signin /> },
+      { path: 'signup/confirm', element: <Confirm /> },
     ]
   }
 ])

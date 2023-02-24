@@ -3,5 +3,10 @@
     border-radius: 30px;
     padding: .4rem 1rem;
     width: 100%;
-    color: rgba(41, 45, 50, 0.7);
+    color: #662D91;
+    font-weight: 500;
+}
+
+.myInput::placeholder {
+    color: rgba(102, 45, 145, 0.6);
 }
