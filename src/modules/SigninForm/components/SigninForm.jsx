@@ -57,7 +57,7 @@ const SigninForm = () => {
         <img src={line} alt="line" className="h-fit" />
       </div>
       <div className="w-full">
-        <Input placeholder={'Номер телефона'} type='number' name='phoneNumber' onChange={handleChange} onBlur={handleBlur} value={values.phoneNumber}/>
+        <Input placeholder={'Номер телефона'} type='text' name='phoneNumber' onChange={handleChange} onBlur={handleBlur} value={values.phoneNumber}/>
         {touched.phoneNumber && errors.phoneNumber ? <p className="text-sm text-red-500 mr-auto pl-2">{errors.phoneNumber}</p> : null}
       </div>
       <div className="w-full">
