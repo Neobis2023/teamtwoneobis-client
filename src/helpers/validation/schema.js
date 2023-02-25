@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-const phoneRegExp = /^\+?[0-9]{3}-?[0-9]{6,12}$/;
+const phoneRegExp = /^996[0-9]{6,12}$/;
 
 export const signupSchema = yup.object().shape({
     email: yup
@@ -29,7 +29,7 @@ export const signupSchema = yup.object().shape({
     phoneNumber: yup
         .string()
         .required('Укажите номер телефона')
-        .matches(phoneRegExp, 'Номер телефона введен неверно')
+        .matches(phoneRegExp, 'Введите в формате 996... без знака +')
 })
 
 export const signinSchema = yup.object().shape({
