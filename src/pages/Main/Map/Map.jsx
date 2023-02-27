@@ -1,9 +1,9 @@
 import React from "react";
-import kyrgyzstan from '../../../assets/images/map/kyrgyzstan.png';
-import line from '../../../assets/images/map/line.svg';
-import talas from '../../../assets/images/map/talas.png';
-import chui from '../../../assets/images/map/chui.png';
-import issyk from '../../../assets/images/map/issyk.png';
+import kyrgyzstan from '../../../assets/images/main/map/kyrgyzstan.png';
+import line from '../../../assets/images/main/map/line.svg';
+import talas from '../../../assets/images/main/map/talas.png';
+import chui from '../../../assets/images/main/map/chui.png';
+import issyk from '../../../assets/images/main/map/issyk.png';
 
 const Map = ({ ...animation }) => {
   return (

@@ -1,12 +1,12 @@
 import React from "react";
 import DetailsButton from "../../../UI/DetailsButton/DetailsButton";
-import programs from '../../../assets/images/projects/mentor-programs.png';
-import trainings from '../../../assets/images/projects/trainings.png';
-import arrowRight from '../../../assets/images/projects/arrowright.svg';
-import arrowDown from '../../../assets/images/projects/arrowdown.svg';
-import mug from '../../../assets/images/projects/mug.png';
-import circle from '../../../assets/images/projects/circle.png';
-import circleTrain from '../../../assets/images/projects/circle-train.png';
+import programs from '../../../assets/images/main/projects/mentor-programs.png';
+import trainings from '../../../assets/images/main/projects/trainings.png';
+import arrowRight from '../../../assets/images/main/projects/arrowright.svg';
+import arrowDown from '../../../assets/images/main/projects/arrowdown.svg';
+import mug from '../../../assets/images/main/projects/mug.png';
+import circle from '../../../assets/images/main/projects/circle.png';
+import circleTrain from '../../../assets/images/main/projects/circle-train.png';
 
 
 export const Results = ({ ...animation }) => {

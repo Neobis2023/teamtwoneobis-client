@@ -1,12 +1,12 @@
 import React from "react";
 import DetailsButton from "../../../UI/DetailsButton/DetailsButton";
 import MySlider from '../../../helpers/swiper/MySlider';
-import firstFutureE from "../../../assets/images/events/firstFutureE.png";
-import secondFutureE from "../../../assets/images/events/secondFutureE.png";
-import thirdFutureE from "../../../assets/images/events/thirdFutureE.png";
-import firstPastE from "../../../assets/images/events/firstPastE.png"
-import secondPastE from "../../../assets/images/events/secondPastE.png";
-import thirdPastE from "../../../assets/images/events/thirdPastE.png";
+import firstFutureE from "../../../assets/images/main/events/firstFutureE.png";
+import secondFutureE from "../../../assets/images/main/events/secondFutureE.png";
+import thirdFutureE from "../../../assets/images/main/events/thirdFutureE.png";
+import firstPastE from "../../../assets/images/main/events/firstPastE.png"
+import secondPastE from "../../../assets/images/main/events/secondPastE.png";
+import thirdPastE from "../../../assets/images/main/events/thirdPastE.png";
 
 const data = {
   futureEvents: [
