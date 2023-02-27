@@ -1,18 +1,20 @@
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Landing from './pages/Landing';
+import Main from '../src/pages/Main/Main'
 import RootLayout from './components/layouts/RootLaytout';
-import Signup  from './pages/Signup';
-import Signin from './pages/Signin';
+import Signup  from './pages/Auth/Signup';
+import Signin from './pages/Auth/Signin';
 import AuthLayout from './components/layouts/AuthLayout';
-import Confirm from './pages/Confirm';
+import Confirm from './pages/Auth/Confirm';
+import Mentorship from './pages/Mentorship/Mentorship';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
     children: [
-      { index: true, element: <Landing /> }
+      { index: true, element: <Main /> },
+      { path: 'mentorship', element: <Mentorship /> },
     ]
   },
   {

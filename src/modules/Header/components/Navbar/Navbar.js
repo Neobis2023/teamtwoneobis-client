@@ -7,19 +7,19 @@ const Navbar = () => {
     <nav className="header__nav basis-3/6">
       <ul className="header__links flex justify-between gap-4">
         <li className={styles.header__link}>
-          <NavLink to="/">Менторство</NavLink>
+          <NavLink to="mentorship">Менторство</NavLink>
         </li>
         <li className={styles.header__link}>
-          <NavLink to="/">Видеоблог</NavLink>
+          <NavLink to="videoblog">Видеоблог</NavLink>
         </li>
         <li className={styles.header__link}>
-          <NavLink to="/">Тренинги</NavLink>
+          <NavLink to="trainings">Тренинги</NavLink>
         </li>
         <li className={styles.header__link}>
-          <NavLink to="/">Форум</NavLink>
+          <NavLink to="forum">Форум</NavLink>
         </li>
         <li className={styles.header__link}>
-          <NavLink to="/">Контакты</NavLink>
+          <NavLink to="contacts">Контакты</NavLink>
         </li>
       </ul>
     </nav>
