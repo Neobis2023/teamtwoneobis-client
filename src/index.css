@@ -85,6 +85,25 @@ html, body {
   padding-bottom: 2rem!important;
 }
 
+.mentors .swiper {
+  width: 100%;
+}
+
+/* .mentors .swiper .swiper-wrapper {
+  padding-left: 5rem;
+} */
+
+.mentors .swiper {
+  margin-left: 5rem;
+  height: 37vw;
+  min-height: 30rem;
+}
+
+
+/* .swiper-wrapper:has(.mentors-swiper-slider) {
+  margin-left: 5rem;
+} */
+
 .videoblog .swiper {
   width: 90%;
   padding: 5rem 0 2rem;
