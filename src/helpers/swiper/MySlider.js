@@ -43,10 +43,10 @@ const MySlider = ({ videoblog = null, events = null, mentors = null, graduates =
         slidesPerView={mentors ? 4 : 3}
         loop={true}
         // loopFillGroupWithBlank={false}
-        // centeredSlides={true}
+        centeredSlides={mentors ? false : true}
         // slidesPerGroup={3}
-        spaceBetween={mentors ? 40 : 60}
-        navigation={mentors ? false : true}
+        spaceBetween={(mentors || graduates) ? 40 : 60}
+        navigation={(mentors || graduates) ? false : true}
         pagination={{
           dynamicBullets: true,
           clickable: true,
@@ -103,15 +103,15 @@ const MySlider = ({ videoblog = null, events = null, mentors = null, graduates =
 
         {graduates && graduates.map((graduate) => {
           return (
-            <SwiperSlide key={graduate.id}>
-              <div>
-                <img src={graduate.img} alt='graduate'/>
-                <div>
-                  <p>{graduate.title}</p>
-                  <p>{graduate.desc}</p>
+            <SwiperSlide key={graduate.id} className='pb-[10%]'>
+              <div className="relative flex justify-center w-full">
+                <img src={graduate.img} alt='graduate' className="rounded-lg w-full"/>
+                <div className="bg-[#ffffff] shadow-[0px_9px_32px_rgba(89,_92,_219,_0.05)] flex flex-col gap-3 justify-between rounded-[16px] absolute -bottom-[25%] top-[63%] w-[80%] h-fit p-6">
+                  <p className="text-[#662D91] font-semibold text-[clamp(.8rem,_1.38vw,_1.5rem)] leading-[normal]">{graduate.title}</p>
+                  <p className="text-[rgba(102,_45,_145,_0.6)] text-[clamp(0.5rem,_0.97vw,_1.17rem)] font-normal">{graduate.desc}</p>
                   <div>
-                    {graduate.fullName}
-                    {graduate.place}
+                    <p className="text-[#662D91] text-[clamp(0.5rem,_0.97vw,_1.17rem)] font-medium">{graduate.fullName}</p>
+                    <p className="text-[rgba(102,_45,_145,_0.6)] text-[clamp(0.5rem,_0.97vw,_1.17rem)] font-medium">{graduate.place}</p>
                   </div>
                 </div>
               </div>

@@ -18,14 +18,6 @@ const Graduates = () => {
     },
     {
       id: 2,
-      img: second,
-      title: 'Я получила от программы больше чем ожидала',
-      desc: 'Through this website I can get a house with the type and specifications I want very easily, without a complicated process to be able to find information on the house we want.',
-      fullName: 'Алия Алимова',
-      place: 'Баткенская область'
-    },
-    {
-      id: 3,
       img: third,
       title: 'Я получила от программы больше чем ожидала',
       desc: 'Through this website I can get a house with the type and specifications I want very easily, without a complicated process to be able to find information on the house we want.',
@@ -33,7 +25,7 @@ const Graduates = () => {
       place: 'Баткенская область'
     },
     {
-      id: 4,
+      id: 3,
       img: first,
       title: 'Я получила от программы больше чем ожидала',
       desc: 'Through this website I can get a house with the type and specifications I want very easily, without a complicated process to be able to find information on the house we want.',
@@ -41,8 +33,16 @@ const Graduates = () => {
       place: 'Баткенская область'
     },
     {
+      id: 4,
+      img: third,
+      title: 'Я получила от программы больше чем ожидала',
+      desc: 'Through this website I can get a house with the type and specifications I want very easily, without a complicated process to be able to find information on the house we want.',
+      fullName: 'Алия Алимова',
+      place: 'Баткенская область'
+    },
+    {
       id: 5,
-      img: second,
+      img: first,
       title: 'Я получила от программы больше чем ожидала',
       desc: 'Through this website I can get a house with the type and specifications I want very easily, without a complicated process to be able to find information on the house we want.',
       fullName: 'Алия Алимова',
