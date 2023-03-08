@@ -95,7 +95,7 @@ const QA = () => {
         <h2 className="text-[#662D91] font-semibold text-[clamp(1.2rem,_2.5vw,_2.5rem)] text-center pb-10">
           Ответы на часто задаваемые вопросы
         </h2>
-        <div className="accordion px-12">
+        <div className="accordion px-20">
           {data.map((item) => {
             return (
               <QAItem key={item.id} question={item.question} answer={item.answer} />
