@@ -58,7 +58,7 @@ const Graduates = () => {
     }
   ]
   return (
-    <section className='pb-20 graduates bg-[#EDEDED]'>
+    <section className='pb-20 graduates bg-[#F8F9FA]'>
       <img src={line} alt="line" className='mx-auto'/>
       <h2 className='text-[#F59E0B] font-semibold text-[clamp(1.2rem,_2.5vw,_2.5rem)] text-center pb-10'>Наши выпускники</h2>
       <MySlider graduates={graduates}/>

@@ -3,7 +3,7 @@ import girls from "../../../assets/images/mentorship/mission/girls.svg";
 
 const Mission = () => {
   return (
-    <section className="py-20 bg-[#EDEDED]">
+    <section className="py-20 bg-[#F8F9FA]">
       <div className="myWrapper flex items-center justify-between gap-3">
         <div className="basis-[45%]">
           <img src={girls} alt="girls" className="w-[90%] h-[90%]"/>

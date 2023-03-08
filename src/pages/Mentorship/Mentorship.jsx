@@ -5,6 +5,7 @@ import Criteria from './Criteria/Criteria'
 import Graduates from './Graduates/Graduates'
 import Mentors from './Mentors/Mentors'
 import Power from './Power/Power'
+import QA from './QA/QA'
 
 const Mentorship = () => {
   return (
@@ -15,6 +16,7 @@ const Mentorship = () => {
         <Mentors />
         <Graduates />
         <Application />
+        <QA />
     </>
   )
 }

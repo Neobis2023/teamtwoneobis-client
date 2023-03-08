@@ -57,7 +57,7 @@ const Mentors = () => {
     },
   ];
   return (
-    <section className='pb-20 bg-[#EDEDED] mentors'>
+    <section className='pb-20 bg-[#F8F9FA] mentors'>
         <h2 className='text-[#662D91] font-semibold text-[clamp(1.2rem,_2.5vw,_2.5rem)] text-center pb-10'>Менторы</h2>
         <MySlider mentors={mentors}/>
     </section>

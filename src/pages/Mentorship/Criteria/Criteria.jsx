@@ -2,7 +2,7 @@ import React from 'react'
 
 const Criteria = () => {
   return (
-    <section className='py-20 bg-[#EDEDED]'>
+    <section className='py-20 bg-[#F8F9FA]'>
         <div className="myWrapper text-[#662D91]">
             <h2 className='text-[clamp(1.2rem,_2.5vw,_2.5rem)] pb-10 text-center font-bold'>Критерии участия</h2>
             <div className='text-2xl flex justify-between gap-16 text-[clamp(1rem,_1.6vw,_1.7rem)] leading-normal'>
