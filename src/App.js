@@ -7,6 +7,8 @@ import Signin from './pages/Auth/Signin';
 import AuthLayout from './components/layouts/AuthLayout';
 import Confirm from './pages/Auth/Confirm';
 import Mentorship from './pages/Mentorship/Mentorship';
+import Trainings from './pages/Trainings/Trainings';
+
 
 const router = createBrowserRouter([
   {
@@ -15,6 +17,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Main /> },
       { path: 'mentorship', element: <Mentorship /> },
+      { path: 'trainings', element: <Trainings /> },
     ]
   },
   {

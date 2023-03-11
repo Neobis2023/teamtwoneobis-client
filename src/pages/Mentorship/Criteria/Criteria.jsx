@@ -7,9 +7,9 @@ import arrow from '../../../assets/images/mentorship/criteria/arrow.svg';
 import crown from '../../../assets/images/mentorship/criteria/crown.svg';
 
 
-const Criteria = () => {
+const Criteria = ({ className }) => {
   return (
-    <section className='py-20 bg-[#F8F9FA]'>
+    <section className={`py-20 bg-[#F8F9FA] ${className}`}>
         <div className="myWrapper text-[#662D91] relative">
             <img src={crown} alt="crown" className='absolute -top-[10%] left-[35%] w-[5%] h-fit min-w-[50px]'/>
             <img src={arrow} alt="arrow" className='absolute top-[8%] left-0 right-0 mx-auto w-[35%] h-fit min-w-[250px]'/>
