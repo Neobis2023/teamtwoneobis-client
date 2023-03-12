@@ -5,6 +5,7 @@ import line from '../../assets/images/mentorship/mentors/line.svg';
 import Button from '../../UI/Button/Button';
 import circle from '../../assets/images/mentorship/mentors/circle.svg';
 
+
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -34,24 +35,21 @@ function VideoPlayer({ videoUrl }) {
   return <YouTube videoId={videoId} opts={opts} onReady={onReady} />;
 }
 
-const MySlider = ({ videoblog = null, events = null, mentors = null, graduates = null }) => {
+const MySlider = ({ videoblog = null, events = null, mentors = null, graduates = null, dataEvents = null }) => {
   return (
     <div className="mySwiper">
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         direction={"horizontal"}
-        slidesPerView={mentors ? 4 : 3}
+        slidesPerView={(mentors || dataEvents) ? 4  : 3}
         loop={true}
-        // loopFillGroupWithBlank={false}
-        centeredSlides={mentors ? false : true}
-        // slidesPerGroup={3}
-        spaceBetween={(mentors || graduates) ? 40 : 60}
-        navigation={(mentors || graduates) ? false : true}
+        centeredSlides={mentors || dataEvents ? false : true}
+        spaceBetween={(mentors || graduates || dataEvents) ? 40 : 60}
+        navigation={(mentors || graduates || dataEvents) ? false : true}
         pagination={{
           dynamicBullets: true,
           clickable: true,
         }}
-        // slidesOffsetAfter={mentors && 300}
       >
         {videoblog &&
           videoblog.map((videoUrl, index) => {
@@ -114,6 +112,20 @@ const MySlider = ({ videoblog = null, events = null, mentors = null, graduates =
                     <p className="text-[rgba(102,_45,_145,_0.6)] text-[clamp(0.5rem,_0.97vw,_1.17rem)] font-medium">{graduate.place}</p>
                   </div>
                 </div>
+              </div>
+            </SwiperSlide>
+          )
+        })}
+        {dataEvents && dataEvents.map((event) => {
+          return(
+            <SwiperSlide key={event.id}>
+              <div className="flex flex-col gap-4">
+                <img src={event.imgSource} alt={'event'}/>
+                <p className="text-[#5D5A88] font-bold text-[clamp(1.2rem,_1.66vw,_1.8rem)]">{event.eventName}</p>
+                <p className="text-[#9795B5] text-[clamp(.8rem,_1.1vw,_1.3rem)]">{event.description}</p>
+                <NavLink to='/' className={'w-fit'}>
+                  <Button text='Подробнее' className={'!rounded-[40px] text-base font-semibold !text-[#662D91] !bg-[#E8E5FF] border border-solid border-[#CDB4DB]'}/>
+                </NavLink>
               </div>
             </SwiperSlide>
           )

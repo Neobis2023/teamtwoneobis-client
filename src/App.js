@@ -8,6 +8,7 @@ import AuthLayout from './components/layouts/AuthLayout';
 import Confirm from './pages/Auth/Confirm';
 import Mentorship from './pages/Mentorship/Mentorship';
 import Trainings from './pages/Trainings/Trainings';
+import Forum from './pages/Forum/Forum';
 
 
 const router = createBrowserRouter([
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
       { index: true, element: <Main /> },
       { path: 'mentorship', element: <Mentorship /> },
       { path: 'trainings', element: <Trainings /> },
+      { path: 'forum', element: <Forum /> },
     ]
   },
   {

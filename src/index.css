@@ -87,7 +87,7 @@ html, body {
   padding-bottom: 2rem!important;
 }
 
-.mentors .swiper, .graduates .swiper {
+.mentors .swiper, .graduates .swiper, .pastTrainings .swiper, .forum .swiper {
   width: 100%;
 }
 
@@ -96,6 +96,18 @@ html, body {
 } */
 
 .mentors .swiper {
+  margin-left: 5rem;
+  height: 37vw;
+  min-height: 30rem;
+}
+
+.pastTrainings .swiper {
+  margin-left: 5rem;
+  height: 37vw;
+  min-height: 30rem;
+}
+
+.forum .swiper {
   margin-left: 5rem;
   height: 37vw;
   min-height: 30rem;
@@ -146,6 +158,8 @@ html, body {
 .videoblog .swiper .swiper-button-next, .videoblog .swiper .swiper-button-prev {
   display: none;
 }
+
+/* past Trainings */
 
 
 
