@@ -1,7 +1,7 @@
 import React from "react";
 import Button from '../../../UI/Button/Button'
 import Input from "../../../UI/Input/Input";
-import line from '../../../assets/images/auth/line-signin.png'
+import line from '../assets/images/line-signin.png'
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import { signinSchema } from "../../../helpers/validation/schema";

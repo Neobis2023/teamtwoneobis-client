@@ -1,10 +1,10 @@
 import React from 'react'
-import one from '../../../assets/images/mentorship/criteria/1.svg';
-import two from '../../../assets/images/mentorship/criteria/2.svg';
-import three from '../../../assets/images/mentorship/criteria/3.svg';
-import four from '../../../assets/images/mentorship/criteria/4.svg';
-import arrow from '../../../assets/images/mentorship/criteria/arrow.svg';
-import crown from '../../../assets/images/mentorship/criteria/crown.svg';
+import one from './assets/images/1.svg';
+import two from './assets/images/2.svg';
+import three from './assets/images/3.svg';
+import four from './assets/images/4.svg';
+import arrow from './assets/images/arrow.svg';
+import crown from './assets/images/crown.svg';
 
 
 const Criteria = ({ className }) => {

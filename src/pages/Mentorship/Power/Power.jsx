@@ -1,8 +1,8 @@
 import React from "react";
-import line from "../../../assets/images/mentorship/power/line.svg";
-import freedom from "../../../assets/images/mentorship/power/freedom.svg";
-import life from "../../../assets/images/mentorship/power/life.svg";
-import women from "../../../assets/images/mentorship/power/women.svg";
+import line from "./assets/images/line.svg";
+import freedom from "./assets/images/freedom.svg";
+import life from "./assets/images/life.svg";
+import women from "./assets/images/women.svg";
 
 
 const Power = () => {

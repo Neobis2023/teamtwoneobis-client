@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import instagram from '../../../assets/images/auth/authFooter/instagram-footer.svg';
-import youtube from '../../../assets/images/auth/authFooter/youtube-footer.svg';
-import logo from '../../../assets/images/auth/authFooter/logo-footer.svg';
+import instagram from '../assets/images/instagram-footer.svg';
+import youtube from '../assets/images/youtube-footer.svg';
+import logo from '../assets/images/logo-footer.svg';
 
 const AuthFooter = () => {
   return (

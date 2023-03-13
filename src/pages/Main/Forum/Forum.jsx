@@ -1,17 +1,17 @@
 import React from "react";
-import check from '../../../assets/images/main/forum/check.png';
 import DetailsButton from "../../../UI/DetailsButton/DetailsButton";
-import black from '../../../assets/images/main/forum/black.png';
-import neutral from '../../../assets/images/main/forum/neutral.png';
-import simple from '../../../assets/images/main/forum/simple.png'
-import thoughts from '../../../assets/images/main/forum/thoughts.png';
-import stars from '../../../assets/images/main/forum/stars.png';
-import hearts from '../../../assets/images/main/forum/hearts.png';
+import check from './assets/images/check.png';
+import black from './assets/images/black.png';
+import neutral from './assets/images/neutral.png';
+import simple from './assets/images/simple.png'
+import thoughts from './assets/images/thoughts.png';
+import stars from './assets/images/stars.png';
+import hearts from './assets/images/hearts.png';
 
-const Forum = ({ ...animation }) => {
+const Forum = () => {
   return (
     <section className="bg-[#EDEDED] py-20">
-      <div className="myWrapper" {...animation}>
+      <div className="myWrapper">
         <div className="flex justify-center gap-4 mb-16 items-center">
           <h2 className="mySubtitle">Форум</h2>
           <img src={check} alt="check" className="h-fit w-[5%]"/>

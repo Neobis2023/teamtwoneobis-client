@@ -1,5 +1,5 @@
 import React from 'react'
-import stars from "../../assets/images/trainings/pastTrainings/stars.svg";
+import stars from "./assets/images/stars.svg";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { NavLink } from "react-router-dom";
 

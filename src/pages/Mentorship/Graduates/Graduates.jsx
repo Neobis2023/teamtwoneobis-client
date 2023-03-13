@@ -1,9 +1,8 @@
 import React from 'react'
-import line from '../../../assets/images/mentorship/graduates/line.svg';
+import line from './assets/images/line.svg';
 import MySlider from '../../../helpers/swiper/MySlider';
-import first from '../../../assets/images/mentorship/graduates/firstPhoto.svg';
-import second from '../../../assets/images/mentorship/graduates/secondPhoto.svg';
-import third from '../../../assets/images/mentorship/graduates/thirdPhoto.svg';
+import first from './assets/images/firstPhoto.jpg';
+import third from './assets/images/thirdPhoto.jpg';
 
 
 const Graduates = () => {

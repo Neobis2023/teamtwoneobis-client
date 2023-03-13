@@ -1,12 +1,12 @@
 import React from "react";
 import DetailsButton from "../../../UI/DetailsButton/DetailsButton";
 import MySlider from '../../../helpers/swiper/MySlider';
-import firstFutureE from "../../../assets/images/main/events/firstFutureE.png";
-import secondFutureE from "../../../assets/images/main/events/secondFutureE.png";
-import thirdFutureE from "../../../assets/images/main/events/thirdFutureE.png";
-import firstPastE from "../../../assets/images/main/events/firstPastE.png"
-import secondPastE from "../../../assets/images/main/events/secondPastE.png";
-import thirdPastE from "../../../assets/images/main/events/thirdPastE.png";
+import firstFutureE from "./assets/images/firstFutureE.png";
+import secondFutureE from "./assets/images/secondFutureE.png";
+import thirdFutureE from "./assets/images/thirdFutureE.png";
+import firstPastE from "./assets/images/firstPastE.png"
+import secondPastE from "./assets/images/secondPastE.png";
+import thirdPastE from "./assets/images/thirdPastE.png";
 
 const data = {
   futureEvents: [
@@ -63,10 +63,10 @@ const data = {
   ],
 };
 
-export const FutureEvents = ({ ...animation }) => {
+export const FutureEvents = () => {
   return (
     <section className="py-20 events">
-      <div {...animation}>
+      <div>
         <div className="myWrapper pb-16">
           <h2 className="mySubtitle text-center future-events-title">
             Предстоящие события
@@ -79,10 +79,10 @@ export const FutureEvents = ({ ...animation }) => {
   );
 };
 
-export const PastEvents = ({ ...animation }) => {
+export const PastEvents = () => {
   return (
     <section className="pb-20">
-      <div {...animation}>
+      <div>
         <div className="myWrapper pb-16">
           <h2 className="mySubtitle text-center future-events-title">
             Прошедшие события

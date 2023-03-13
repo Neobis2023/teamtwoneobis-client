@@ -1,10 +1,10 @@
 import React from "react";
-import curlyArrow from '../../../assets/images/main/videoblog/arrowcurly.svg';
+import curlyArrow from './assets/images/arrowcurly.svg';
 import DetailsButton from "../../../UI/DetailsButton/DetailsButton";
-import computer from '../../../assets/images/main/videoblog/computer.png';
+import computer from './assets/images/computer.png';
 import MySlider from "../../../helpers/swiper/MySlider";
 
-const Videoblog = ({ ...animation }) => {
+const Videoblog = () => {
   document.cookie = "myCookie=value; SameSite=Strict";
   const videoUrls = [
     "https://www.youtube.com/watch?v=zvTr3P43yUg",
@@ -18,7 +18,7 @@ const Videoblog = ({ ...animation }) => {
     <section
       className="bg-[rgba(232,_229,_255,_0.4)] py-20 videoblog"
     >
-      <div {...animation}>
+      <div>
         <div className="flex gap-5 myWrapper videoblog-title">
           <h2 className="mySubtitle">Видеоблог/Study plan</h2>
           <img src={curlyArrow} alt="curly" className="h-fit w-[30%]"/>

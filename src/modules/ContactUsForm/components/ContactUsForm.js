@@ -1,5 +1,5 @@
 import React from "react";
-import underline from "../../../assets/images/main/contactus/line.svg";
+import underline from "../assets/images/line.svg";
 import Input from "../../../UI/Input/Input";
 import DetailsButton from "../../../UI/DetailsButton/DetailsButton";
 import styles from './ContactUsForm.module.css';

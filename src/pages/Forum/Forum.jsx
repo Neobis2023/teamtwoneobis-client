@@ -1,11 +1,12 @@
 import React from "react";
 import StartSection from "../../modules/StartSection/components/StartSection";
-import girls from "../../assets/images/trainings/start/girls.svg";
 import Events from "../../modules/Events/Events";
-import girlsTr from "../../assets/images/trainings/futureTrainings/girlsTr.svg";
+import girlsTr from "./assets/images/girlsTr.png";
+import eventGirls from './assets/images/eventGirls.png';
+import girls from './assets/images/girls.jpg';
 import EventsPast from "../../modules/EventsPast/EventsPast";
 import MySlider from "../../helpers/swiper/MySlider";
-import eventGirls from '../../assets/images/forum/events/eventGirls.svg';
+
 
 const Forum = () => {
   const events = [

@@ -1,7 +1,7 @@
 import React from "react";
-import line from "../../../assets/images/trainings/start/line.svg";
-import stars from "../../../assets/images/trainings/start/stars.svg";
-import triangles from "../../../assets/images/trainings/start/triangles.svg";
+import line from "../assets/images/line.svg";
+import stars from "../assets/images/stars.svg";
+import triangles from "../assets/images/triangles.svg";
 
 const StartSection = ({ title, subtitle, imgSource }) => {
   return (

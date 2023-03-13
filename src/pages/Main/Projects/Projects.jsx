@@ -1,19 +1,19 @@
 import React from "react";
 import DetailsButton from "../../../UI/DetailsButton/DetailsButton";
-import programs from '../../../assets/images/main/projects/mentor-programs.png';
-import trainings from '../../../assets/images/main/projects/trainings.png';
-import arrowRight from '../../../assets/images/main/projects/arrowright.svg';
-import arrowDown from '../../../assets/images/main/projects/arrowdown.svg';
-import mug from '../../../assets/images/main/projects/mug.png';
-import circle from '../../../assets/images/main/projects/circle.png';
-import circleTrain from '../../../assets/images/main/projects/circle-train.png';
+import programs from './assets/images/mentor-programs.png';
+import trainings from './assets/images/trainings.png';
+import arrowRight from './assets/images/arrowright.svg';
+import arrowDown from './assets/images/arrowdown.svg';
+import mug from './assets/images/mug.png';
+import circle from './assets/images/circle.png';
+import circleTrain from './assets/images/circle-train.png';
 
 
-export const Results = ({ ...animation }) => {
+export const Results = () => {
 
   return (
     <section className="bg-[#A082DA] h-auto py-16">
-      <div className="myWrapper text-white font-bold h-[inherit] flex justify-between gap-6" {...animation}>
+      <div className="myWrapper text-white font-bold h-[inherit] flex justify-between gap-6">
         <div className="text-[clamp(1.5rem,_2.8vw,_3rem)] basis-[40%] leading-[normal]">Наши результаты в цифрах</div>
         <div className="flex justify-between basis-[50%] items-center gap-4">
           <div className="text-center">

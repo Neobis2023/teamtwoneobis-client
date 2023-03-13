@@ -1,14 +1,14 @@
 import React from "react";
-import kyrgyzstan from '../../../assets/images/main/map/kyrgyzstan.png';
-import line from '../../../assets/images/main/map/line.svg';
-import talas from '../../../assets/images/main/map/talas.png';
-import chui from '../../../assets/images/main/map/chui.png';
-import issyk from '../../../assets/images/main/map/issyk.png';
+import kyrgyzstan from './assets/images/kyrgyzstan.png';
+import line from './assets/images/line.svg';
+import talas from './assets/images/talas.png';
+import chui from './assets/images/chui.png';
+import issyk from './assets/images/issyk.png';
 
-const Map = ({ ...animation }) => {
+const Map = () => {
   return (
     <section className="py-20">
-      <div className="myWrapper flex flex-col gap-16" {...animation}>
+      <div className="myWrapper flex flex-col gap-16">
         <div className="text-center">
           <div className="pb-8">
             <h2 className="mySubtitle pb-2">Мы на карте</h2>

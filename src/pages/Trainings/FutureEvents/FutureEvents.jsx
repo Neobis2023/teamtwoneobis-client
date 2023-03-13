@@ -1,5 +1,5 @@
 import React from "react";
-import girlsTr from "../../../assets/images/trainings/futureTrainings/girlsTr.svg";
+import girlsTr from "./assets/images/girlsTr.png";
 import Events from "../../../modules/Events/Events";
 
 const FutureEvents = () => {

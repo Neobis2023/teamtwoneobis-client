@@ -1,6 +1,6 @@
 import React from "react";
 import MySlider from "../../../helpers/swiper/MySlider";
-import girls from '../../../assets/images/trainings/pastTrainings/girls.svg';
+import girls from './assets/images/girls.png';
 import EventsPast from "../../../modules/EventsPast/EventsPast";
 
 const PastEvents = () => {

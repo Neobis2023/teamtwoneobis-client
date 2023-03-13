@@ -22,13 +22,11 @@ function VideoPlayer({ videoUrl }) {
     height: "100%",
     width: "100%",
     playerVars: {
-      // https://developers.google.com/youtube/player_parameters
       autoplay: 0,
     },
   };
 
   function onReady(event) {
-    // access to player in all event handlers via event.target
     event.target.pauseVideo();
   }
 
@@ -83,7 +81,7 @@ const MySlider = ({ videoblog = null, events = null, mentors = null, graduates =
             <SwiperSlide key={mentor.id} className='mentors-swiper-slider'>
               <div className="bg-[radial-gradient(50%_50%_at_50%_50%,_#FAEFFF_0%,_#E8E5FF_100%)] border border-solid border-[rgba(153,_96,_195,_0.5)] rounded-[40px] shadow-[0px_2px_8px_rgba(0,_0,_0,_0.25)] w-full flex flex-col gap-5 items-center text-center p-6">
                 <div className="relative flex items-center justify-center">
-                  <img src={mentor.img} alt='ment' className="absolute top-0 bottom-0 my-auto z-10 w-[78%] h-auto"/> 
+                  <img src={mentor.img} alt='ment' className="absolute top-0 bottom-0 my-auto z-10 w-[78%] h-auto rounded-full"/> 
                   <img src={circle} alt='circle' className="relative w-[90%] h-auto"/>
                 </div>
                 <p className="text-[#471280] font-medium text-[clamp(1rem,_1.38vw,_1.5rem)]">{mentor.fullName}</p>

@@ -1,10 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from '../../../assets/images/global/logo.svg';
-import lineFooter from '../../../assets/images/footer/line-footer.png';
-import linkedin from '../../../assets/images/footer/linkedin.svg';
-import youtube from '../../../assets/images/footer/youtube.svg';
-import instagram from '../../../assets/images/footer/instagram.svg';
+import logo from '../assets/images/logo.svg';
+import lineFooter from '../assets/images/line-footer.png';
+import linkedin from '../assets/images/linkedin.svg';
+import youtube from '../assets/images/youtube.svg';
+import instagram from '../assets/images/instagram.svg';
 
 
 

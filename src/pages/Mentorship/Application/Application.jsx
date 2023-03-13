@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../../../UI/Button/Button";
-import stars from '../../../assets/images/mentorship/application/stars.svg';
+import stars from './assets/images/stars.svg';
 
 const Application = () => {
   return (

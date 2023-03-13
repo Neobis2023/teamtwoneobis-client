@@ -1,9 +1,9 @@
 import React from 'react'
 import MySlider from '../../../helpers/swiper/MySlider';
-import aykanysh from '../../../assets/images/mentorship/mentors/aykanysh.svg';
-import salkynay from '../../../assets/images/mentorship/mentors/salkynay.svg';
-import aysezim from '../../../assets/images/mentorship/mentors/aysezim.svg';
-import nurayim from '../../../assets/images/mentorship/mentors/nurayim.svg';
+import aykanysh from './assets/images/aykanysh.png';
+import salkynay from './assets/images/salkynay.png';
+import aysezim from './assets/images/aysezim.png';
+import nurayim from './assets/images/nurayim.png';
 
 const Mentors = () => {
   const mentors = [

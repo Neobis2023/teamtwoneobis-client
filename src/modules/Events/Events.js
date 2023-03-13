@@ -1,6 +1,6 @@
 import React from "react";
-import stars from '../../assets/images/trainings/futureTrainings/stars.svg'
-import computer from '../../assets/images/trainings/futureTrainings/computer.svg'
+import stars from './assets/images/stars.svg'
+import computer from './assets/images/computer.svg'
 import Button from "./Button/Button";
 
 const Events = ({ title, imgSource, eventName, description, time, date, location }) => {
