@@ -22,7 +22,7 @@ const Download = () => {
             <div className='basis-1/2 flex flex-col gap-8'>
                 <p className='text-[clamp(2rem,_4.3vw,_4rem)] font-bold text-[#471280] leading-[4.5vw]'>Скачай приложение и будь с нами!</p>
                 <img src={googlePlay} alt="google-play" className='h-fit w-[40%]'/>
-                <img src={downloadHeart} alt="heart" className='absolute -top-[40%] right-[5%] h-auto w-[20%]'/>
+                <img src={downloadHeart} alt="heart" className='absolute top-[7%] right-[15%] h-auto w-[10%]'/>
             </div>
         </div>
 
