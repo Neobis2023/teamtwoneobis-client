@@ -10,6 +10,12 @@ import Mentorship from './pages/Mentorship/Mentorship';
 import Trainings from './pages/Trainings/Trainings';
 import Forum from './pages/Forum/Forum';
 import Videoblog from './pages/Videoblog/Videoblog';
+import Admin from './pages/Admin/Admin';
+import AdminLayout from './pages/Admin/layouts/AdminLayout';
+import Statistics from './pages/Admin/Statistics/Statistics';
+import { Edit, Feedback } from '@mui/icons-material';
+import Applications from './pages/Admin/Applications/Applications';
+import Users from './pages/Admin/Users/Users';
 
 
 
@@ -36,7 +42,18 @@ function App() {
         { path: 'signup', element: <Signup /> },
         { path: 'signup/confirm', element: <Confirm /> },
       ]
-    }
+    },
+    { 
+      path: 'admin', 
+      element: <AdminLayout />,
+      children: [
+        { index: true, element: <Statistics /> },
+        { path: 'edit', element: <Edit /> },
+        { path: 'applications', element: <Applications /> },
+        { path: 'users', element: <Users /> },
+        { path: 'feedback', element: <Feedback /> },
+      ]
+    },
   ])
 
   return (
