@@ -4,6 +4,7 @@ import styles from './Navbar.module.css';
 
 const Navbar = () => {
   const location = useLocation();
+
   return (
     <nav className="header__nav basis-3/6">
       <ul className="header__links flex justify-between gap-4">
@@ -11,7 +12,7 @@ const Navbar = () => {
           <NavLink to="mentorship" className={'nav'} isActive={() => location.pathname === '/mentorship'}>Менторство</NavLink>
         </li>
         <li className={styles.header__link}>
-          <NavLink to="videoblog" className={'nav'} isActive={() => location.pathname === '/videoblog'}>Видеоблог</NavLink>
+          <NavLink to={`videoblog/1`} className={'nav'} isActive={() => location.pathname.startsWith('/videoblog')}>Видеоблог</NavLink>
         </li>
         <li className={styles.header__link}>
           <NavLink to="trainings" className={'nav'} isActive={() => location.pathname === '/trainings'}>Тренинги</NavLink>

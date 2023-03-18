@@ -7,7 +7,7 @@ const StartSection = ({ title, subtitle, imgSource }) => {
   return (
     <div>
       <div className="pt-20 pb-[4%] relative">
-        <div className="flex flex-col text-center w-1/2 mx-auto">
+        <div className="flex flex-col text-center w-1/2 mx-auto gap-4">
           <div>
             <h1 className="text-[#9960C3] text-[clamp(2rem,_3.3vw,_3.25rem)] font-semibold">
               {title}

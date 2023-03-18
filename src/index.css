@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@700&display=swap');
 
 
 @layer components {
@@ -29,6 +30,7 @@
   display: block;
   width: 90%;
   height: 1px;
+  border-radius: 40px;
   bottom: -2px;
   left: 0;
   right: 0;
@@ -42,6 +44,10 @@
   transform: scale(1);
 } 
 
+.videoblogLink.active {
+  border: 1px solid #9960C3;
+  color: #9960C3;
+}
 
 *,
 *::before, 
@@ -50,6 +56,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 
 a:focus {
   outline: none;
@@ -67,6 +74,10 @@ html, body {
 .myWrapper {
   width: 90%;
   margin: 0 auto;
+}
+
+.pagination-numbers {
+  font-family: 'Commissioner', sans-serif;
 }
 
 .mySwiper {
