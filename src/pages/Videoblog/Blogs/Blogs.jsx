@@ -309,7 +309,7 @@ const Blogs = () => {
   return (
     <section>
       <div className="myWrapper">
-        <Pagination blogsPerPage={14} totalBlogs={blogs.length} paginate={paginate} currentPage={currentPage}/>
+        <Pagination blogsPerPage={blogsPerPage} totalBlogs={blogs.length} paginate={paginate} currentPage={currentPage}/>
         <div className="grid grid-cols-[repeat(auto-fill,_31%)] justify-between gap-8 my-6">
           {currentBlogs.map((blog) => (
             <div className="basis-[31%] flex h-auto flex-col gap-2 mb-[5%]" key={blog.id}>
@@ -355,7 +355,7 @@ const Blogs = () => {
             </div>
           ))}
         </div>
-        <Pagination blogsPerPage={14} totalBlogs={blogs.length} paginate={paginate} currentPage={currentPage}/>
+        <Pagination blogsPerPage={blogsPerPage} totalBlogs={blogs.length} paginate={paginate} currentPage={currentPage}/>
       </div>
     </section>
   );

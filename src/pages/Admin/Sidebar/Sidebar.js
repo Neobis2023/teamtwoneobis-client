@@ -12,7 +12,9 @@ const Sidebar = () => {
   return (
     <section className='bg-[#FDFDFD] px-8 w-[320px] h-screen min-h-[700px] flex flex-col'>
         <div className='h-[15%] flex items-center'>
+          <NavLink to='/'>
             <img src={logo} alt='logo'/>
+          </NavLink>
         </div>
         <nav className='h-[70%]'>
             <ul className='text-[#79768D] flex flex-col gap-6'>

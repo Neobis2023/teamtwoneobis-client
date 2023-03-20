@@ -15,7 +15,7 @@ const Pagination = ({ blogsPerPage, totalBlogs, paginate, currentPage }) => {
 
   return (
     <nav className="">
-      <div className="flex gap-2 pagination-numbers">
+      <div className="flex gap-2 pagination-numbers flex-wrap">
         {currentPage === 1 ? null : (
           <NavLink
             to={`/videoblog/${id - 1}`}
