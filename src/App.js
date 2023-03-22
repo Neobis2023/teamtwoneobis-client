@@ -47,7 +47,7 @@ function App() {
       path: 'admin', 
       element: <AdminLayout />,
       children: [
-        { index: true, element: <Statistics /> },
+        { index: true, path: 'statistics', element: <Statistics /> },
         { path: 'edit', element: <Edit /> },
         { path: 'applications', element: <Applications /> },
         { path: 'users', element: <Users /> },
