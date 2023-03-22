@@ -49,6 +49,11 @@
   color: #9960C3;
 }
 
+.nav-admin.active {
+  background-color: #EAF0FF;
+}
+
+
 *,
 *::before, 
 *::after {

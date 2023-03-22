@@ -11,23 +11,23 @@ import logout from "./assets/images/logout.svg";
 const Sidebar = () => {
   const location = useLocation();
   return (
-    <section className="bg-[#FDFDFD] px-8 w-[320px] h-screen">
-      <div className="flex flex-col h-full fixed min-h-[650px]">
-        <div className="h-[15%] flex items-center">
+    <section className="bg-[#FDFDFD] min-w-[270px] h-screen">
+      <div className="flex flex-col h-full fixed min-h-[650px] w-[270px]">
+        <div className="h-[15%] flex items-center px-8">
           <NavLink to="/">
             <img src={logo} alt="logo" />
           </NavLink>
         </div>
         <nav className="h-[70%]">
-          <ul className="text-[#79768D] flex flex-col gap-6">
+          <ul className="text-[#79768D] flex flex-col gap-2">
             <li>
-              <NavLink to={"/admin/statistics"} className="flex items-center gap-2" isActive={() => location.pathname === '/admin/statistics'}>
+              <NavLink to={"/admin/statistics"} className="nav-admin flex items-center gap-2 py-3 px-8" isActive={() => location.pathname === '/admin/statistics'}>
                 <img src={chart} alt="chart" className="" />
                 <p className="text-[0.875rem] font-semibold">Статистика</p>
               </NavLink>
             </li>
             <li>
-              <NavLink to={"/admin/edit"} className="flex items-center gap-2" isActive={() => location.pathname === '/admin/edit'}>
+              <NavLink to={"/admin/edit"} className="nav-admin flex items-center gap-2 py-3 px-8" isActive={() => location.pathname === '/admin/edit'}>
                 <img
                   src={edit}
                   alt="chart"
@@ -40,7 +40,7 @@ const Sidebar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to={"/admin/applications"} className="flex items-center gap-2" isActive={() => location.pathname === '/admin/applications'}>
+              <NavLink to={"/admin/applications"} className="nav-admin flex items-center gap-2 py-3 px-8" isActive={() => location.pathname === '/admin/applications'}>
                 <img
                   src={applications}
                   alt="chart"
@@ -51,7 +51,7 @@ const Sidebar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to={"/admin/users"} className="flex items-center gap-2" isActive={() => location.pathname === '/admin/users'}>
+              <NavLink to={"/admin/users"} className="nav-admin flex items-center gap-2 py-3 px-8" isActive={() => location.pathname === '/admin/users'}>
                 <img
                   src={users}
                   alt="chart"
@@ -62,7 +62,7 @@ const Sidebar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to={"/admin/feedback"} className="flex items-center gap-2" isActive={() => location.pathname === '/admin/'}>
+              <NavLink to={"/admin/feedback"} className="nav-admin flex items-center gap-2 py-3 px-8" isActive={() => location.pathname === '/admin/feedback'}>
                 <img
                   src={feedback}
                   alt="chart"
@@ -74,7 +74,7 @@ const Sidebar = () => {
             </li>
           </ul>
         </nav>
-        <div className="h-[15%]">
+        <div className="h-[15%] px-8">
           <NavLink to="/" className={"flex gap-2 items-center text-[#79768D]"}>
             <p className="text-[0.875rem] font-semibold">Выход</p>
             <img src={logout} alt="logout" />
