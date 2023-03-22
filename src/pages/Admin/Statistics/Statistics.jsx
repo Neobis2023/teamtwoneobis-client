@@ -1,5 +1,4 @@
 import React from "react";
-import Chart from "chart.js/auto";
 import SexDistributionChart from "./components/SexDistributionChart";
 import AgeDistributionChart from "./components/AgeDistributionChart";
 import AreaChart from "./components/AreaChart";
@@ -44,16 +43,16 @@ const VideosStatistics = () => {
             <div className="mb-2 font-medium text-[#06152B] opacity-70 text-[1.25rem]">
               Топ 3 самых просматриваемых видео
             </div>
-            <div>
-              <div className="grid grid-cols-3 justify-between border-b border-[#06152B] text-[#06152B] text-[0.81rem] pb-1">
+            <div className="w-fit max-w-full">
+              <div className="grid grid-cols-[1fr_0.5fr_0.5fr] justify-between border-b border-[#06152B] text-[#06152B] text-[0.81rem] pb-1">
                 <div>Название</div>
-                <div className="justify-self-center">Категория</div>
+                <div>Категория</div>
                 <div className="justify-self-center">Просмотры</div>
               </div>
               <div className="flex flex-col gap-3 mt-3">
                 {videos.map((video) => {
                   return (
-                    <div className="grid grid-cols-3 justify-between items-center">
+                    <div className="grid grid-cols-[1fr_0.5fr_0.5fr] justify-between gap-4 items-center">
                       <div className="flex items-center gap-2">
                         <div className="">
                           <img src={video.video} alt="video" />
@@ -62,16 +61,16 @@ const VideosStatistics = () => {
                           {video.title}
                         </div>
                       </div>
-                      <div className="justify-self-center text-[#79768D] text-[0.75rem] font-medium">
+                      <div className="text-[#79768D] text-[0.75rem] font-medium">
                         {video.category}
                       </div>
-                      <div className="justify-self-center">
-                        <div className="p-2 bg-[rgba(243,_176,_195,_0.2)] w-fit rounded-[8.5px]">
-                          <p className="text-[#3A36DB] text-[0.88rem] !opacity-100">
-                            {video.views}
-                          </p>
-                        </div>
+                      
+                      <div className="p-2 justify-self-center bg-[rgba(243,_176,_195,_0.2)] w-fit rounded-[8.5px]">
+                        <p className="text-[#3A36DB] text-[0.88rem]">
+                          {video.views}
+                        </p>
                       </div>
+                      
                     </div>
                   );
                 })}
@@ -127,10 +126,6 @@ const Statistics = () => {
     views: [600, 650, 650, 760, 700, 900, 700, 600, 650, 745, 800, 850],
   };
 
-  // const visitsData = {
-  //   labels: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-  //   visits: [300, 250, 350, 160, 220, 180, 234, 235, 430, 340, 360, 600]
-  // };
   const visitsData = {
     labels: [
       "01.03",
