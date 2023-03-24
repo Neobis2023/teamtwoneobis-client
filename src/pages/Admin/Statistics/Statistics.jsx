@@ -174,13 +174,13 @@ const Statistics = () => {
           Статистика зарегистрированных пользователей
         </h1>
         <div className="flex w-[70%] gap-4">
-          <div className="w-[45%] border rounded-[10px] bg-[#fff] p-4 pt-12 relative">
+          <div className="w-[45%] h-[250px] border rounded-[10px] bg-[#fff] p-4 pt-12 relative">
             <div className="absolute top-2 text-[#28252D] text-[1rem] font-semibold">
               Пол
             </div>
             <SexDistributionChart data={sexData} />
           </div>
-          <div className="w-[55%] border rounded-[10px] bg-[#fff] p-4 pt-12 relative">
+          <div className="w-[55%] h-[250px] border rounded-[10px] bg-[#fff] p-4 pt-12 relative">
             <div className="absolute top-2 text-[#28252D] text-[1rem] font-semibold">
               Возраст
             </div>

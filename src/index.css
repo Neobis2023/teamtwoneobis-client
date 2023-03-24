@@ -54,6 +54,20 @@
 }
 
 
+.nav-applications.active {
+  color: #fff;
+  background: #9960C3;
+}
+
+.adminEventsLink.active {
+  background: #B3ABE3;
+  border-radius: 10px;
+  color: white;
+  border: none;
+}
+
+
+
 *,
 *::before, 
 *::after {
