@@ -10,7 +10,8 @@ import logout from "./assets/images/logout.svg";
 
 const Sidebar = () => {
   const location = useLocation();
-  const isActive = location.pathname.startsWith("/admin/applications");
+  const isActiveApplications = location.pathname.startsWith("/admin/applications");
+  const isActiveFeedback = location.pathname.startsWith("/admin/feedback");
   const dataEvents = [
     {
         id: 1, 
@@ -72,7 +73,7 @@ const Sidebar = () => {
               <NavLink
                 to={`/admin/applications/mentoring-program/${dataEvents[0].title.toLowerCase().split(' ').join('-')}`}
                 className={`nav-admin flex items-center gap-2 py-3 px-8 ${
-                  isActive ? "active" : ""
+                  isActiveApplications ? "active" : ""
                 }`}
               >
                 <img src={applications} alt="chart" />
@@ -96,9 +97,10 @@ const Sidebar = () => {
             </li>
             <li>
               <NavLink
-                to={"/admin/feedback"}
-                className="nav-admin flex items-center gap-2 py-3 px-8"
-                isActive={() => location.pathname === "/admin/feedback"}
+                to={"/admin/feedback/all"}
+                className={`nav-admin flex items-center gap-2 py-3 px-8 ${
+                  isActiveFeedback ? "active" : ""
+                }`}
               >
                 <img
                   src={feedback}

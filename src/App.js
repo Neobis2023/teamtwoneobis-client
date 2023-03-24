@@ -12,7 +12,6 @@ import Forum from './pages/Forum/Forum';
 import Videoblog from './pages/Videoblog/Videoblog';
 import AdminLayout from './pages/Admin/layouts/AdminLayout';
 import Statistics from './pages/Admin/Statistics/Statistics';
-import { Edit, Feedback } from '@mui/icons-material';
 import Users from './pages/Admin/Users/Users';
 import ApplicationsLayout from './pages/Admin/layouts/ApplicationsLayout';
 import MentoringProgramLayout from './pages/Admin/layouts/MentoringProgramLayout';
@@ -21,7 +20,12 @@ import TrainingsSub from './pages/Admin/Applications/pages/subpages/TrainingsSub
 import TrainingsLayout from './pages/Admin/layouts/TrainingsLayout';
 import ForumsLayout from './pages/Admin/layouts/ForumsLayout';
 import ForumsSub from './pages/Admin/Applications/pages/subpages/ForumsSub';
-
+import Feedback from './pages/Admin/Feedback/Feedback';
+import FeedbackLayout from './pages/Admin/layouts/FeedbackLayout';
+import Edit from './pages/Admin/Edit/Edit'
+import AllMessages from './pages/Admin/Feedback/subpages/AllMessages';
+import ReadMessages from './pages/Admin/Feedback/subpages/ReadMessages';
+import FavoriteMessages from './pages/Admin/Feedback/subpages/FavoriteMessages';
 
 
 
@@ -55,7 +59,6 @@ function App() {
         { index: true, path: 'statistics', element: <Statistics /> },
         { path: 'edit', element: <Edit /> },
         { path: 'users', element: <Users /> },
-        { path: 'feedback', element: <Feedback /> },
         { path: 'applications', 
           element: <ApplicationsLayout />,
           children: [
@@ -88,6 +91,15 @@ function App() {
               ]
             },
           ] 
+        },
+        { 
+          path: 'feedback', 
+          element: <FeedbackLayout />,  // <Feedback />
+          children: [
+            { path: 'all', element: <AllMessages /> },
+            { path: 'read', element: <ReadMessages /> },
+            { path: 'favorites', element: <FavoriteMessages /> },
+          ]
         },
       ]
     },

@@ -1,17 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import search from "./assets/images/search.svg";
-import userImg from "./assets/images/user-img.svg";
+import { Outlet } from "react-router-dom";
+import Chat from "../Feedback/components/Chat";
+import LeftTop from "../Feedback/components/LeftTop";
+import userImg from '../Feedback/assets/images/user-img.svg'
+import { useState } from "react";
 
-import Chat from "./components/Chat";
-import LeftTop from "./components/LeftTop";
-import TextMessage from "./components/TextMessage";
-import User from "./components/User";
-
-const Feedback = () => {
-  const [searchValue, setSearchValue] = useState("");
-  const [usersData, setUsersData] = useState([]);
-
+const FeedbackLayout = () => {
   const users = [
     {
       id: 1,
@@ -77,41 +70,17 @@ const Feedback = () => {
       message: `I am pleased to invite you all to our team building event that will be held next Friday, January 21st at 2 pm. The event will be held at the company's conference hall, we will have games`,
     },
   ];
-
-  useEffect(() => {
-    setUsersData(users);
-  }, []);
-
   return (
     <section className="bg-[#EAF0FF] w-full flex flex-col justify-end">
       <div className="mx-6 pb-6 pt-4 px-4 overflow-hidden rounded-[10px] min-h-[85%] mt-[15vh] bg-[#fff] grid grid-cols-[30%_70%] gap-4 ">
-        <div className="h-full">
-          <LeftTop />
-          <div className="overflow-auto max-h-[600px]">
-            {!searchValue
-              ? usersData.map((user) => {
-                  return <User {...user} key={user.id} />;
-                })
-              : usersData
-                  .filter((user) => {
-                    return (
-                      user.fullName
-                        .toLowerCase()
-                        .includes(searchValue.toLocaleLowerCase()) ||
-                      user.email
-                        .toLowerCase()
-                        .includes(searchValue.toLocaleLowerCase())
-                    );
-                  })
-                  .map((user) => {
-                    return <User {...user} key={user.id} />;
-                  })}
+          <div className="h-full">
+            <LeftTop />
+            <Outlet />
           </div>
-        </div>
-        <Chat user={users[0]} />
+          <Chat user={users[0]}/>
       </div>
     </section>
   );
 };
 
-export default Feedback;
+export default FeedbackLayout;
