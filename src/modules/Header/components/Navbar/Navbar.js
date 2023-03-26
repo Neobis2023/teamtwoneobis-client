@@ -4,6 +4,7 @@ import styles from './Navbar.module.css';
 
 const Navbar = () => {
   const location = useLocation();
+  const isActiveVideoblog = location.pathname.startsWith('/videoblog');
 
   return (
     <nav className="header__nav basis-3/6">
@@ -12,10 +13,10 @@ const Navbar = () => {
           <NavLink to="mentorship" className={'nav'} isActive={() => location.pathname === '/mentorship'}>Менторство</NavLink>
         </li>
         <li className={styles.header__link}>
-          <NavLink to={`videoblog/1`} className={'nav'} isActive={() => location.pathname.startsWith('/videoblog')}>Видеоблог</NavLink>
+          <NavLink to={`videoblog/1`} className={`nav ${isActiveVideoblog ? "active" : ""}`}>Видеоблог</NavLink>
         </li>
         <li className={styles.header__link}>
-          <NavLink to="trainings" className={'nav'} isActive={() => location.pathname === '/trainings'}>Тренинги</NavLink>
+          <NavLink to="trainings" className={'nav'} >Тренинги</NavLink>
         </li>
         <li className={styles.header__link}>
           <NavLink to="forum" className={'nav'} isActive={() => location.pathname === '/forum'}>Форум</NavLink>

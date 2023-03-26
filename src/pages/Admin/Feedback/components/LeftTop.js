@@ -1,16 +1,24 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { setFeedbackSearchValue } from "../../../../helpers/reduxToolkit/toolkitSlice";
 import search from '../assets/images/search.svg';
 
+
 const LeftTop = () => {
-    const [searchValue, setSearchValue] = useState("");
+  const feedbackSearchValue = useSelector(state => state.toolkit.feedbackSearchValue);
+  const dispatch = useDispatch();
+  const handleChange = (e) => {
+    dispatch(setFeedbackSearchValue(e.target.value))
+  }
+  
   return (
-    <div>
+    <div className="pl-4">
       <h1 className="text-[#662D91] font-bold text-2xl mb-3">Обратная связь</h1>
       <div className="mb-3 relative">
         <input
-          value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
+          value={feedbackSearchValue}
+          onChange={(e) => handleChange(e)}
           type="search"
           id="gsearch"
           name="gsearch"

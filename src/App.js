@@ -20,12 +20,16 @@ import TrainingsSub from './pages/Admin/Applications/pages/subpages/TrainingsSub
 import TrainingsLayout from './pages/Admin/layouts/TrainingsLayout';
 import ForumsLayout from './pages/Admin/layouts/ForumsLayout';
 import ForumsSub from './pages/Admin/Applications/pages/subpages/ForumsSub';
-import Feedback from './pages/Admin/Feedback/Feedback';
 import FeedbackLayout from './pages/Admin/layouts/FeedbackLayout';
 import Edit from './pages/Admin/Edit/Edit'
 import AllMessages from './pages/Admin/Feedback/subpages/AllMessages';
 import ReadMessages from './pages/Admin/Feedback/subpages/ReadMessages';
 import FavoriteMessages from './pages/Admin/Feedback/subpages/FavoriteMessages';
+import EditLayout from './pages/Admin/layouts/EditLayout';
+import List from './pages/Admin/Edit/subpages/List';
+import ListLayout from './pages/Admin/layouts/ListLayout';
+import Categories from './pages/Admin/Edit/subpages/Categories';
+import AddVideo from './pages/Admin/Edit/subpages/AddVideo';
 
 
 
@@ -57,7 +61,27 @@ function App() {
       element: <AdminLayout />,
       children: [
         { index: true, path: 'statistics', element: <Statistics /> },
-        { path: 'edit', element: <Edit /> },
+        { path: 'edit', 
+        element: <EditLayout />,
+        children: [
+          { path: 'videoblog', 
+          element: <ListLayout />,
+          children: [
+            { path: 'list', element: <List /> },
+            { path: 'categories', element: <Categories /> },
+            { path: 'tests', element: <></> },
+            { path: 'add-video', element: <AddVideo /> },
+
+          ],
+        },
+        { path: 'footer', element: <></> },
+        { path: 'main', element: <></> },
+        { path: 'mentoring-program', element: <></> },
+        { path: 'trainings', element: <></> },
+        { path: 'forums', element: <></> },
+        { path: 'achievements', element: <></> },
+        ]
+        },
         { path: 'users', element: <Users /> },
         { path: 'applications', 
           element: <ApplicationsLayout />,

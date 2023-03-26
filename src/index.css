@@ -44,9 +44,13 @@
   transform: scale(1);
 } 
 
-.videoblogLink.active {
+.videoblogPage.active {
   border: 1px solid #9960C3;
   color: #9960C3;
+}
+
+iframe {
+  border-radius: 8px;
 }
 
 .nav-admin.active {
@@ -81,7 +85,7 @@
   left: 0;
   right: 0;
   margin: 0 auto;
-  background-color: green;
+  background-color: #662D91;
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
@@ -90,9 +94,15 @@
   transform: scale(1);
 } 
 
+.editLink.active {
+  background-color: #9960C3;
+  color: white;
+}
 
-
-
+.videoblogLink.active {
+  color: #292D32;
+  border: none;
+}
 
 *,
 *::before, 

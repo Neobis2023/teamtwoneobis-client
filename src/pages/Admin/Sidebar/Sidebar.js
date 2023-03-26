@@ -54,7 +54,7 @@ const Sidebar = () => {
             </li>
             <li>
               <NavLink
-                to={"/admin/edit"}
+                to={"/admin/edit/videoblog/list"}
                 className="nav-admin flex items-center gap-2 py-3 px-8"
                 isActive={() => location.pathname === "/admin/edit"}
               >

@@ -5,8 +5,8 @@ import TextMessage from "./TextMessage";
 const Chat = ({ user }) => {
   return (
     <section className="pr-4 min-h-[700px] max-h-[700px]">
-      <div className="flex flex-col justify-between h-full">
-        <div>
+      <div className="flex flex-col justify-between min-h-full max-h-full">
+        <div className="h-inherit">
           <div className="flex justify-between">
             <div className="flex">
               <div className="flex gap-2">
@@ -22,7 +22,7 @@ const Chat = ({ user }) => {
             <div className="text-[#000] text-[0.7rem]">{user.time}</div>
           </div>
           <MessageActions />
-          <div className="p-4">{user.message}</div>
+          <div className="p-4 text-[#303030] text-[0.75rem]">{user.message}</div>
         </div>
         <TextMessage />
       </div>
