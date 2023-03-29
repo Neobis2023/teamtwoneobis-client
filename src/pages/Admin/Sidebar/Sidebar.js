@@ -32,7 +32,6 @@ const Sidebar = () => {
         deadline: '03.02.2023'
     }
   ]
-  let count;
   return (
     <section className="bg-[#FDFDFD] min-w-[270px] h-screen">
       <div className="flex flex-col h-full fixed min-h-[650px] w-[270px]">
