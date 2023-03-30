@@ -26,10 +26,14 @@ import AllMessages from './pages/Admin/Feedback/subpages/AllMessages';
 import ReadMessages from './pages/Admin/Feedback/subpages/ReadMessages';
 import FavoriteMessages from './pages/Admin/Feedback/subpages/FavoriteMessages';
 import EditLayout from './pages/Admin/layouts/EditLayout';
-import List from './pages/Admin/Edit/subpages/List';
+import List from './pages/Admin/Edit/components/Videoblog/subpages/List';
 import ListLayout from './pages/Admin/layouts/ListLayout';
-import Categories from './pages/Admin/Edit/subpages/Categories';
-import AddVideo from './pages/Admin/Edit/subpages/AddVideo';
+import Categories from './pages/Admin/Edit/components/Videoblog/subpages/Categories';
+import AddVideo from './pages/Admin/Edit/components/Videoblog/subpages/AddVideo';
+import AddCategory from './pages/Admin/Edit/components/Videoblog/subpages/AddCategory';
+import AdminFooter from './pages/Admin/Edit/components/Footer/AdminFooter';
+import AdminMain from './pages/Admin/Edit/components/Main/AdminMain';
+import AdminMentoringProgram from './pages/Admin/Edit/components/MentoringProgram/AdminMentoringProgram';
 
 
 
@@ -71,15 +75,16 @@ function App() {
             { path: 'categories', element: <Categories /> },
             { path: 'tests', element: <></> },
             { path: 'add-video', element: <AddVideo /> },
+            { path: 'add-category', element: <AddCategory /> },
 
           ],
         },
-        { path: 'footer', element: <></> },
-        { path: 'main', element: <></> },
-        { path: 'mentoring-program', element: <></> },
+        { path: 'main', element: <AdminMain /> },
+        { path: 'mentoring-program', element: <AdminMentoringProgram /> },
         { path: 'trainings', element: <></> },
         { path: 'forums', element: <></> },
         { path: 'achievements', element: <></> },
+        { path: 'footer', element: <AdminFooter /> },
         ]
         },
         { path: 'users', element: <Users /> },

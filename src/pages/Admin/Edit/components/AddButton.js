@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import search from '../assets/images/search.svg';
 
-const AddButton = ({ action }) => {
+const AddButton = ({ action, to }) => {
   const [searchValue, setSearchValue] = useState("");
   return (
     <div className="flex gap-3 w-full">
@@ -20,7 +20,7 @@ const AddButton = ({ action }) => {
       </div>
 
       <NavLink
-        to={'/admin/edit/videoblog/add-video'}
+        to={`/admin/edit/videoblog/${to}`}
         className="h-fit w-[40%] px-4 py-2 bg-[#9960C3] rounded-[8px] text-white flex justify-center"
       >
         {action}

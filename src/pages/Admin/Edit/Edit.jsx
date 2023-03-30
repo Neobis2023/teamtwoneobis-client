@@ -1,7 +1,7 @@
 import React from 'react'
 import EditNavbar from './components/EditNavbar'
-import Videoblog from './components/Videoblog'
-import VideoblogNav from './components/VideoblogNav'
+import Videoblog from './components/Videoblog/Videoblog'
+import VideoblogNav from './components/Videoblog/VideoblogNav'
 
 const Edit = () => {
   return (

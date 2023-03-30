@@ -1,24 +1,9 @@
 import React, { useState } from "react";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import videoPhoto from "../assets/images/video-photo.svg";
+import videoPhoto from "../../../assets/images/video-photo.svg";
+import Input from "../../Input";
 import axios from "axios";
-
-const Input = ({ label, ...props }) => {
-  return (
-    <div
-      className="border-[#9960C3] border-2 rounded-[8px] relative w-full "
-      {...props}
-    >
-      <input type={"text"} className="p-4 pb-1 pl-1 w-full" id="link" />
-      <label
-        htmlFor="link"
-        className="text-[#79768D] font-medium text-[0.75rem] absolute top-0 left-1"
-      >
-        {label}
-      </label>
-    </div>
-  );
-};
+import SaveButton from "../../../../components/SaveButton";
 
 const AddVideo = () => {
   const [category, setCategory] = useState("Здоровье");
@@ -41,7 +26,7 @@ const AddVideo = () => {
 
   return (
     <div className="w-[60%]">
-      <h2 className="text-[#000000] font-semibold">Название видеоурока</h2>
+      <h2 className="text-[#000000] font-semibold mb-2">Название видеоурока</h2>
       <div className="flex flex-col gap-3">
         <div className="h-[200px]">
           {!videoUrl ? (
@@ -73,7 +58,7 @@ const AddVideo = () => {
             className={`bg-[#9960C3] text-white rounded-[5px] px-4 py-2 ${
               !categoryOpen
                 ? `hidden`
-                : "absolute z-10 flex flex-col justify-between"
+                : "absolute z-10 flex flex-col justify-between top-12"
             }`}
           >
             <p onClick={() => setCategory("Здоровье")}>Здоровье</p>
@@ -95,12 +80,13 @@ const AddVideo = () => {
         <Input label={"Лектор"} onChange={(e) => setLecturerName(e.target.value)} value={lecturerName}/>
         <Input label={"Информация о лекторе"} onChange={(e) => setLecturerInfo(e.target.value)} value={lecturerInfo}/>
         <div className="flex gap-6">
-          <button
-            type="button"
+          {/* <button
+            type="submit"
             className="rounded-[8px] bg-[#9960C3] text-white p-2" onClick={handleSave}
           >
             Сохранить
-          </button>
+          </button> */}
+          <SaveButton onClick={handleSave}/>
           <button
             type="button"
             className="rounded-[8px] bg-[transparent] text-[#9960C3] border border-[#9960C3] p-2"

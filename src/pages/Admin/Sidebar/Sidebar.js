@@ -12,6 +12,9 @@ const Sidebar = () => {
   const location = useLocation();
   const isActiveApplications = location.pathname.startsWith("/admin/applications");
   const isActiveFeedback = location.pathname.startsWith("/admin/feedback");
+  const isActiveEdit = location.pathname.startsWith("/admin/edit");
+  const isActiveStatistics = location.pathname.startsWith("/admin/statistics");
+  const isActiveUsers = location.pathname.startsWith("/admin/users");
   const dataEvents = [
     {
         id: 1, 
@@ -45,7 +48,7 @@ const Sidebar = () => {
             <li>
               <NavLink
                 to={"/admin/statistics"}
-                className="nav-admin flex items-center gap-2 py-3 px-8"
+                className={`nav-admin flex items-center gap-2 py-3 px-8 ${isActiveStatistics ? "active" : ""}`}
                 isActive={() => location.pathname === "/admin/statistics"}
               >
                 <img src={chart} alt="chart" className="" />
@@ -55,8 +58,8 @@ const Sidebar = () => {
             <li>
               <NavLink
                 to={"/admin/edit/videoblog/list"}
-                className="nav-admin flex items-center gap-2 py-3 px-8"
-                isActive={() => location.pathname === "/admin/edit"}
+                className={`nav-admin flex items-center gap-2 py-3 px-8 ${isActiveEdit ? "active" : ""}`}
+                
               >
                 <img
                   src={edit}
@@ -83,8 +86,8 @@ const Sidebar = () => {
             <li>
               <NavLink
                 to={"/admin/users"}
-                className="nav-admin flex items-center gap-2 py-3 px-8"
-                isActive={() => location.pathname === "/admin/users"}
+                className={`nav-admin flex items-center gap-2 py-3 px-8 ${isActiveUsers ? "active" : ""}`}
+                
               >
                 <img
                   src={users}
