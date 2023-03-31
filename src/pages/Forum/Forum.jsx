@@ -1,14 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import StartSection from "../../modules/StartSection/components/StartSection";
-import Events from "../../modules/Events/Events";
 import girlsTr from "./assets/images/girlsTr.png";
-import eventGirls from './assets/images/eventGirls.png';
-import girls from './assets/images/girls.jpg';
-import EventsPast from "../../modules/EventsPast/EventsPast";
+import eventGirls from "./assets/images/eventGirls.png";
+import girls from "./assets/images/girls.jpg";
 import MySlider from "../../helpers/swiper/MySlider";
-
+import computer from "./assets/images/computer.svg";
+import stars from "./assets/images/stars.svg";
+import EventsSlider from "../../helpers/swiper/EventsSlider";
 
 const Forum = () => {
+  const [forums, setForums] = useState([
+    {
+      id: 1,
+      imgUrl: girlsTr,
+      eventName: "Time management",
+      description:
+        "Lorem ipsum dolor sit amet consecte adipiscing elit amethendrerit pretium nu.Lorem ipsum dolor sit nu.Lorem ipsum dolor sit amet consecteadipiscing elit amet",
+      time: "18:00",
+      date: "21 марта",
+      location: "Нарынская область, ул.Центральная 28а",
+    },
+    {
+      id: 2,
+      imgUrl: girlsTr,
+      eventName: "Education",
+      description:
+        "Lorem ipsum dolor sit amet consecte adipiscing elit amethendrerit pretium nu.Lorem ipsum dolor sit nu.Lorem ipsum dolor sit amet consecteadipiscing elit amet",
+      time: "18:00",
+      date: "21 марта",
+      location: "Нарынская область, ул.Центральная 28а",
+    },
+    {
+      id: 3,
+      imgUrl: girlsTr,
+      eventName: "Society and Its role",
+      description:
+        "Lorem ipsum dolor sit amet consecte adipiscing elit amethendrerit pretium nu.Lorem ipsum dolor sit nu.Lorem ipsum dolor sit amet consecteadipiscing elit amet",
+      time: "18:00",
+      date: "21 марта",
+      location: "Нарынская область, ул.Центральная 28а",
+    },
+    {
+      id: 4,
+      imgUrl: girlsTr,
+      eventName: "Cooking",
+      description:
+        "Lorem ipsum dolor sit amet consecte adipiscing elit amethendrerit pretium nu.Lorem ipsum dolor sit nu.Lorem ipsum dolor sit amet consecteadipiscing elit amet",
+      time: "18:00",
+      date: "21 марта",
+      location: "Нарынская область, ул.Центральная 28а",
+    },
+  ]);
   const events = [
     {
       id: 1,
@@ -62,18 +104,22 @@ const Forum = () => {
         }
         imgSource={girls}
       />
-      <Events
-        title={"Предстоящие форумы"}
-        imgSource={girlsTr}
-        eventName={"Education"}
-        description={
-          "Lorem ipsum dolor sit amet consecte adipiscing elit amet hendrerit pretium nu.Lorem ipsum dolor sit nu.Lorem ipsum dolor sit amet consecteadipiscing elit amet "
-        }
-        time={"10:00"}
-        date={"20 марта"}
-        location={"Бишкек"}
-      />
-      <EventsPast title={"Прошедшие форумы"} />
+      <div className="relative pt-20 w-[95%] mx-auto pb-[4%]">
+        <h2 className="text-[#662D91] font-semibold text-[clamp(2.2rem,_2.78vw,_2.8rem)] text-center">
+          Предстоящие форумы
+        </h2>
+        <img
+          src={computer}
+          alt="computer"
+          className="absolute left-0 top-[40%] w-[20%]"
+        />
+        <img
+          src={stars}
+          alt="stars"
+          className="absolute top-[20%] right-36  w-[5%] mx-auto"
+        />
+      </div>
+      <EventsSlider events={forums} />
       <MySlider dataEvents={events} />
     </section>
   );

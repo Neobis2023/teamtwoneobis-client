@@ -157,6 +157,23 @@ html, body {
   width: 100%;
 }
 
+.eventsSlider .swiper {
+  margin-left: 0!important;
+  height: auto!important;
+  min-height: auto!important;
+}
+
+.eventsSlider .swiper {
+  width: 100%;
+  position: relative!important;
+}
+
+
+.eventsSlider .swiper .swiper-pagination {
+  position: absolute;
+  bottom: 4rem;
+}
+
 /* .mentors .swiper .swiper-wrapper {
   padding-left: 5rem;
 } */
