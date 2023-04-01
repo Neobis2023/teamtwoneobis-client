@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Events from "../components/Events";
-import userPhoto from '../assets/images/userPhoto.svg';
+import userPhoto from "../assets/images/userPhoto.svg";
 import UsersList from "../components/UsersList";
 
 const AdminMentoringProgram = () => {
+  const [program, setProgram] = useState([{
+    id: 1,
+    title: "Поток 1",
+    status: "Закрыт",
+    deadline: "03.02.2023",
+  }]);
   const dataUsers = [
     {
       id: 1,
@@ -117,30 +123,10 @@ const AdminMentoringProgram = () => {
       phoneNumber: "+996709654321",
       isBlocked: false,
     },
-  ];
-  const dataEvents = [
-    {
-        id: 1, 
-        title: 'Поток 1',
-        status: 'Закрыт',
-        deadline: '03.02.2023'
-    },
-    {
-        id: 2, 
-        title: 'Поток 2',
-        status: 'Закрыт',
-        deadline: '03.02.2023'
-    },
-    {
-        id: 3, 
-        title: 'Поток 3',
-        status: 'Открыт',
-        deadline: '03.02.2023'
-    }
   ]
   return (
     <div>
-      <Events data={dataEvents} event={'mentoring'}/>
+      <Events data={program} event={"mentoring"} />
       <UsersList data={dataUsers} />
     </div>
   );

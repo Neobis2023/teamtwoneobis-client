@@ -4,6 +4,7 @@ import videoPhoto from "../../../assets/images/video-photo.svg";
 import Input from "../../Input";
 import axios from "axios";
 import SaveButton from "../../../../components/SaveButton";
+import Textarea from "../../Textarea";
 
 const AddVideo = () => {
   const [category, setCategory] = useState("Здоровье");
@@ -66,26 +67,10 @@ const AddVideo = () => {
             <p onClick={() => setCategory("Кухня")}>Кухня</p>
           </div>
         </div>
-        <div className="relative w-full">
-          <textarea
-            className="border-[#9960C3] p-4 pb-1 pl-1 border-2 rounded-[8px] w-full"
-            cols={"30"}
-            rows={"8"}
-            onChange={(e) => setDescription(e.target.value)} value={description}
-          ></textarea>
-          <label className="absolute top-1 left-1 text-[#79768D] font-medium text-[0.75rem]">
-            Описание
-          </label>
-        </div>
+        <Textarea label={'Описание'} value={description} onChange={(e) => setDescription(e.target.value)}/>
         <Input label={"Лектор"} onChange={(e) => setLecturerName(e.target.value)} value={lecturerName}/>
         <Input label={"Информация о лекторе"} onChange={(e) => setLecturerInfo(e.target.value)} value={lecturerInfo}/>
         <div className="flex gap-6">
-          {/* <button
-            type="submit"
-            className="rounded-[8px] bg-[#9960C3] text-white p-2" onClick={handleSave}
-          >
-            Сохранить
-          </button> */}
           <SaveButton onClick={handleSave}/>
           <button
             type="button"

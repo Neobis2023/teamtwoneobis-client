@@ -7,10 +7,10 @@ const EditNavbar = () => {
     const activeVideoblog = location.pathname.startsWith('/admin/edit/videoblog');
   return (
     <section className='bg-[#FBFBFB] pt-6 pr-6 pb-6 rounded-l-[10px]'>
-        <div className='flex flex-col text-[rgb(153,96,195)] text-[0.875rem] gap-2 w-full mx-auto'>
-            <NavLink to={'/admin/edit/main'} className='editLink flex gap-1 p-2 rounded-r-[5px]'>
+        <div className='flex flex-col text-[rgb(153,96,195)] text-[0.875rem] gap-2 w-full mx-auto sticky'>
+            <NavLink to={'/admin/edit/content'} className='editLink flex gap-1 p-2 rounded-r-[5px]'>
                 <img src={document} alt='document'/>
-                Главная
+                Контент
             </NavLink>
             <NavLink to={'/admin/edit/mentoring-program'} className='editLink flex gap-1 p-2 rounded-r-[5px]'>
                 <img src={document} alt='document'/>
@@ -31,10 +31,6 @@ const EditNavbar = () => {
             <NavLink to={'/admin/edit/achievements'} className='editLink flex gap-1 p-2 rounded-r-[5px]'>
                 <img src={document} alt='document'/>
                 Достижения
-            </NavLink>
-            <NavLink to={'/admin/edit/footer'} className='editLink flex gap-1 p-2 rounded-r-[5px]'>
-                <img src={document} alt='document'/>
-                Футер
             </NavLink>
         </div>
     </section>

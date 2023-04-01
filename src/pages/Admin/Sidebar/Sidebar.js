@@ -57,7 +57,7 @@ const Sidebar = () => {
             </li>
             <li>
               <NavLink
-                to={"/admin/edit/videoblog/list"}
+                to={"/admin/edit/content"}
                 className={`nav-admin flex items-center gap-2 py-3 px-8 ${isActiveEdit ? "active" : ""}`}
                 
               >

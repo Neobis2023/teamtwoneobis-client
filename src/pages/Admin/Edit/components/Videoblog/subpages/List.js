@@ -1,6 +1,5 @@
 import React from "react";
 import Videoblog from "../Videoblog";
-import VideoblogNav from "../VideoblogNav";
 
 const List = () => {
   return (

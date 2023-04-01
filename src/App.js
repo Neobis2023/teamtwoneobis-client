@@ -31,9 +31,10 @@ import ListLayout from './pages/Admin/layouts/ListLayout';
 import Categories from './pages/Admin/Edit/components/Videoblog/subpages/Categories';
 import AddVideo from './pages/Admin/Edit/components/Videoblog/subpages/AddVideo';
 import AddCategory from './pages/Admin/Edit/components/Videoblog/subpages/AddCategory';
-import AdminFooter from './pages/Admin/Edit/components/Footer/AdminFooter';
-import AdminMain from './pages/Admin/Edit/components/Main/AdminMain';
 import AdminMentoringProgram from './pages/Admin/Edit/components/MentoringProgram/AdminMentoringProgram';
+import AdminFooter from './pages/Admin/Edit/components/Content/AdminFooter';
+import AdminMain from './pages/Admin/Edit/components/Content/AdminMain';
+import AdminContent from './pages/Admin/Edit/components/Content/AdminContent';
 
 
 
@@ -79,12 +80,11 @@ function App() {
 
           ],
         },
-        { path: 'main', element: <AdminMain /> },
+        { path: 'content', element: <AdminContent /> },
         { path: 'mentoring-program', element: <AdminMentoringProgram /> },
         { path: 'trainings', element: <></> },
         { path: 'forums', element: <></> },
         { path: 'achievements', element: <></> },
-        { path: 'footer', element: <AdminFooter /> },
         ]
         },
         { path: 'users', element: <Users /> },

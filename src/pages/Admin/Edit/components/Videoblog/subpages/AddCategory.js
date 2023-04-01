@@ -11,13 +11,7 @@ const AddCategory = () => {
     <div className='w-full'>
         <h2 className="text-[#000000] font-semibold mb-2">Категория</h2>
         <div className='flex flex-col gap-4 w-full'>
-            <Input label={'Название'} value={category} onChange={(e) => setCategory(e.target.value)} className={'!w-1/2'}/>
-            {/* <button
-            type="button"
-            className="rounded-[8px] bg-[#9960C3] text-white p-2 w-[40%]" onClick={handleSave}
-          >
-            Добавить категорию
-          </button> */}
+          <Input label={'Название'} value={category} onChange={(e) => setCategory(e.target.value)} className={'!w-1/2'}/>
           <SaveButton />
         </div>
     </div>

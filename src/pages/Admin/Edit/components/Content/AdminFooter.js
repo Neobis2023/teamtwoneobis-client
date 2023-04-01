@@ -3,10 +3,10 @@ import SaveButton from '../../../components/SaveButton'
 import Input from '../Input'
 
 const AdminFooter = () => {
-  const [email, setEmail] = useState("");
-  const [linkedin, setLinkedin] = useState("");
-  const [youtube, setYoutube] = useState("");
-  const [instagram, setInstagram] = useState("");
+  const [email, setEmail] = useState("girlsforgirls@gmail.com");
+  const [linkedin, setLinkedin] = useState("girlsforgirls@gmail.com");
+  const [youtube, setYoutube] = useState("girlsforgirls");
+  const [instagram, setInstagram] = useState("@girlsforgirls");
   return (
     <div>
       <h2 className="text-[#662D91] font-bold text-[1.5rem] pt-6 mb-6">Футер</h2> 

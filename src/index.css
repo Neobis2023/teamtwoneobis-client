@@ -122,6 +122,12 @@ html, body {
   font-family: 'Mulish', sans-serif;
 }
 
+/* textarea */
+
+textarea {
+  min-height: 300px;
+}
+
 /* body {
   overflow-y: hidden;
 } */

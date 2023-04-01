@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import videoIcon from '../../assets/images/video-icon.svg';
 import axios from "axios";
-import AddButton from "../AddButton";
+import AddButton from "../SearchAndAdd";
 
 const Video = ({ title }) => {
     return (<div className="flex justify-between py-2 px-4 bg-[#EAF0FF] rounded-[8px] my-2">
