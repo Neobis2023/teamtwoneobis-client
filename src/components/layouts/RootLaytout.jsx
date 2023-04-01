@@ -5,11 +5,11 @@ import Header from '../../modules/Header/components/Header/Header'
 
 const RootLayout = () => {
   return (
-    <>
+    <div className='relative'>
         <Header />
         <Outlet />
         <Footer />
-    </>
+    </div>
   )
 }
 
