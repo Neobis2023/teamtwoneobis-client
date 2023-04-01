@@ -163,7 +163,40 @@ textarea {
   width: 100%;
 }
 
-.eventsSlider .swiper {
+.applicationsSlider .swiper{
+  width: 50%;
+  position: relative!important;
+  padding-bottom: 0!important;
+}
+
+.applicationsSlider .swiper .swiper-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+/* .applicationsSlider .swiper .swiper-wrapper .swiper-slide{
+  display: flex;
+  justify-content: center;
+} */
+
+.applicationsSlider .swiper .swiper-button-prev {
+  display: none;
+}
+
+.applicationsSlider .swiper .swiper-button-next {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0!important;
+  margin: auto;
+}
+
+.applicationsSlider .swiper .swiper-pagination {
+  position: absolute;
+  bottom: 0;
+}
+
+.eventsSlider .swiper, .applicationsSlider .swiper {
   margin-left: 0!important;
   height: auto!important;
   min-height: auto!important;

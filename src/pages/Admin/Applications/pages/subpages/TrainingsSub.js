@@ -1,6 +1,7 @@
 import React from "react";
 import UsersList from "../../components/UsersList";
 import userPhoto from "../../assets/images/userPhoto.svg";
+import { NavLink } from "react-router-dom";
 
 const TrainingsSub = () => {
   const dataUsers = [
@@ -117,7 +118,17 @@ const TrainingsSub = () => {
       isBlocked: false,
     },
   ];
-  return <UsersList data={dataUsers} />;
+  return (
+    <div className="mt-6">
+      <NavLink
+        to={"/"}
+        className="w-fit text-[#9960C3] font-bold text-[0.875rem] bg-transparent border border-[#9960C3] px-3 py-2 rounded-[10px]"
+      >
+        Посмотреть анкету
+      </NavLink>
+      <UsersList data={dataUsers} />
+    </div>
+  );
 };
 
 export default TrainingsSub;

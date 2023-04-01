@@ -29,12 +29,6 @@ const Events = ({ data, event }) => {
           );
         })}
       </div>
-      <NavLink
-        to={"/"}
-        className="w-fit text-[#9960C3] font-bold text-[0.875rem] bg-transparent border border-[#9960C3] px-3 py-2 rounded-[10px]"
-      >
-        Посмотреть анкету
-      </NavLink>
     </div>
   );
 };
