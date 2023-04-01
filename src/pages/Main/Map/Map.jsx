@@ -14,7 +14,7 @@ const Map = () => {
             <h2 className="mySubtitle pb-2">Мы на карте</h2>
             <img src={line} alt="line" className="mx-auto" />
           </div>
-          <p>
+          <p className="text-[clamp(1rem,_1.66vw,_1.8rem)] text-[#662D91] font-medium">
             Двухдневные тренинги были проведены для 200+ девочек из четырех
             областей и г. Бишкек.
           </p>

@@ -4,7 +4,7 @@ import userPhoto from "./assets/images/userPhoto.svg";
 import menu from "./assets/images/menu.svg";
 import axios from "axios";
 
-const User = ({ id, imgUrl, firstName, lastName, email, phoneNumber, status, isDeleted }) => {
+const User = ({ id, image, firstName, lastName, email, phoneNumber, status, isDeleted }) => {
   return (
     <div
       className={`${
@@ -12,7 +12,7 @@ const User = ({ id, imgUrl, firstName, lastName, email, phoneNumber, status, isD
       } rounded-[10px] grid grid-cols-[1fr_1fr_0.6fr_0.6fr_0.6fr] gap-4 items-center py-4 px-2 justify-between text-[0.875rem] my-3`}
     >
       <div className="flex items-center gap-2">
-        <img src={userPhoto} alt="user" />
+        <img src={image.url} alt="user" className="w-[30px] h-[30px]"/>
         <div>
           {firstName}
           {" "}
