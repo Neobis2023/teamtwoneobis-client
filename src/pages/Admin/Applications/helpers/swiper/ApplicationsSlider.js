@@ -12,7 +12,7 @@ import { NavLink } from "react-router-dom";
 
 const ApplicationsSlider = ({ data, event }) => {
   return (
-    <div className="applicationsSlider">
+    <div className="applicationsSlider w-[700px]">
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
         direction={"horizontal"}

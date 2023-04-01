@@ -51,7 +51,7 @@ const TrainingsLayout = () => {
   return (
     <>
       {/* <Events data={dataEvents} event={"trainings"} /> */}
-      <ApplicationsSlider data={dataEvents} event={"forums"}/>
+      <ApplicationsSlider data={dataEvents} event={"trainings"}/>
       <Outlet />
     </>
   );

@@ -32,7 +32,7 @@ const AdminMain = () => {
             />
           </div>
         </div>
-        <SaveButton />
+        <SaveButton text={'Сохранить'}/>
       </div>
     </div>
   );

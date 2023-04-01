@@ -27,7 +27,7 @@ const AdminFooter = () => {
           <p className='text-[#000000] font-semibold text-base'>Instagram</p>
           <Input label={'Instagram'} className='!w-[60%]' onChange={(e) => setInstagram(e.target.value)} value={instagram}/>
         </div>
-        <SaveButton />
+        <SaveButton text={'Сохранить'}/>
       </div>
     </div>
   )

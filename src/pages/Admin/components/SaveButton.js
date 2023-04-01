@@ -1,8 +1,8 @@
 import React from 'react'
 
-const SaveButton = ({ ...props }) => {
+const SaveButton = ({ text, ...props }) => {
   return (
-    <button type='submit' {...props} className={'w-[30%] rounded-[8px] bg-[#9960C3] text-white p-2'}>Сохранить</button>
+    <button type='submit' {...props} className={'w-[30%] rounded-[8px] bg-[#9960C3] text-white p-2'}>{text}</button>
   )
 }
 

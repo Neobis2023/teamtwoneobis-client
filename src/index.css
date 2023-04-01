@@ -163,8 +163,9 @@ textarea {
   width: 100%;
 }
 
+
 .applicationsSlider .swiper{
-  width: 50%;
+  width: 100%;
   position: relative!important;
   padding-bottom: 0!important;
 }

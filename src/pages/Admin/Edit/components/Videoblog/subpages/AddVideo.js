@@ -20,7 +20,8 @@ const AddVideo = () => {
             videoUrl,
             title,
             description,
-            lecturerName
+            lecturerName,
+            // category
         }
         axios.post("https://girls4girls.herokuapp.com/api/video-blog/post", newVideoBlog).then(res => console.log(res))
     }

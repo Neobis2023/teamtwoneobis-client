@@ -83,7 +83,7 @@ const FAQ = () => {
           return <FAQItem key={faq.id} {...faq} />;
         })}
         <div className="flex gap-2">
-            <SaveButton />
+            <SaveButton text={'Сохранить'}/>
             <button
             type="button"
             className="rounded-[8px] bg-[transparent] text-[#9960C3] border border-[#9960C3] p-2"
