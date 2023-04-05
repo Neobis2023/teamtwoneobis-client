@@ -7,8 +7,14 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import Events from "../../modules/Events/Events";
+import useLocalStorage from "../hooks/useLocalStorage";
+import { useEffect } from "react";
 
 const EventsSlider = ({ events }) => {
+  const handleClick = (eventName) => {
+    sessionStorage.setItem('eventName', JSON.stringify(eventName))
+    console.log('clicked', eventName)
+  }
   return (
     <div className="eventsSlider">
       <Swiper
@@ -34,13 +40,13 @@ const EventsSlider = ({ events }) => {
             return (
               <SwiperSlide key={event.id}>
                 <Events
-                  title={'Предстоящие тренинги'}
                   imgSource={event.imgUrl}
                   eventName={event.eventName}
                   description={event.description}
                   time={event.time}
                   date={event.date}
                   location={event.location}
+                  handleClick={handleClick}
                 />
               </SwiperSlide>
             );

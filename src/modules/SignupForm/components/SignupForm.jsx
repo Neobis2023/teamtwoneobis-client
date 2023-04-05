@@ -8,8 +8,8 @@ import Input from "../../../UI/Input/Input";
 import axios from "../api/axios";
 const SignupForm = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useLocalStorage('email', '');
-  const [phoneNumber, setPhoneNumber] = useLocalStorage('phoneNumber', '');
+  const [email, setEmail] = useLocalStorage("email", "");
+  const [phoneNumber, setPhoneNumber] = useLocalStorage("phoneNumber", "");
 
   const onSubmit = async (values, actions) => {
     handleSignup(values);
@@ -17,16 +17,16 @@ const SignupForm = () => {
   };
 
   const handleSignup = async (user) => {
-    const userCopy = {...user};
+    const userCopy = { ...user };
     delete userCopy.confirmPassword;
     try {
       const response = await axios.post("/signup", JSON.stringify(userCopy));
 
       if (!response.status === 201 || !response.status === 200) {
-        console.log(response)
+        console.log(response);
         throw new Error("Network response was not ok");
       }
-      
+
       navigate("/signup/confirm");
       console.log(response);
       return response;
@@ -67,13 +67,15 @@ const SignupForm = () => {
           type="email"
           value={values.email}
           onChange={(e) => {
-            handleChange(e)
-            setEmail(e.target.value)
-          }} 
+            handleChange(e);
+            setEmail(e.target.value);
+          }}
           onBlur={handleBlur}
         />
       </div>
-      {touched.email && errors.email ? <p className="text-sm text-red-500 mr-auto pl-2">{errors.email}</p> : null}
+      {touched.email && errors.email ? (
+        <p className="text-sm text-red-500 mr-auto pl-2">{errors.email}</p>
+      ) : null}
       <div className="w-full">
         <Input
           placeholder={"Номер  телефона"}
@@ -81,13 +83,17 @@ const SignupForm = () => {
           type="text"
           value={values.phoneNumber}
           onChange={(e) => {
-            handleChange(e)
-            setPhoneNumber(e.target.value)
-          }} 
+            handleChange(e);
+            setPhoneNumber(e.target.value);
+          }}
           onBlur={handleBlur}
         />
       </div>
-      {touched.phoneNumber && errors.phoneNumber ? <p className="text-sm text-red-500 mr-auto pl-2">{errors.phoneNumber}</p> : null}
+      {touched.phoneNumber && errors.phoneNumber ? (
+        <p className="text-sm text-red-500 mr-auto pl-2">
+          {errors.phoneNumber}
+        </p>
+      ) : null}
       <div className="w-full">
         <Input
           placeholder={"Имя"}
@@ -98,7 +104,9 @@ const SignupForm = () => {
           onBlur={handleBlur}
         />
       </div>
-      {touched.firstName && errors.firstName ? <p className="text-sm text-red-500 mr-auto pl-2">{errors.firstName}</p> : null}
+      {touched.firstName && errors.firstName ? (
+        <p className="text-sm text-red-500 mr-auto pl-2">{errors.firstName}</p>
+      ) : null}
       <div className="w-full">
         {" "}
         <Input
@@ -110,7 +118,9 @@ const SignupForm = () => {
           onBlur={handleBlur}
         />
       </div>
-      {touched.lastName && errors.lastName ? <p className="text-sm text-red-500 mr-auto pl-2">{errors.lastName}</p> : null}
+      {touched.lastName && errors.lastName ? (
+        <p className="text-sm text-red-500 mr-auto pl-2">{errors.lastName}</p>
+      ) : null}
       <div className="w-full">
         <Input
           placeholder={"Пароль"}
@@ -121,7 +131,9 @@ const SignupForm = () => {
           onBlur={handleBlur}
         />
       </div>
-      {touched.password && errors.password ? <p className="text-sm text-red-500 mr-auto pl-2">{errors.password}</p> : null}
+      {touched.password && errors.password ? (
+        <p className="text-sm text-red-500 mr-auto pl-2">{errors.password}</p>
+      ) : null}
       <div className="w-full">
         {" "}
         <Input
@@ -133,9 +145,30 @@ const SignupForm = () => {
           onBlur={handleBlur}
         />
       </div>
-      {touched.confirmPassword && errors.confirmPassword ? <p className="text-sm text-red-500 mr-auto pl-2">{errors.confirmPassword}</p> : null}
+      {touched.confirmPassword && errors.confirmPassword ? (
+        <p className="text-sm text-red-500 mr-auto pl-2">
+          {errors.confirmPassword}
+        </p>
+      ) : null}
       <div className="w-full">
-        <Button text={"Зарегистрироваться"} disabled={isSubmitting}/>
+        <Button
+          text={"Зарегистрироваться"}
+          disabled={
+            isSubmitting ||
+            errors.email ||
+            errors.password ||
+            errors.confirmPassword ||
+            errors.firstName ||
+            errors.lastName ||
+            errors.phoneNumber ||
+            !values.email ||
+            !values.password ||
+            !values.confirmPassword ||
+            !values.firstName ||
+            !values.lastName ||
+            !values.phoneNumber
+          }
+        />
       </div>
     </form>
   );

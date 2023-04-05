@@ -30,6 +30,8 @@ export const signupSchema = yup.object().shape({
         .string()
         .required('Укажите номер телефона')
         .matches(phoneRegExp, 'Введите в формате 996... без знака +')
+        .min(12, 'Введите действительный номер телефона')
+        .max(12, 'Введите действительный номер телефона')
 })
 
 export const signinSchema = yup.object().shape({
@@ -41,7 +43,10 @@ export const signinSchema = yup.object().shape({
     phoneNumber: yup
         .string()
         .nullable()
-        .notRequired(), 
+        .notRequired()
+        .matches(phoneRegExp, 'Введите в формате 996... без знака +')
+        .min(12, 'Введите действительный номер телефона')
+        .max(12, 'Введите действительный номер телефона'),
     password: yup
         .string()
         .required('Введите пароль')

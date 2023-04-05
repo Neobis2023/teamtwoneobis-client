@@ -35,11 +35,11 @@ import AdminMentoringProgram from './pages/Admin/Edit/components/MentoringProgra
 import AdminFooter from './pages/Admin/Edit/components/Content/AdminFooter';
 import AdminMain from './pages/Admin/Edit/components/Content/AdminMain';
 import AdminContent from './pages/Admin/Edit/components/Content/AdminContent';
+import ApplyForm from './modules/ApplyForm/ApplyForm';
 
 
 
 function App() {
-
   const router = createBrowserRouter([
     {
       path: "/",
@@ -47,9 +47,11 @@ function App() {
       children: [
         { index: true, element: <Main /> },
         { path: 'mentorship', element: <Mentorship /> },
-        { path: 'trainings', element: <Trainings /> },
-        { path: 'forum', element: <Forum /> },
         { path: 'videoblog/:id', element: <Videoblog /> },
+        { path: 'trainings', element: <Trainings /> },
+        { path: 'trainings/:training/apply', element: <ApplyForm /> },
+        { path: 'forum', element: <Forum /> },
+        { path: 'forum/:forum/apply', element: <ApplyForm /> },
       ]
     },
     {

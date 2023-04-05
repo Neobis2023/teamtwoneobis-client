@@ -9,6 +9,7 @@ const Blogs = () => {
 const [blogs, setBlogs] = useState(null);
 const [currentPage, setCurrentPage] = useState(1);
 const [blogsPerPage, setBlogsPerPage] = useState(12);
+console.log(blogs)
 
 useEffect(() => {
   axios
@@ -37,8 +38,8 @@ return (
         currentPage={currentPage}
       />
       <div className="grid grid-cols-[repeat(auto-fill,_31%)] justify-between gap-8 my-6">
-        {currentBlogs?.map((blog) => (
-          <Blog key={blog.id} blog={blog} />
+        {currentBlogs?.map((blog, index) => (
+          <Blog key={index} blog={blog} />
         ))}
       </div>
       <Pagination

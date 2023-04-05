@@ -11,7 +11,7 @@ const Language = () => {
   }, [])  
   
   return (
-    <div className="header__lang-login basis-1/6 flex gap-x-2 h-fit items-center">
+    <div className="header__lang-login basis-1/6 flex gap-x-6 h-fit items-center">
       <div className="header__lang ml-auto flex gap-2 basis-1/2 justify-end">
         <p
           className={`${styles.language} hover:cursor-pointer ${
@@ -35,7 +35,7 @@ const Language = () => {
         </p>
       </div>
       <NavLink to="/signin" className={"basis-1/2"}>
-        <Button text={"Вход"} className={'!rounded-[20px]'}/>
+        <Button text={"Вход"} className={'!rounded-[20px] font-semibold text-[clamp(0.8rem,_1.1vw,_1.3rem)]'}/>
       </NavLink>
     </div>
   );

@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "./Button/Button";
+import { useDispatch } from "react-redux";
+import { setEventName } from "../../helpers/reduxToolkit/applyForSlice";
+import useLocalStorage from "../../helpers/hooks/useLocalStorage";
 
-const Events = ({ title, imgSource, eventName, description, time, date, location }) => {
+const Events = ({ imgSource, eventName, description, time, date, location, handleClick }) => {
+  const eventUrl = eventName.toLowerCase().split(' ').join('-');
+  // const dispatch = useDispatch();
+
   return (
     <div className="pb-20">
       <div className="myWrapper flex justify-between items-center">
@@ -26,7 +32,7 @@ const Events = ({ title, imgSource, eventName, description, time, date, location
             </div>
           </div>
           <div className="flex gap-2">
-            <Button where={'/'} text={'Подать заявку'} className={'text-[#662D91] bg-[#E8E5FF]'}/>
+            <Button where={`${eventUrl}/apply`} text={'Подать заявку'} className={'text-[#662D91] bg-[#E8E5FF]'} onClick={() => handleClick(eventName)}/>
             <Button where={'/'} text={'Подробнее'} className={'text-[#662D91]'}/>
           </div>
         </div>
