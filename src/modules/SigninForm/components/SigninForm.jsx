@@ -20,16 +20,37 @@ const SigninForm = () => {
       delete values.phoneNumber;
     }
     try {
-      const response = await axios.post('/login', JSON.stringify(values));
+      const response = await axios.post('/auth/login', JSON.stringify(values));
       console.log(response);
   
       if (response.status === 200 || response.status === 201) {
         actions.resetForm();
-        navigate('/loggedin');
-      } else {
-        throw new Error('Invalid data');
-      }
-  
+        localStorage.setItem("token", response.data.access_token.toString());
+        console.log(response)
+        const token = response.data.access_token.toString();
+        const getUser = await axios.get('/user/profile', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+        console.log(getUser)
+        const userInfo = {
+          email: getUser.data.email,
+          firstName: getUser.data.firstName,
+          lastName: getUser.data.lastName,
+          phoneNumber: getUser.data.phoneNumber,
+          region: getUser.data.region,
+          role: getUser.data.role,
+          status: getUser.data.status,
+          gender: getUser.data.gender,
+          id: getUser.data.id,
+          image: getUser.data.image,
+        }
+        localStorage.setItem("user", JSON.stringify(userInfo));
+        navigate(`/profile/${getUser.data.id}`);
+        const getUsers = await axios.get('/user')
+        console.log(getUsers);
+      } 
     } catch(e) {
       console.log('Error: ', e.response.data.message);
       setLoggedin(false);

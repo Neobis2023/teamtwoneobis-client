@@ -1,46 +1,110 @@
-import React, { memo } from 'react'
-import heart from '../Blogs/assets/images/heart.svg'
-import YouTube from "react-youtube";
+import React, { memo, useEffect, useState } from "react";
+import heart from "../Blogs/assets/images/heart.svg";
+import filledHeart from "../assets/images/filledHeart.svg";
 
+import axios from "../api/axios";
+import VideoPlayer from "../../../helpers/videoplayer/VideoPlayer";
 
-const VideoPlayer = React.memo(({ videoUrl }) => {
-  const match = videoUrl.match(/v=([a-zA-Z0-9_-]{11})/);
-  const videoId = match ? match[1] : null;
-  const opts = {
-    height: "230px",
-    width: "100%",
-    playerVars: {
-      autoplay: 0,
-    },
+const Blog = memo(({ blog }) => {
+  const date = new Date(blog.createdAt);
+  const options = { day: "numeric", month: "numeric", year: "numeric" };
+  const formattedDate = date.toLocaleDateString("en-GB", options);
+  const [token, setToken] = useState("");
+  const [isFavorite, setIsFavorite] = useState(false);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setToken(token);
+  }, []);
+
+  useEffect(() => {
+    if (token) {
+      axios
+        .get(`https://girls4girls.herokuapp.com/api/like/${blog.id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          if (res.data) {
+            setIsFavorite(true);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [blog.id, token]);
+
+  const handleFavorites = async () => {
+    try {
+      if (isFavorite) {
+        await axios.delete(`/like/${blog.id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setIsFavorite(false);
+      } else {
+        await axios.post(
+          `/like/${blog.id}`,
+          {
+            blogId: blog.id,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setIsFavorite(true);
+      }
+    } catch (e) {
+      console.log(e);
+    }
   };
 
-  function onReady(event) {
-    event.target.pauseVideo();
-  }
+  // const handleFavorites = async () => {
+  //   try {
+  //     const response = await axios.post(
+  //       `/like/${blog.id}`,
+  //       {
+  //         blogId: blog.id,
+  //       },
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       }
+  //     );
+  //     console.log(response);
+  //     console.log(token);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
 
-  return <YouTube videoId={videoId} opts={opts} onReady={onReady} />;
-})
-
-const Blog = memo(({ blog }) => (
+  //   try {
+  //     const response = await axios.delete(`/like/${blog.id}`, {
+  //       headers: {
+  //         'Authorization': `Bearer ${token}`
+  //       }
+  //     });
+  //     console.log(response)
+  //     console.log(token)
+  //   } catch(e) {
+  //     console.log(e);
+  //   }
+  // };
+  return (
     <div className="basis-[31%] rounded-[8px] flex h-auto flex-col gap-2 mb-[5%]">
       <div className="flex flex-col gap-2">
-        {/* <iframe
-          width="100%"
-          height="auto"
-          src={blog.videoUrl}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        ></iframe> */}
-        <div className=''>
-          <VideoPlayer videoUrl={blog.videoUrl}/>
+        <div className="">
+          <VideoPlayer videoUrl={blog.videoUrl} />
         </div>
         {/* <VideoPlayer videoUrl={'https://www.youtube.com/watch?v=zvTr3P43yUg'}/> */}
-  
+
         <div className="flex justify-between items-center">
           <p className="text-[#403A64]">
-            Категория: {" "}
+            Категория:{" "}
             <span
               className={`border-[0.5px] border-solid rounded-[4px] border-[#CDB4DB] px-1 py-px bg-[rgba(102,_45,_145,_0.6)] text-white`}
             >
@@ -52,22 +116,28 @@ const Blog = memo(({ blog }) => (
           </p>
         </div>
       </div>
-      <div className=''>
+      <div className="">
         <div className="flex justify-between items-center">
           <p className="text-[#662D91] font-bold text-[clamp(1rem,_1.39vw,_1.5rem)]">
             {blog.title}
           </p>
-          <img src={heart} alt="heart" className="w-[6%]" />
+          <img
+            src={isFavorite ? filledHeart : heart}
+            alt="heart"
+            className="w-[6%] cursor-pointer"
+            onClick={handleFavorites}
+          />
         </div>
         <div className="flex justify-between items-center">
           <p className="text-[#AFAAD0] font-semibold text-[clamp(0.62rem,_0.97vw,_1.1rem)]">
             Лектор: {blog.lecturerName}
           </p>
           <p className="text-[#AFAAD0] font-semibold text-[clamp(0.62rem,_0.97vw,_1.1rem)]">
-            {blog.createdAt}
+            {formattedDate}
           </p>
         </div>
       </div>
     </div>
-  ));
-export default Blog
+  );
+});
+export default Blog;

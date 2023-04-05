@@ -1,19 +1,25 @@
 import { useFormik } from "formik";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useLocalStorage from "../../../helpers/hooks/useLocalStorage";
 import { signupSchema } from "../../../helpers/validation/schema";
 import Button from "../../../UI/Button/Button";
 import Input from "../../../UI/Input/Input";
 import axios from "../api/axios";
+
 const SignupForm = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useLocalStorage("email", "");
-  const [phoneNumber, setPhoneNumber] = useLocalStorage("phoneNumber", "");
+  const [error, setError] = useState("");
 
   const onSubmit = async (values, actions) => {
-    handleSignup(values);
-    actions.resetForm();
+    try {
+      const response = await handleSignup(values);
+      if (response?.status === 200 || response?.status === 201) {
+        actions.resetForm();
+      }
+    } catch (error) {
+      console.log("Error:", error);
+    }
   };
 
   const handleSignup = async (user) => {
@@ -22,16 +28,13 @@ const SignupForm = () => {
     try {
       const response = await axios.post("/signup", JSON.stringify(userCopy));
 
-      if (!response.status === 201 || !response.status === 200) {
+      if (response?.status === 201 || response?.status === 200) {
+        navigate("/signup/confirm");
         console.log(response);
-        throw new Error("Network response was not ok");
       }
-
-      navigate("/signup/confirm");
-      console.log(response);
-      return response;
     } catch (error) {
       console.log("Error:", error);
+      setError(error.response.data.message)
     }
   };
 
@@ -66,10 +69,7 @@ const SignupForm = () => {
           name="email"
           type="email"
           value={values.email}
-          onChange={(e) => {
-            handleChange(e);
-            setEmail(e.target.value);
-          }}
+          onChange={handleChange}
           onBlur={handleBlur}
         />
       </div>
@@ -82,10 +82,7 @@ const SignupForm = () => {
           name="phoneNumber"
           type="text"
           value={values.phoneNumber}
-          onChange={(e) => {
-            handleChange(e);
-            setPhoneNumber(e.target.value);
-          }}
+          onChange={handleChange}
           onBlur={handleBlur}
         />
       </div>
@@ -170,6 +167,7 @@ const SignupForm = () => {
           }
         />
       </div>
+      {error && <p className="text-sm text-red-500 mx-auto">{error === 'User already exists' ? 'Пользователь уже существует' : null}</p>}
     </form>
   );
 };

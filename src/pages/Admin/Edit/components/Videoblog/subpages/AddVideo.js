@@ -5,6 +5,25 @@ import Input from "../../Input";
 import axios from "axios";
 import SaveButton from "../../../../components/SaveButton";
 import Textarea from "../../Textarea";
+import YouTube from "react-youtube";
+
+const VideoPlayer = React.memo(({ videoUrl }) => {
+  const match = videoUrl.match(/v=([a-zA-Z0-9_-]{11})/);
+  const videoId = match ? match[1] : null;
+  const opts = {
+    height: "200px",
+    width: "100%",
+    playerVars: {
+      autoplay: 0,
+    },
+  };
+
+  function onReady(event) {
+    event.target.pauseVideo();
+  }
+
+  return <YouTube videoId={videoId} opts={opts} onReady={onReady} />;
+});
 
 const AddVideo = () => {
   const [category, setCategory] = useState("Здоровье");
@@ -14,17 +33,62 @@ const AddVideo = () => {
   const [description, setDescription] = useState("");
   const [lecturerName, setLecturerName] = useState("");
   const [lecturerInfo, setLecturerInfo] = useState("");
+  const [lecturerImage, setLecturerImage] = useState(null);
 
-    const handleSave = () => {
-        const newVideoBlog = {
-            videoUrl,
-            title,
-            description,
-            lecturerName,
-            // category
-        }
-        axios.post("https://girls4girls.herokuapp.com/api/video-blog/post", newVideoBlog).then(res => console.log(res))
-    }
+  // const handleSave = () => {
+  //   const formData = new FormData();
+  //   formData.append("image", lecturerImage);
+
+  //   const newVideoBlog = {
+  //     videoUrl,
+  //     title,
+  //     description,
+  //     lecturerName,
+  //     lecturerInfo,
+  //     lecturerImage,
+  //     category,
+  //   };
+  //   console.log(newVideoBlog)
+  //   axios
+  //     .post(
+  //       "https://girls4girls.herokuapp.com/api/video-blog/post",
+  //       newVideoBlog
+  //     )
+  //     .then((res) => console.log(res));
+  //     console.log(newVideoBlog)
+  // };
+  
+  const handleSave = () => {
+    const formData = new FormData();
+    formData.append("image", lecturerImage);
+  
+    const newVideoBlog = {
+      videoUrl,
+      title,
+      description,
+      lecturerName,
+      lecturerInfo,
+      category,
+    };
+  
+    Object.keys(newVideoBlog).forEach((key) => {
+      formData.append(key, newVideoBlog[key]);
+    });
+  
+    axios
+      .post("https://girls4girls.herokuapp.com/api/video-blog/post", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+
+
+  const handleImageSelect = (e) => {
+    setLecturerImage(e.target.files[0]);
+  };
 
   return (
     <div className="w-[60%]">
@@ -34,19 +98,19 @@ const AddVideo = () => {
           {!videoUrl ? (
             <img src={videoPhoto} alt="video photo" />
           ) : (
-            <iframe
-              width="100%"
-              height="100%"
-              src={videoUrl}
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            ></iframe>
+            <VideoPlayer videoUrl={videoUrl} />
           )}
         </div>
-        <Input label={"Ссылка"} onChange={(e) => setVideoUrl(e.target.value)} value={videoUrl}/>
-        <Input label={"Название"} onChange={(e) => setTitle(e.target.value)} value={title}/>
+        <Input
+          label={"Ссылка"}
+          onChange={(e) => setVideoUrl(e.target.value)}
+          value={videoUrl}
+        />
+        <Input
+          label={"Название"}
+          onChange={(e) => setTitle(e.target.value)}
+          value={title}
+        />
         <div
           className="flex justify-between border rounded-[8px] px-1 py-4 pb-1  border-[#9960C3] hover:cursor-pointer relative"
           onClick={() => setCategoryOpen(!categoryOpen)}
@@ -68,11 +132,37 @@ const AddVideo = () => {
             <p onClick={() => setCategory("Кухня")}>Кухня</p>
           </div>
         </div>
-        <Textarea label={'Описание'} value={description} onChange={(e) => setDescription(e.target.value)}/>
-        <Input label={"Лектор"} onChange={(e) => setLecturerName(e.target.value)} value={lecturerName}/>
-        <Input label={"Информация о лекторе"} onChange={(e) => setLecturerInfo(e.target.value)} value={lecturerInfo}/>
+        <Textarea
+          label={"Описание"}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <Input
+          label={"Лектор"}
+          onChange={(e) => setLecturerName(e.target.value)}
+          value={lecturerName}
+        />
+        <Input
+          label={"Информация о лекторе"}
+          onChange={(e) => setLecturerInfo(e.target.value)}
+          value={lecturerInfo}
+        />
+        {/* <img src={videoPhoto} /> */}
+        <div className="flex flex-col gap-2">
+          {lecturerImage ? (
+            <img src={URL.createObjectURL(lecturerImage)} alt="Selected" />
+          ) : (
+            <img src={videoPhoto} />
+          )}
+          <input
+            type="file"
+            onChange={handleImageSelect}
+            className=""
+            accept="image/*"
+          />
+        </div>
         <div className="flex gap-6">
-          <SaveButton onClick={handleSave}/>
+          <SaveButton onClick={handleSave} text={"Сохранить"} />
           <button
             type="button"
             className="rounded-[8px] bg-[transparent] text-[#9960C3] border border-[#9960C3] p-2"

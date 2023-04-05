@@ -36,10 +36,21 @@ import AdminFooter from './pages/Admin/Edit/components/Content/AdminFooter';
 import AdminMain from './pages/Admin/Edit/components/Content/AdminMain';
 import AdminContent from './pages/Admin/Edit/components/Content/AdminContent';
 import ApplyForm from './modules/ApplyForm/ApplyForm';
+import User from './pages/User/User';
+import { useEffect } from 'react';
+import withAuth from './helpers/HOC/withAuth';
 
 
 
 function App() {
+  // const loggedInUser = localStorage.getItem("user");
+  // useEffect(() => {
+  //   if (loggedInUser) {
+  //     const foundUser = JSON.parse(loggedInUser);
+  //     setUser(foundUser)
+  //   }
+  // }, [])
+  // localStorage.clear();
   const router = createBrowserRouter([
     {
       path: "/",
@@ -52,6 +63,8 @@ function App() {
         { path: 'trainings/:training/apply', element: <ApplyForm /> },
         { path: 'forum', element: <Forum /> },
         { path: 'forum/:forum/apply', element: <ApplyForm /> },
+        { path: 'profile/:userId', element: <User /> },
+
       ]
     },
     {
