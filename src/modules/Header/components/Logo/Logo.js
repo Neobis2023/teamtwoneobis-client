@@ -5,7 +5,7 @@ import logo from '../../assets/images/logo.svg'
 const Logo = () => {
   return (
     <NavLink to="/" className="header__logo basis-1/6">
-      <img src={logo} alt="logo" className="h-auto w-[50%] min-w-[5rem]" />
+      <img src={logo} alt="logo" className="h-auto w-[clamp(5.175rem,_5.972vw,_5.675rem)] min-w-[5rem]" />
     </NavLink>
   );
 };

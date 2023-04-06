@@ -7,7 +7,7 @@ import MySlider from "../../../helpers/swiper/MySlider";
 const Videoblog = () => {
   document.cookie = "myCookie=value; SameSite=Strict";
   const videoUrls = [
-    "https://www.youtube.com/watch?v=zvTr3P43yUg",
+    "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     "https://www.youtube.com/watch?v=zvTr3P43yUg",
     "https://www.youtube.com/watch?v=zvTr3P43yUg",
     "https://www.youtube.com/watch?v=zvTr3P43yUg",

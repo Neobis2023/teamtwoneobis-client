@@ -1,37 +1,40 @@
 import { useFormik } from "formik";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useLocalStorage from "../../../helpers/hooks/useLocalStorage";
 import { signupSchema } from "../../../helpers/validation/schema";
 import Button from "../../../UI/Button/Button";
 import Input from "../../../UI/Input/Input";
 import axios from "../api/axios";
+
 const SignupForm = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useLocalStorage('email', '');
-  const [phoneNumber, setPhoneNumber] = useLocalStorage('phoneNumber', '');
+  const [error, setError] = useState("");
 
   const onSubmit = async (values, actions) => {
-    handleSignup(values);
-    actions.resetForm();
+    try {
+      const response = await handleSignup(values);
+      if (response?.status === 200 || response?.status === 201) {
+        actions.resetForm();
+      }
+    } catch (error) {
+      console.log("Error:", error);
+    }
   };
 
   const handleSignup = async (user) => {
-    const userCopy = {...user};
+    const userCopy = { ...user };
     delete userCopy.confirmPassword;
     try {
       const response = await axios.post("/signup", JSON.stringify(userCopy));
 
-      if (!response.status === 201 || !response.status === 200) {
-        console.log(response)
-        throw new Error("Network response was not ok");
+      if (response?.status === 201 || response?.status === 200) {
+        navigate("/signup/confirm");
+        console.log(response);
       }
-      
-      navigate("/signup/confirm");
-      console.log(response);
-      return response;
     } catch (error) {
       console.log("Error:", error);
+      setError(error.response.data.message)
     }
   };
 
@@ -66,28 +69,28 @@ const SignupForm = () => {
           name="email"
           type="email"
           value={values.email}
-          onChange={(e) => {
-            handleChange(e)
-            setEmail(e.target.value)
-          }} 
+          onChange={handleChange}
           onBlur={handleBlur}
         />
       </div>
-      {touched.email && errors.email ? <p className="text-sm text-red-500 mr-auto pl-2">{errors.email}</p> : null}
+      {touched.email && errors.email ? (
+        <p className="text-sm text-red-500 mr-auto pl-2">{errors.email}</p>
+      ) : null}
       <div className="w-full">
         <Input
           placeholder={"Номер  телефона"}
           name="phoneNumber"
           type="text"
           value={values.phoneNumber}
-          onChange={(e) => {
-            handleChange(e)
-            setPhoneNumber(e.target.value)
-          }} 
+          onChange={handleChange}
           onBlur={handleBlur}
         />
       </div>
-      {touched.phoneNumber && errors.phoneNumber ? <p className="text-sm text-red-500 mr-auto pl-2">{errors.phoneNumber}</p> : null}
+      {touched.phoneNumber && errors.phoneNumber ? (
+        <p className="text-sm text-red-500 mr-auto pl-2">
+          {errors.phoneNumber}
+        </p>
+      ) : null}
       <div className="w-full">
         <Input
           placeholder={"Имя"}
@@ -98,7 +101,9 @@ const SignupForm = () => {
           onBlur={handleBlur}
         />
       </div>
-      {touched.firstName && errors.firstName ? <p className="text-sm text-red-500 mr-auto pl-2">{errors.firstName}</p> : null}
+      {touched.firstName && errors.firstName ? (
+        <p className="text-sm text-red-500 mr-auto pl-2">{errors.firstName}</p>
+      ) : null}
       <div className="w-full">
         {" "}
         <Input
@@ -110,7 +115,9 @@ const SignupForm = () => {
           onBlur={handleBlur}
         />
       </div>
-      {touched.lastName && errors.lastName ? <p className="text-sm text-red-500 mr-auto pl-2">{errors.lastName}</p> : null}
+      {touched.lastName && errors.lastName ? (
+        <p className="text-sm text-red-500 mr-auto pl-2">{errors.lastName}</p>
+      ) : null}
       <div className="w-full">
         <Input
           placeholder={"Пароль"}
@@ -121,7 +128,9 @@ const SignupForm = () => {
           onBlur={handleBlur}
         />
       </div>
-      {touched.password && errors.password ? <p className="text-sm text-red-500 mr-auto pl-2">{errors.password}</p> : null}
+      {touched.password && errors.password ? (
+        <p className="text-sm text-red-500 mr-auto pl-2">{errors.password}</p>
+      ) : null}
       <div className="w-full">
         {" "}
         <Input
@@ -133,10 +142,32 @@ const SignupForm = () => {
           onBlur={handleBlur}
         />
       </div>
-      {touched.confirmPassword && errors.confirmPassword ? <p className="text-sm text-red-500 mr-auto pl-2">{errors.confirmPassword}</p> : null}
+      {touched.confirmPassword && errors.confirmPassword ? (
+        <p className="text-sm text-red-500 mr-auto pl-2">
+          {errors.confirmPassword}
+        </p>
+      ) : null}
       <div className="w-full">
-        <Button text={"Зарегистрироваться"} disabled={isSubmitting}/>
+        <Button
+          text={"Зарегистрироваться"}
+          disabled={
+            isSubmitting ||
+            errors.email ||
+            errors.password ||
+            errors.confirmPassword ||
+            errors.firstName ||
+            errors.lastName ||
+            errors.phoneNumber ||
+            !values.email ||
+            !values.password ||
+            !values.confirmPassword ||
+            !values.firstName ||
+            !values.lastName ||
+            !values.phoneNumber
+          }
+        />
       </div>
+      {error && <p className="text-sm text-red-500 mx-auto">{error === 'User already exists' ? 'Пользователь уже существует' : null}</p>}
     </form>
   );
 };

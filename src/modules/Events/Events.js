@@ -1,17 +1,15 @@
-import React from "react";
-import stars from './assets/images/stars.svg'
-import computer from './assets/images/computer.svg'
+import React, { useEffect } from "react";
 import Button from "./Button/Button";
+import { useDispatch } from "react-redux";
+import { setEventName } from "../../helpers/reduxToolkit/applyForSlice";
+import useLocalStorage from "../../helpers/hooks/useLocalStorage";
 
-const Events = ({ title, imgSource, eventName, description, time, date, location }) => {
+const Events = ({ imgSource, eventName, description, time, date, location, handleClick }) => {
+  const eventUrl = eventName.toLowerCase().split(' ').join('-');
+  // const dispatch = useDispatch();
+
   return (
     <div className="pb-20">
-      <div className="relative pt-20 w-[95%] mx-auto pb-[4%]">
-        <h2 className="text-[#662D91] font-semibold text-[clamp(2.2rem,_2.78vw,_2.8rem)] text-center">
-          {title}
-        </h2>
-        <img src={computer} alt="computer" className="absolute left-0 top-[50%] w-[20%]"/>
-      </div>
       <div className="myWrapper flex justify-between items-center">
         <div className="basis-1/2 flex flex-col gap-8">
           <p className="text-[#9960C3] font-bold text-[clamp(2.2rem,_2.5vw,_2.5rem)]">
@@ -34,12 +32,11 @@ const Events = ({ title, imgSource, eventName, description, time, date, location
             </div>
           </div>
           <div className="flex gap-2">
-            <Button where={'/'} text={'Подать заявку'} className={'text-[#662D91] bg-[#E8E5FF]'}/>
+            <Button where={`${eventUrl}/apply`} text={'Подать заявку'} className={'text-[#662D91] bg-[#E8E5FF]'} onClick={() => handleClick(eventName)}/>
             <Button where={'/'} text={'Подробнее'} className={'text-[#662D91]'}/>
           </div>
         </div>
-        <div className="basis-1/2 relative w-fit">
-          <img src={stars} alt="stars" className="absolute -top-[25%] right-0 left-[15%] w-[10%] mx-auto" />
+        <div className="basis-1/2 w-fit">
           <img
             src={imgSource}
             alt="girls"

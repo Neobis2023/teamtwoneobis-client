@@ -26,15 +26,31 @@ import AllMessages from './pages/Admin/Feedback/subpages/AllMessages';
 import ReadMessages from './pages/Admin/Feedback/subpages/ReadMessages';
 import FavoriteMessages from './pages/Admin/Feedback/subpages/FavoriteMessages';
 import EditLayout from './pages/Admin/layouts/EditLayout';
-import List from './pages/Admin/Edit/subpages/List';
+import List from './pages/Admin/Edit/components/Videoblog/subpages/List';
 import ListLayout from './pages/Admin/layouts/ListLayout';
-import Categories from './pages/Admin/Edit/subpages/Categories';
-import AddVideo from './pages/Admin/Edit/subpages/AddVideo';
+import Categories from './pages/Admin/Edit/components/Videoblog/subpages/Categories';
+import AddVideo from './pages/Admin/Edit/components/Videoblog/subpages/AddVideo';
+import AddCategory from './pages/Admin/Edit/components/Videoblog/subpages/AddCategory';
+import AdminMentoringProgram from './pages/Admin/Edit/components/MentoringProgram/AdminMentoringProgram';
+import AdminFooter from './pages/Admin/Edit/components/Content/AdminFooter';
+import AdminMain from './pages/Admin/Edit/components/Content/AdminMain';
+import AdminContent from './pages/Admin/Edit/components/Content/AdminContent';
+import ApplyForm from './modules/ApplyForm/ApplyForm';
+import User from './pages/User/User';
+import { useEffect } from 'react';
+import withAuth from './helpers/HOC/withAuth';
 
 
 
 function App() {
-
+  // const loggedInUser = localStorage.getItem("user");
+  // useEffect(() => {
+  //   if (loggedInUser) {
+  //     const foundUser = JSON.parse(loggedInUser);
+  //     setUser(foundUser)
+  //   }
+  // }, [])
+  // localStorage.clear();
   const router = createBrowserRouter([
     {
       path: "/",
@@ -42,9 +58,13 @@ function App() {
       children: [
         { index: true, element: <Main /> },
         { path: 'mentorship', element: <Mentorship /> },
-        { path: 'trainings', element: <Trainings /> },
-        { path: 'forum', element: <Forum /> },
         { path: 'videoblog/:id', element: <Videoblog /> },
+        { path: 'trainings', element: <Trainings /> },
+        { path: 'trainings/:training/apply', element: <ApplyForm /> },
+        { path: 'forum', element: <Forum /> },
+        { path: 'forum/:forum/apply', element: <ApplyForm /> },
+        { path: 'profile/:userId', element: <User /> },
+
       ]
     },
     {
@@ -71,12 +91,12 @@ function App() {
             { path: 'categories', element: <Categories /> },
             { path: 'tests', element: <></> },
             { path: 'add-video', element: <AddVideo /> },
+            { path: 'add-category', element: <AddCategory /> },
 
           ],
         },
-        { path: 'footer', element: <></> },
-        { path: 'main', element: <></> },
-        { path: 'mentoring-program', element: <></> },
+        { path: 'content', element: <AdminContent /> },
+        { path: 'mentoring-program', element: <AdminMentoringProgram /> },
         { path: 'trainings', element: <></> },
         { path: 'forums', element: <></> },
         { path: 'achievements', element: <></> },

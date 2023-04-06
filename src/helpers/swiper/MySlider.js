@@ -14,8 +14,9 @@ import "swiper/css/scrollbar";
 
 import YouTube from "react-youtube";
 import { NavLink } from "react-router-dom";
+import React from "react";
 
-function VideoPlayer({ videoUrl }) {
+const VideoPlayer = React.memo(({ videoUrl }) => {
   const match = videoUrl.match(/v=([a-zA-Z0-9_-]{11})/);
   const videoId = match ? match[1] : null;
   const opts = {
@@ -31,7 +32,7 @@ function VideoPlayer({ videoUrl }) {
   }
 
   return <YouTube videoId={videoId} opts={opts} onReady={onReady} />;
-}
+})
 
 const MySlider = ({ videoblog = null, events = null, mentors = null, graduates = null, dataEvents = null }) => {
   return (

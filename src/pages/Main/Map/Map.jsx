@@ -14,16 +14,16 @@ const Map = () => {
             <h2 className="mySubtitle pb-2">Мы на карте</h2>
             <img src={line} alt="line" className="mx-auto" />
           </div>
-          <p>
+          <p className="text-[clamp(1rem,_1.66vw,_1.8rem)] text-[#662D91] font-medium">
             Двухдневные тренинги были проведены для 200+ девочек из четырех
             областей и г. Бишкек.
           </p>
         </div>
         <div className="relative w-full h-[0] pb-[60%]">
-          <img src={kyrgyzstan} alt="map" style={{ marginInline: 'auto' }} className='w-full'/>
-          <img src={talas} alt="talas" className="absolute top-[12%] left-[30%] h-fit w-[5%]"/>
-          <img src={chui} alt="chui" className="absolute top-[1%] left-[46%] h-fit w-[6%]"/>
-          <img src={issyk} alt="issyk" className='absolute top-[25%] right-[18%] h-fit w-[6%]'/>
+          <img src={kyrgyzstan} alt="map" style={{ marginInline: 'auto' }} className='w-[70%]'/>
+          <img src={talas} alt="talas" className="absolute top-[8%] left-[36%] h-fit w-[4%]"/>
+          <img src={chui} alt="chui" className="absolute top-[1%] left-[47.5%] h-fit w-[4%]"/>
+          <img src={issyk} alt="issyk" className='absolute top-[18%] right-[27%] h-fit w-[4%]'/>
         </div>
       </div>
     </section>

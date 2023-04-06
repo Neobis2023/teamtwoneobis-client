@@ -1,6 +1,6 @@
 .header__link {
-    font-weight: 400;
-    font-size: 1.5vw;
+    font-weight: 500;
+    font-size: clamp(0.8rem, 1.1vw, 1.3rem);
     /* line-height: 18px; */
     color: #662D91;
 }

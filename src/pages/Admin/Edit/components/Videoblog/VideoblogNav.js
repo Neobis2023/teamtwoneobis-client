@@ -1,8 +1,10 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import edit from "../assets/images/edit.svg";
+import { NavLink, useLocation } from "react-router-dom";
+import edit from "../../assets/images/edit.svg";
 
 const VideoblogNav = () => {
+  const location = useLocation();
+  // const isActiveList = location.pathname.startsWith("/admin/edit/videoblog")
   return (
     <div className="text-[#292D32]">
       <div className="pt-3 bg-[#EAF0FF] p-4 rounded-[10px]">

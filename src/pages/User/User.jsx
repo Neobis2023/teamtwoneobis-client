@@ -1,0 +1,18 @@
+import React from 'react'
+import TopContent from './components/TopContent'
+import Navbar from './components/Navbar'
+import Profile from './components/Profile'
+
+const User = () => {
+  return (
+    <div>
+        <TopContent />
+        <div className='flex justify-between myWrapper w-full pt-8'>
+            <Navbar />
+            <Profile />
+        </div>
+    </div>
+  )
+}
+
+export default User

@@ -1,13 +1,15 @@
 import React from "react";
 import UsersList from "../../components/UsersList";
 import userPhoto from "../../assets/images/userPhoto.svg";
+import { NavLink } from "react-router-dom";
 
 const ForumsSub = () => {
   const dataUsers = [
     {
       id: 1,
       imgUrl: userPhoto,
-      fullName: "Девид Вуд",
+      firstName: "Чак",
+      lastName: "Норрис",
       email: "david@gmail.com",
       phoneNumber: "+996709123456",
       isBlocked: false,
@@ -15,7 +17,8 @@ const ForumsSub = () => {
     {
       id: 2,
       imgUrl: userPhoto,
-      fullName: "Линда Роуз",
+      firstName: "Джими",
+      lastName: "О Йанг",
       email: "linda@gmail.com",
       phoneNumber: "+99676599999",
       isBlocked: true,
@@ -23,7 +26,8 @@ const ForumsSub = () => {
     {
       id: 3,
       imgUrl: userPhoto,
-      fullName: "Спанч Боб",
+      firstName: "Спанч",
+      lastName: "Боб",
       email: "spanchbob@gmail.com",
       phoneNumber: "+99670945645",
       isBlocked: true,
@@ -31,7 +35,8 @@ const ForumsSub = () => {
     {
       id: 4,
       imgUrl: userPhoto,
-      fullName: "Принц Саудии",
+      firstName: "Принц",
+      lastName: "Чарльз",
       email: "prince@gmail.com",
       phoneNumber: "+99670456456",
       isBlocked: true,
@@ -39,7 +44,8 @@ const ForumsSub = () => {
     {
       id: 5,
       imgUrl: userPhoto,
-      fullName: "Диана Грег",
+      firstName: "Диана",
+      lastName: "Диана",
       email: "diana@gmail.com",
       phoneNumber: "+996709655555",
       isBlocked: false,
@@ -47,7 +53,8 @@ const ForumsSub = () => {
     {
       id: 6,
       imgUrl: userPhoto,
-      fullName: "Ханна Раппопорт",
+      firstName: "Ханна",
+      lastName: "Раппапорт",
       email: "henna@gmail.com",
       phoneNumber: "+99670000000",
       isBlocked: true,
@@ -55,69 +62,24 @@ const ForumsSub = () => {
     {
       id: 7,
       imgUrl: userPhoto,
-      fullName: "Эльза Шиф",
+      firstName: "Эльза",
+      lastName: "Шиф",
       email: "elsa@gmail.com",
       phoneNumber: "+9967345455",
       isBlocked: false,
     },
-    {
-      id: 8,
-      imgUrl: userPhoto,
-      fullName: "Эвелина Леви",
-      email: "evelina@gmail.com",
-      phoneNumber: "+996709123456",
-      isBlocked: false,
-    },
-    {
-      id: 9,
-      imgUrl: userPhoto,
-      fullName: "Ланг Имбер",
-      email: "lang@gmail.com",
-      phoneNumber: "+9967345354",
-      isBlocked: false,
-    },
-    {
-      id: 10,
-      imgUrl: userPhoto,
-      fullName: "Спанч Боб",
-      email: "spanchbob@gmail.com",
-      phoneNumber: "+99673748573",
-      isBlocked: false,
-    },
-    {
-      id: 11,
-      imgUrl: userPhoto,
-      fullName: "Спанч Боб",
-      email: "spanchbob@gmail.com",
-      phoneNumber: "+99655333343",
-      isBlocked: true,
-    },
-    {
-      id: 12,
-      imgUrl: userPhoto,
-      fullName: "Спанч Боб",
-      email: "spanchbob@gmail.com",
-      phoneNumber: "+996723672362",
-      isBlocked: true,
-    },
-    {
-      id: 13,
-      imgUrl: userPhoto,
-      fullName: "Спанч Боб",
-      email: "spanchbob@gmail.com",
-      phoneNumber: "+996709123400",
-      isBlocked: false,
-    },
-    {
-      id: 14,
-      imgUrl: userPhoto,
-      fullName: "Спанч Боб",
-      email: "spanchbob@gmail.com",
-      phoneNumber: "+996709654321",
-      isBlocked: false,
-    },
   ];
-  return <UsersList data={dataUsers} />;
+  return (
+    <div className="mt-6">
+      <NavLink
+        to={"/"}
+        className="w-fit text-[#9960C3] font-bold text-[0.875rem] bg-transparent border border-[#9960C3] px-3 py-2 rounded-[10px]"
+      >
+        Посмотреть анкету
+      </NavLink>
+      <UsersList data={dataUsers} />
+    </div>
+  );
 };
 
 export default ForumsSub;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from '../../../UI/Button/Button'
 import Input from "../../../UI/Input/Input";
 import line from '../assets/images/line-signin.png'
@@ -10,10 +10,53 @@ import axios from "../api/axios";
 
 const SigninForm = () => {
   const navigate = useNavigate();
+  const [loggedin, setLoggedin] = useState(null);
 
   const onSubmit = async (values, actions) => {
-    handleSignin(values);
-    actions.resetForm();
+    if (!values.email) {
+      delete values.email;
+    }
+    if (!values.phoneNumber) {
+      delete values.phoneNumber;
+    }
+    try {
+      const response = await axios.post('/auth/login', JSON.stringify(values));
+      console.log(response);
+  
+      if (response.status === 200 || response.status === 201) {
+        actions.resetForm();
+        localStorage.setItem("token", response.data.access_token.toString());
+        console.log(response)
+        const token = response.data.access_token.toString();
+        const getUser = await axios.get('/user/profile', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+        console.log(getUser)
+        const userInfo = {
+          email: getUser.data.email,
+          firstName: getUser.data.firstName,
+          lastName: getUser.data.lastName,
+          phoneNumber: getUser.data.phoneNumber,
+          region: getUser.data.region,
+          role: getUser.data.role,
+          status: getUser.data.status,
+          gender: getUser.data.gender,
+          id: getUser.data.id,
+          image: getUser.data.image,
+        }
+        localStorage.setItem("user", JSON.stringify(userInfo));
+        navigate(`/profile/${getUser.data.id}`);
+        const getUsers = await axios.get('/user')
+        console.log(getUsers);
+      } 
+    } catch(e) {
+      console.log('Error: ', e.response.data.message);
+      setLoggedin(false);
+      console.log(errors)
+      console.log(loggedin)
+    }
   }
 
   const {values, errors, touched, isSubmitting, handleBlur, handleChange, handleSubmit} = useFormik({
@@ -25,25 +68,6 @@ const SigninForm = () => {
     validationSchema: signinSchema,
     onSubmit
   })
-
-  const handleSignin = async (user) => {
-    try {
-      const response = await axios.post('/login', JSON.stringify(user));
-      console.log(user);
-
-      if(!response.status === 200 || !response.status === 201) {
-        console.log(response)
-        throw new Error('Invalid data');
-      }
-
-      console.log(response);
-      navigate('/loggedin');
-      return response;
-
-    } catch(e) {
-      console.log('Error: ', e);
-    }
-  }
 
   return (
     <form onSubmit={handleSubmit} className="w-full flex flex-col items-center gap-4 mb-5">
@@ -65,8 +89,10 @@ const SigninForm = () => {
         {touched.password && errors.password ? <p className="text-sm text-red-500 mr-auto pl-2">{errors.password}</p> : null}
       </div>
       <div className="w-full">
-        <Button text={'Войти'} disabled={isSubmitting}/>
+        {/* <Button text={'Войти'} disabled={isSubmitting || (!values.password || (!values.phoneNumber && !values.email))}/> */}
+        <Button text={'Войти'} disabled={isSubmitting || (!values.password || (!values.phoneNumber && !values.email)) || (errors.phoneNumber || errors.email)}/>
       </div>
+      {loggedin===false && <p className="text-sm text-red-500 mr-auto pl-2 mx-auto">Неверный логин или пароль</p>}
       <NavLink
         to="/"
         className="text-[rgba(41,_45,_50,_0.6)] ml-auto font-normal text-[1.25rem]"
