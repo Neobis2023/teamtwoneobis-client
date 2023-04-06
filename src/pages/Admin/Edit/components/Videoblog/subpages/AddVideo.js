@@ -34,29 +34,6 @@ const AddVideo = () => {
   const [lecturerName, setLecturerName] = useState("");
   const [lecturerInfo, setLecturerInfo] = useState("");
   const [lecturerImage, setLecturerImage] = useState(null);
-
-  // const handleSave = () => {
-  //   const formData = new FormData();
-  //   formData.append("image", lecturerImage);
-
-  //   const newVideoBlog = {
-  //     videoUrl,
-  //     title,
-  //     description,
-  //     lecturerName,
-  //     lecturerInfo,
-  //     lecturerImage,
-  //     category,
-  //   };
-  //   console.log(newVideoBlog)
-  //   axios
-  //     .post(
-  //       "https://girls4girls.herokuapp.com/api/video-blog/post",
-  //       newVideoBlog
-  //     )
-  //     .then((res) => console.log(res));
-  //     console.log(newVideoBlog)
-  // };
   
   const handleSave = () => {
     const formData = new FormData();

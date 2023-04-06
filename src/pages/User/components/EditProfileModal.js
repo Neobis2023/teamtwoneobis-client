@@ -1,11 +1,99 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import close from "../assets/images/close.svg";
 import user from "../assets/images/user.svg";
 import camera from "../assets/images/camera.svg";
 import Input from "./Input";
 import Dropwdown from "./Dropwdown";
+import InputDate from "./InputDate";
+import PasswordChange from "./PasswordChange";
+import axios from "../api/axios";
 
 const EditProfileModal = ({ onClose }) => {
+  const [token, setToken] = useState("");
+  const [currentEmail, setCurrentEmail] = useState("");
+  const [currentGender, setCurrentGender] = useState("");
+  const [currentRegion, setCurrentRegion] = useState("");
+  const [currentPhoneNumber, setCurrentPhoneNumber] = useState("");
+  const [currentFirstName, setCurrentFirstName] = useState("");
+  const [currentLastName, setCurrentLastName] = useState("");
+  const [currentUserImage, setCurrentUserImage] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  const [image, setImage] = useState(null);
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+
+  const handleGenderChange = (option) => {
+    setCurrentGender(option)
+  }
+
+  const handleRegionChange = (option) => {
+    setCurrentRegion(option)
+  }
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    setImage(file);
+  };
+
+  const handleImageClick = () => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    input.addEventListener("change", handleImageChange);
+    input.click();
+  }
+
+  const handleSubmit = async () => {
+    const date = new Date(selectedDate);
+    const formData = new FormData();
+    formData.append('image', image);
+    const updatedData = {
+      // email: currentEmail,
+      firstName: currentFirstName,
+      lastName: currentLastName,
+      phoneNumber: currentPhoneNumber,
+      dateOfBirth: date.toISOString(),
+      gender: currentGender === 'Мужской' ? 'MALE' : 'FEMALE',
+      region: currentRegion === 'Ош' ? 'OSH' : "Чуй" ? 'CHUI' : 'Кант' ? 'KANT' : null
+    }
+    console.log(updatedData)
+    // const response = await axios.patch('/user/profile', updatedData, {
+    //   headers: {
+    //     'Authorization': `Bearer ${token}`
+    //   }
+    // })
+    // console.log(response)
+
+    if (image) {
+      const res = await axios.post('/user', formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          'Authorization': `Bearer ${token}`,
+        },
+      })
+      console.log(res, 'img');
+    }
+
+    
+    
+  }
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'))
+    const token = localStorage.getItem("token");
+    setToken(token);
+    const gender = user.gender
+    setCurrentEmail(user.email);
+    setCurrentUserImage(user.image.url);
+    setCurrentRegion(user.region);
+    setCurrentPhoneNumber(user.phoneNumber);
+    setCurrentFirstName(user.firstName);
+    setCurrentLastName(user.lastName);
+    return gender === 'FEMALE' ? setCurrentGender('Женский') : setCurrentGender('Мужской');
+  }, [])
   return (
     <div className="fixed inset-0 bg-gray-900 bg-opacity-50 z-50">
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg p-6">
@@ -15,26 +103,33 @@ const EditProfileModal = ({ onClose }) => {
           </h2>
           <img src={close} onClick={onClose} className="hover:cursor-pointer" />
         </div>
-        <form className="flex flex-col items-center mt-4">
-          <div className="relative">
-            <img src={user} alt="user photo" className="" />
+        <form className="flex flex-col items-center mt-4 border-b pb-2">
+          <div className="relative hover:cursor-pointer" onClick={handleImageClick}>
+            <img src={image ? URL.createObjectURL(image) : currentUserImage} alt="user photo" className="h-24 w-24 rounded-full" />
             <div className="rounded-full absolute top-0 bottom-0 left-0 right-0 bg-black opacity-50"></div>
             <img
               src={camera}
               className="absolute top-0 bottom-0 left-0 right-0 m-auto w-[40%]"
             />
           </div>
-          <div className="flex gap-4">
-            <Input label={'Имя'} value={'ex'} type='text'/>
-            <Input label={'Фамилия'} value={'ex'} type='text'/>
+          <div className="flex gap-3 justify-between mt-2 w-full">
+            <Input label={'Имя'} value={currentFirstName} type='text' onChange={(e) => setCurrentFirstName(e.target.value)}/>
+            <Input label={'Фамилия'} value={currentLastName} type='text' onChange={(e) => setCurrentLastName(e.target.value)}/>
           </div>
-          <div>
-            <Dropwdown label={'Пол'} options={['Мужской', 'Женский']}/>
+          <div className="flex w-full gap-3 justify-between mt-2">
+            <Dropwdown label={'Пол'} options={['Мужской', 'Женский']} value={currentGender} onChange={handleGenderChange}/>
+            <InputDate label={'Дата рождения'} selected={selectedDate} onChange={handleDateChange}/>
           </div>
-        </form>
-        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4">
-          Close
+          <div className="flex gap-3 justify-between mt-2 w-full">
+            <Dropwdown label={'Выберите регион'} options={['Кант', 'Чуй', 'Ош']} onChange={handleRegionChange} value={!currentRegion ? 'Не выбрано' : currentRegion}/>
+            <Input label={'Номер телефона'} value={currentPhoneNumber} onChange={(e) => setCurrentPhoneNumber(e.target.value)} type='text' />
+          </div>
+          <button type="button" onClick={handleSubmit} className="bg-[#8860C3] text-white px-4 py-2 rounded-lg mt-4 mr-auto w-[48%] mb-2">
+          Сохранить и выйти
         </button>
+        </form>
+        <PasswordChange />
+
       </div>
     </div>
   );
