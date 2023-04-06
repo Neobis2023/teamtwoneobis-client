@@ -64,10 +64,6 @@ const Profile = () => {
     },
   ];
   const [favoriteBlogs, setFavoriteBlogs] = useState([]);
-  // useEffect(() => {
-  //   const token = localStorage.getItem('token');
-  //   setToken(token);
-  // }, [])
   useEffect(() => {
     const getFavorites = async () => {
       const token = localStorage.getItem('token');
@@ -120,25 +116,7 @@ const Profile = () => {
             </p>
           </div>
           <div className="flex gap-2 justify-between">
-            {favoriteBlogs && favoriteBlogs.map(videoblog => {
-              return (<Blog blog={videoblog.blog}/>)
-            })}
-          </div>
-        </div>
-        <div>
-          <div className="flex justify-between mb-2">
-            <p className="text-[#403A64] text-[clamp(0.75rem,_1.39vw,_1.25rem)]">
-              Просмотренные видеолекции
-            </p>
-            <p className="text-[#5900B2] font-semibold text-[clamp(0.675rem,_0.972vw,_1.175rem)]">
-              Посмотреть все
-            </p>
-          </div>
-          <div className="flex gap-2 justify-between">
-            {favoriteBlogs && favoriteBlogs.map(videoblog => {
-              return (<Blog blog={videoblog.blog}/>)
-            })}
-
+            {favoriteBlogs.length ? favoriteBlogs.slice(0, 3).map((videoblog, index) => (<Blog blog={videoblog.blog} key={index}/>)) : <div className="mx-auto mt-4">Не найдено...</div>}
           </div>
         </div>
       </div>

@@ -60,7 +60,7 @@ const AddVideo = () => {
   
   const handleSave = () => {
     const formData = new FormData();
-    formData.append("image", lecturerImage);
+    formData.append("lecturerImage", lecturerImage);
   
     const newVideoBlog = {
       videoUrl,

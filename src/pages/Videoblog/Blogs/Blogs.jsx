@@ -15,10 +15,11 @@ const Blogs = () => {
     axios
       .get("https://girls4girls.herokuapp.com/api/video-blog")
       .then((res) => {
-        const lastBlog = res.data.data[res.data.data.length - 1];
-        const repeatedBlogs = [...Array(30)].map(() => res.data.data[0]);
-        console.log(res.data.data);
-        setBlogs([...repeatedBlogs, ...res.data.data.slice(1), lastBlog]);
+        // const lastBlog = res.data.data[res.data.data.length - 1];
+        // const repeatedBlogs = [...Array(30)].map(() => res.data.data[0]);
+        // console.log(res.data.data);
+        // setBlogs([...repeatedBlogs, ...res.data.data.slice(1), lastBlog]);
+        setBlogs(res.data.data);
       });
     axios
       .get("https://girls4girls.herokuapp.com/api/like", {

@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import flowers from '../assets/images/flowers.svg'
 import user from '../assets/images/user.svg'
+import EditProfileModal from './EditProfileModal'
 
 const TopContent = () => {
   const [name, setName] = useState('Пользователь'); 
+  const [modalOpened, setModalOpened] = useState(false);
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
     setName(user.firstName);
@@ -23,8 +25,9 @@ const TopContent = () => {
             <div>
                 <img src={flowers} alt='flowers'/>
             </div>
-            <button type='button' className='text-[#5900B2] font-medium text-[clamp(0.675rem,_0.972vw,_1.175rem)] bg-[rgba(255,_255,_255,_0.2)] border  px-4 py-2 w-fit border-[#5900B2] rounded-[20px]'>Редактировать профиль</button>
+            <button type='button' className='text-[#5900B2] font-medium text-[clamp(0.675rem,_0.972vw,_1.175rem)] bg-[rgba(255,_255,_255,_0.2)] border  px-4 py-2 w-fit border-[#5900B2] rounded-[20px]' onClick={() => setModalOpened(true)}>Редактировать профиль</button>
         </div>
+        {modalOpened ? <EditProfileModal onClose={() => setModalOpened(false)}/> : null}
     </section>
   )
 }

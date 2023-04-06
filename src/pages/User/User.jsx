@@ -5,7 +5,7 @@ import Profile from './components/Profile'
 
 const User = () => {
   return (
-    <div>
+    <div className='relative'>
         <TopContent />
         <div className='flex justify-between myWrapper w-full pt-8'>
             <Navbar />
