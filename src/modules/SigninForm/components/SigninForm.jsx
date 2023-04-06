@@ -33,7 +33,17 @@ const SigninForm = () => {
             'Authorization': `Bearer ${token}`
           }
         })
-        console.log(getUser)
+        const getFavorites = await axios.get('/like', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+        getFavorites.data.map((blog) => {
+          localStorage.setItem(`blog-${blog.blog.id}-isFavorite`, "true");
+        });
+      
+        console.log(getFavorites.data)
+        console.log(getUser, 'this is user')
         const userInfo = {
           email: getUser.data.email,
           firstName: getUser.data.firstName,
@@ -45,6 +55,7 @@ const SigninForm = () => {
           gender: getUser.data.gender,
           id: getUser.data.id,
           image: getUser.data.image,
+          dateOfBirth: getUser.data.dateOfBirth,
         }
         localStorage.setItem("user", JSON.stringify(userInfo));
         navigate(`/profile/${getUser.data.id}`);

@@ -100,9 +100,9 @@ const Profile = () => {
               Список всех достижений
             </p>
           </div>
-          <div className="flex justify-between gap-3 overflow-x-hidden">
+          <div className="flex gap-3 overflow-x-hidden">
             {achievements.slice(0, 7).map((achieve, index) => (
-              <Achievement {...achieve} key={index} />
+              <div className="basis-auto" key={index}><Achievement {...achieve} /></div>
             ))}
           </div>
         </div>
@@ -115,8 +115,8 @@ const Profile = () => {
               Посмотреть все
             </p>
           </div>
-          <div className="flex gap-2 justify-between">
-            {favoriteBlogs.length ? favoriteBlogs.slice(0, 3).map((videoblog, index) => (<Blog blog={videoblog.blog} key={index}/>)) : <div className="mx-auto mt-4">Не найдено...</div>}
+          <div className="flex gap-4">
+            {favoriteBlogs.length ? favoriteBlogs.slice(0, 3).map((videoblog, index) => (<div key={index} className="basis-1/3"><Blog blog={videoblog.blog} /></div>)) : <div className="mx-auto mt-4">Не найдено...</div>}
           </div>
         </div>
       </div>
