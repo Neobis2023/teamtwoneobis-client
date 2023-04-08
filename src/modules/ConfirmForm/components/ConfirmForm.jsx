@@ -46,23 +46,6 @@ const ConfirmForm = () => {
     onSubmit
   })
 
-  // const handleConfirm = async (user) => {
-  //   try {
-  //     const response = await axios.post('/confirm', JSON.stringify(user));
-  //     console.log(user);
-
-  //     if(response.status === 200 || response.status === 201) {
-  //       console.log(response)
-  //       navigate('/signin');
-  //     }
-
-  //     console.log(response);
-  //     return response;
-
-  //   } catch(e) {
-  //     console.log('Error: ', e);
-  //   }
-  // }
 
   return (
     <form onSubmit={handleSubmit} className="w-full flex flex-col items-center gap-4 mb-5">
