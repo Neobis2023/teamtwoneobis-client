@@ -16,6 +16,14 @@ const ApplyForm = () => {
   useEffect(() => {
     setEventName(JSON.parse(sessionStorage.getItem('eventName')));
   }, [eventName])
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  }, []);
   return (
     <section className="w-[85%]">
       <div className="myWrapper py-10 flex items-start">

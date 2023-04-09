@@ -19,7 +19,7 @@ const TopContent = () => {
   return (
     <section className='bg-[radial-gradient(100%_498.87%_at_102.29%_100%,_#FAEFFF_40.59%,_#F3F2FF_100%)]'>
         <div className='flex justify-between items-center myWrapper'>
-            <div className='flex gap-4'>
+            <div className='flex gap-4 items-center'>
                 <img src={userImage || user} alt='profile photo' className='w-24 h-24 rounded-full'/>
                 <div className='flex flex-col gap-2'>
                     <p className='w-fit text-[#C192EE] font-extrabold text-[clamp(1.3rem,_1.66vw,_1.8rem)] px-4 py-2 border bg-[#FFFFFF]  rounded-[12px]'>Привет, {name}!</p>

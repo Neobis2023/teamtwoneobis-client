@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from '../../../UI/Button/Button'
 import Input from "../../../UI/Input/Input";
 import line from '../assets/images/line-signin.png'
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import { signinSchema } from "../../../helpers/validation/schema";
 import axios from "../api/axios";
@@ -10,7 +10,17 @@ import axios from "../api/axios";
 
 const SigninForm = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [loggedin, setLoggedin] = useState(null);
+  const fromPage = location.state?.from?.pathname || '/';
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  }, []);
 
   const onSubmit = async (values, actions) => {
     if (!values.email) {
@@ -58,7 +68,8 @@ const SigninForm = () => {
           dateOfBirth: getUser.data.dateOfBirth,
         }
         localStorage.setItem("user", JSON.stringify(userInfo));
-        navigate(`/profile/${getUser.data.id}`);
+        navigate(fromPage, { replace: true })
+        // navigate(`/profile/${getUser.data.id}`);
         const getUsers = await axios.get('/user')
         console.log(getUsers);
       } 

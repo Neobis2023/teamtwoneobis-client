@@ -39,19 +39,14 @@ import ApplyForm from './modules/ApplyForm/ApplyForm';
 import User from './pages/User/User';
 import { useEffect } from 'react';
 import withAuth from './helpers/HOC/withAuth';
+import ResetPassword from './pages/Auth/ResetPassword';
+import WithAuth from './hoc/WithAuth';
 
 
 
 function App() {
-  // const loggedInUser = localStorage.getItem("user");
-  // useEffect(() => {
-  //   if (loggedInUser) {
-  //     const foundUser = JSON.parse(loggedInUser);
-  //     setUser(foundUser)
-  //   }
-  // }, [])
-  // localStorage.clear();
   const router = createBrowserRouter([
+    {path: '*', element: <h1>Not found</h1>},
     {
       path: "/",
       element: <RootLayout />,
@@ -60,11 +55,14 @@ function App() {
         { path: 'mentorship', element: <Mentorship /> },
         { path: 'videoblog/:id', element: <Videoblog /> },
         { path: 'trainings', element: <Trainings /> },
-        { path: 'trainings/:training/apply', element: <ApplyForm /> },
+        { path: 'trainings/:training/apply', element: <WithAuth>
+        <ApplyForm />
+      </WithAuth> },
         { path: 'forum', element: <Forum /> },
-        { path: 'forum/:forum/apply', element: <ApplyForm /> },
+        { path: 'forum/:forum/apply', element: <WithAuth>
+          <ApplyForm />
+        </WithAuth>}, 
         { path: 'profile/:userId', element: <User /> },
-
       ]
     },
     {
@@ -74,6 +72,7 @@ function App() {
         { path: 'signin', element: <Signin /> },
         { path: 'signup', element: <Signup /> },
         { path: 'signup/confirm', element: <Confirm /> },
+        { path: 'reset-password', element: <ResetPassword /> },
       ]
     },
     { 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import StartSection from "../../modules/StartSection/components/StartSection";
 import girlsTr from "./assets/images/girlsTr.png";
 import eventGirls from "./assets/images/eventGirls.png";
@@ -95,6 +95,13 @@ const Forum = () => {
         "Pellentesque at dui vitae amet varius interdum pulvinar mi a egestas ultricies ut diam eget tempor tortor feugiat.",
     },
   ];
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  }, []);
   return (
     <section className="forum">
       <StartSection
