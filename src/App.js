@@ -36,6 +36,9 @@ import ApplyForm from './modules/ApplyForm/ApplyForm';
 import User from './pages/User/User';
 import ResetPassword from './pages/Auth/ResetPassword';
 import WithAuth from './hoc/WithAuth';
+import EditTrainingsLayout from './pages/Admin/layouts/EditTrainingsLayout';
+import FutureTrainings from './pages/Admin/Edit/components/Trainings/pages/FutureTrainings';
+import AddQuestionnaire from './pages/Admin/Edit/components/Trainings/pages/AddQuestionnaire';
 
 
 
@@ -93,7 +96,10 @@ function App() {
         },
         { path: 'content', element: <AdminContent /> },
         { path: 'mentoring-program', element: <AdminMentoringProgram /> },
-        { path: 'trainings', element: <></> },
+        { path: 'trainings', element: <EditTrainingsLayout/>, children: [
+          { path: 'future-trainings', element: <FutureTrainings/> },
+          { path: 'future-trainings/:id/add-questionnaire', element: <AddQuestionnaire/> },
+        ] },
         { path: 'forums', element: <></> },
         { path: 'achievements', element: <></> },
         ]

@@ -20,7 +20,7 @@ const EditNavbar = () => {
                 <img src={document} alt='document'/>
                 Видеоблог
             </NavLink>
-            <NavLink to={'/admin/edit/trainings'} className='editLink flex gap-1 p-2 rounded-r-[5px]'>
+            <NavLink to={'/admin/edit/trainings/future-trainings'} className='editLink flex gap-1 p-2 rounded-r-[5px]'>
                 <img src={document} alt='document'/>
                 Тренинги
             </NavLink>

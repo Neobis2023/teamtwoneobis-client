@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import Button from "./Button/Button";
-import { useDispatch } from "react-redux";
-import { setEventName } from "../../helpers/reduxToolkit/applyForSlice";
-import useLocalStorage from "../../helpers/hooks/useLocalStorage";
 
 const Events = ({ imgSource, eventName, description, time, date, location, handleClick }) => {
-  const eventUrl = eventName.toLowerCase().split(' ').join('-');
-  // const dispatch = useDispatch();
+  const eventUrl = eventName?.toLowerCase().split(' ').join('-');
+  const newDate = new Date(date);
+  const options = { day: "numeric", month: "numeric", year: "numeric" };
+  const formattedDate = newDate.toLocaleDateString("en-GB", options);
 
   return (
     <div className="pb-20">
@@ -18,7 +17,7 @@ const Events = ({ imgSource, eventName, description, time, date, location, handl
           <div className="text-[clamp(.8rem,_1.1vw,_1.3rem)] flex flex-col gap-2">
             <div className="text-[#9E7CB8]">
               <p>
-                <span className="font-bold">Дата:</span> {date}{" "}
+                <span className="font-bold">Дата:</span> {formattedDate}{" "}
               </p>
               <p>
                 <span className="font-bold">Время:</span> {time}
@@ -36,12 +35,12 @@ const Events = ({ imgSource, eventName, description, time, date, location, handl
             <Button where={'/'} text={'Подробнее'} className={'text-[#662D91]'}/>
           </div>
         </div>
-        <div className="basis-1/2 w-fit">
+        <div className="basis-1/2 w-fit rounded-md">
           <img
             src={imgSource}
             alt="girls"
             loading="lazy"
-            className="w-[85%] ml-auto min-w-[320px]"
+            className="w-22 h-22 ml-auto min-w-[320px] rounded-md"
           />
         </div>
       </div>

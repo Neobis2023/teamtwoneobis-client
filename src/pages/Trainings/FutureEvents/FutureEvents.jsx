@@ -1,56 +1,57 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import girlsTr from "./assets/images/girlsTr.png";
 import EventsSlider from "../../../helpers/swiper/EventsSlider";
 import stars from './assets/images/stars.svg'
 import computer from './assets/images/computer.svg'
+import axios from "axios";
 
 const FutureEvents = () => {
-  const [trainings, setTrainings] = useState([
-    {
-      id: 1,
-      imgUrl: girlsTr,
-      eventName: "Time management",
-      description:
-        "Lorem ipsum dolor sit amet consecte adipiscing elit amethendrerit pretium nu.Lorem ipsum dolor sit nu.Lorem ipsum dolor sit amet consecteadipiscing elit amet",
-      time: "18:00",
-      date: "21 марта",
-      location: "Нарынская область, ул.Центральная 28а",
-    },
-    {
-      id: 2,
-      imgUrl: girlsTr,
-      eventName: "Education",
-      description:
-        "Lorem ipsum dolor sit amet consecte adipiscing elit amethendrerit pretium nu.Lorem ipsum dolor sit nu.Lorem ipsum dolor sit amet consecteadipiscing elit amet",
-      time: "18:00",
-      date: "21 марта",
-      location: "Нарынская область, ул.Центральная 28а",
-    },
-    {
-      id: 3,
-      imgUrl: girlsTr,
-      eventName: "Society and Its role",
-      description:
-        "Lorem ipsum dolor sit amet consecte adipiscing elit amethendrerit pretium nu.Lorem ipsum dolor sit nu.Lorem ipsum dolor sit amet consecteadipiscing elit amet",
-      time: "18:00",
-      date: "21 марта",
-      location: "Нарынская область, ул.Центральная 28а",
-    },
-    {
-      id: 4,
-      imgUrl: girlsTr,
-      eventName: "Cooking",
-      description:
-        "Lorem ipsum dolor sit amet consecte adipiscing elit amethendrerit pretium nu.Lorem ipsum dolor sit nu.Lorem ipsum dolor sit amet consecteadipiscing elit amet",
-      time: "18:00",
-      date: "21 марта",
-      location: "Нарынская область, ул.Центральная 28а",
-    },
-  ]);
-
-  // useEffect(() => {
-  //   axios.get("https://girls4girls.herokuapp.com/api/training").then((res) => setTrainings(res.data.data))
-  // }, [])
+  // const [trainings, setTrainings] = useState([
+  //   {
+  //     id: 1,
+  //     imgUrl: girlsTr,
+  //     eventName: "Time management",
+  //     description:
+  //       "Lorem ipsum dolor sit amet consecte adipiscing elit amethendrerit pretium nu.Lorem ipsum dolor sit nu.Lorem ipsum dolor sit amet consecteadipiscing elit amet",
+  //     time: "18:00",
+  //     date: "21 марта",
+  //     location: "Нарынская область, ул.Центральная 28а",
+  //   },
+  //   {
+  //     id: 2,
+  //     imgUrl: girlsTr,
+  //     eventName: "Education",
+  //     description:
+  //       "Lorem ipsum dolor sit amet consecte adipiscing elit amethendrerit pretium nu.Lorem ipsum dolor sit nu.Lorem ipsum dolor sit amet consecteadipiscing elit amet",
+  //     time: "18:00",
+  //     date: "21 марта",
+  //     location: "Нарынская область, ул.Центральная 28а",
+  //   },
+  //   {
+  //     id: 3,
+  //     imgUrl: girlsTr,
+  //     eventName: "Society and Its role",
+  //     description:
+  //       "Lorem ipsum dolor sit amet consecte adipiscing elit amethendrerit pretium nu.Lorem ipsum dolor sit nu.Lorem ipsum dolor sit amet consecteadipiscing elit amet",
+  //     time: "18:00",
+  //     date: "21 марта",
+  //     location: "Нарынская область, ул.Центральная 28а",
+  //   },
+  //   {
+  //     id: 4,
+  //     imgUrl: girlsTr,
+  //     eventName: "Cooking",
+  //     description:
+  //       "Lorem ipsum dolor sit amet consecte adipiscing elit amethendrerit pretium nu.Lorem ipsum dolor sit nu.Lorem ipsum dolor sit amet consecteadipiscing elit amet",
+  //     time: "18:00",
+  //     date: "21 марта",
+  //     location: "Нарынская область, ул.Центральная 28а",
+  //   },
+  // ]);
+  const [trainings, setTrainings] = useState([]);
+  useEffect(() => {
+    axios.get("https://girls4girls.herokuapp.com/api/training").then((res) => setTrainings(res.data.data))
+  }, [])
 
   return (
     <section>

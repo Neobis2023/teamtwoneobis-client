@@ -119,8 +119,8 @@ const ApplyForm = () => {
                   Заполнение анкеты
                 </h2>
                 <div>
-                  <Input question={"Фамилия"} value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
-                  <Input question={"Имя"} value={lastName} onChange={(e) => setLastName(e.target.value)}/>
+                  <Input question={"Фамилия"} value={lastName} onChange={(e) => setFirstName(e.target.value)}/>
+                  <Input question={"Имя"} value={firstName} onChange={(e) => setLastName(e.target.value)}/>
                   <Input question={"Адрес электронной почты"} value={email} onChange={(e) => setEmail(e.target.value)}/>
                   <InputDate label={'Дата рождения'} selected={selectedDate} onChange={handleDateChange} sublabel={'На момент прохождения тренинга вам должно быть от 14 до 19 лет включительно.'}/>
                   <Input question={"Номер телефона"} value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}/>

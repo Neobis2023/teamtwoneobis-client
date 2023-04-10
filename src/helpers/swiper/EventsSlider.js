@@ -40,11 +40,11 @@ const EventsSlider = ({ events }) => {
             return (
               <SwiperSlide key={event.id}>
                 <Events
-                  imgSource={event.imgUrl}
-                  eventName={event.eventName}
+                  imgSource={event.images[0].url}
+                  eventName={event.title}
                   description={event.description}
                   time={event.time}
-                  date={event.date}
+                  date={event.eventDate}
                   location={event.location}
                   handleClick={handleClick}
                 />
