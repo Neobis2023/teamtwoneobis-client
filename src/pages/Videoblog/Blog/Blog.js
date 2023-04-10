@@ -145,7 +145,8 @@ const Blog = memo(({ blog }) => {
             <span
               className={`border-[0.5px] border-solid rounded-[4px] border-[#CDB4DB] px-1 py-px bg-[rgba(102,_45,_145,_0.6)] text-white`}
             >
-              Образование
+              {blog.category.name}
+            
             </span>
           </p>
           <p className="text-[#AFAAD0] font-semibold text-[clamp(0.62rem,_0.97vw,_1.1rem)]">

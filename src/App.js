@@ -21,7 +21,6 @@ import TrainingsLayout from './pages/Admin/layouts/TrainingsLayout';
 import ForumsLayout from './pages/Admin/layouts/ForumsLayout';
 import ForumsSub from './pages/Admin/Applications/pages/subpages/ForumsSub';
 import FeedbackLayout from './pages/Admin/layouts/FeedbackLayout';
-import Edit from './pages/Admin/Edit/Edit'
 import AllMessages from './pages/Admin/Feedback/subpages/AllMessages';
 import ReadMessages from './pages/Admin/Feedback/subpages/ReadMessages';
 import FavoriteMessages from './pages/Admin/Feedback/subpages/FavoriteMessages';
@@ -32,13 +31,9 @@ import Categories from './pages/Admin/Edit/components/Videoblog/subpages/Categor
 import AddVideo from './pages/Admin/Edit/components/Videoblog/subpages/AddVideo';
 import AddCategory from './pages/Admin/Edit/components/Videoblog/subpages/AddCategory';
 import AdminMentoringProgram from './pages/Admin/Edit/components/MentoringProgram/AdminMentoringProgram';
-import AdminFooter from './pages/Admin/Edit/components/Content/AdminFooter';
-import AdminMain from './pages/Admin/Edit/components/Content/AdminMain';
 import AdminContent from './pages/Admin/Edit/components/Content/AdminContent';
 import ApplyForm from './modules/ApplyForm/ApplyForm';
 import User from './pages/User/User';
-import { useEffect } from 'react';
-import withAuth from './helpers/HOC/withAuth';
 import ResetPassword from './pages/Auth/ResetPassword';
 import WithAuth from './hoc/WithAuth';
 
@@ -62,7 +57,9 @@ function App() {
         { path: 'forum/:forum/apply', element: <WithAuth>
           <ApplyForm />
         </WithAuth>}, 
-        { path: 'profile/:userId', element: <User /> },
+        { path: 'profile/:userId', element: <WithAuth>
+          <User />
+        </WithAuth> },
       ]
     },
     {

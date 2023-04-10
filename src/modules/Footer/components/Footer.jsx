@@ -18,11 +18,11 @@ const Footer = () => {
                 </NavLink>
                 <div className='relative'>
                     <div className='flex flex-col w-fit mx-auto gap-4'>
-                        <NavLink to='/' className='text-[#292D32] font-semibold'>Менторство</NavLink>
-                        <NavLink to='/' className='text-[#292D32] font-semibold'>Видеоблог</NavLink>
-                        <NavLink to='/' className='text-[#292D32] font-semibold'>Тренинги</NavLink>
-                        <NavLink to='/' className='text-[#292D32] font-semibold'>Форум</NavLink>
-                        <NavLink to='/' className='text-[#292D32] font-semibold'>О нас</NavLink>
+                        <NavLink to='/mentorship' className='text-[#292D32] font-semibold'>Менторство</NavLink>
+                        <NavLink to='/videoblog/1' className='text-[#292D32] font-semibold'>Видеоблог</NavLink>
+                        <NavLink to='/trainings' className='text-[#292D32] font-semibold'>Тренинги</NavLink>
+                        <NavLink to='/forum' className='text-[#292D32] font-semibold'>Форум</NavLink>
+                        <NavLink to='/contacts' className='text-[#292D32] font-semibold'>О нас</NavLink>
                     </div>
                     <img src={lineFooter} alt="line-footer" className='absolute top-0 !justify-self-start h-full'/>
                 </div>

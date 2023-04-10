@@ -8,14 +8,19 @@ import axios from "../api/axios";
 
 const Heading = () => {
   const searchValue = useSelector(state => state.searchValues.searchValue);
-  const [category, setCategory] = useState("Выберите категорию");
+  const [category, setCategory] = useState("Все");
   const [chooseCategory, setChooseCategory] = useState(false);
   const [categories, setCategories] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(setCategoryRdx('Все'))
     try {
-      axios.get("/categories").then(res => setCategories(res.data.data)).catch(err => console.log(err));
+      axios.get("/categories").then(res =>  { 
+        setCategories([{name: 'Все'}, ...res.data.data]);
+        // console.log(res.data.data)
+        
+      }).catch(err => console.log(err));
       // const deleteCat = axios.delete(`/categories/1`).then(del => console.log(del.data));
     } catch (e) {
       console.log(e);
@@ -43,7 +48,7 @@ const Heading = () => {
               <img src={searchIcon} alt="search-icon"/>
               <input placeholder="Поиск" className="outline-none" value={searchValue} onChange={(e) => dispatch(setSearchValue(e.target.value))}/>
             </div>
-            <div className="relative basis-1/3 w-fit flex justify-between items-center border border-[#B3ABE3] rounded-[12px] p-2 gap-4 hover:cursor-pointer" onClick={() => setChooseCategory(current => !current)}>
+            <div className="relative basis-1/3 w-fit flex justify-between items-center border border-[#B3ABE3] rounded-[12px] p-2 gap-4 hover:cursor-pointer" onClick={() => setChooseCategory(curr => !curr)}>
               <p>{category}</p>
               <img src={arrowDown} alt="arrow-down"/>
               {chooseCategory ? <div className="absolute left-0 top-11 z-15 bg-[#fff] border rounded-[8px] px-2 py-1">

@@ -1,40 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Back from "./components/Back";
-import { NavLink, useLocation } from "react-router-dom";
 import Input from "./components/Input";
 import Radio from "./components/Radio";
 import Button from "./components/Button";
 import Textarea from "./components/Textarea";
 import Checkbox from "./components/Checkbox";
-import { useSelector } from "react-redux";
-import useLocalStorage from "../../helpers/hooks/useLocalStorage";
+import InputDate from "./components/InputDate";
 
-const ApplyForm = () => {
-  const [pageNumber, setPageNumber] = useState(1);
-  const CURRENT_YEAR = new Date().getFullYear();
-  const [eventName, setEventName] = useState("");
-  useEffect(() => {
-    setEventName(JSON.parse(sessionStorage.getItem('eventName')));
-  }, [eventName])
-
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth"
-    });
-  }, []);
-  return (
-    <section className="w-[85%]">
-      <div className="myWrapper py-10 flex items-start">
-        <Back className={"w-[20%] mt-2"} />
-        <div className="w-[75%]">
-          <h1 className="text-[clamp(1.8rem_,2.22vw,_2.3rem)] text-[#C192EE] font-extrabold mb-4 border-b pb-2">
-            Заявка на {eventName} {CURRENT_YEAR}
-          </h1>
-          {pageNumber === 1 && (
-            <div>
-              <div className="text-[#403A64] font-medium text-[clamp(0.7rem,_0.97vw,_1rem)] flex flex-col gap-4 border-b pb-4">
+ {/* <div className="text-[#403A64] font-medium text-[clamp(0.7rem,_0.97vw,_1rem)] flex flex-col gap-4 border-b pb-4">
                 <div>
                   <p className="mb-1">Дорогие девочки!</p>
                   <p>
@@ -95,26 +68,62 @@ const ApplyForm = () => {
                     <NavLink to={"/"}>instagram.com/girlsforgirls_kg</NavLink>
                   </div>
                 </div>
-              </div>
+              </div> */}
+
+const ApplyForm = () => {
+  const [pageNumber, setPageNumber] = useState(1);
+  const CURRENT_YEAR = new Date().getFullYear();
+  const [eventName, setEventName] = useState("");
+  // user info
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    console.log(user)
+    setEventName(JSON.parse(sessionStorage.getItem('eventName')));
+    setFirstName(user.firstName);
+    setLastName(user.lastName);
+    setEmail(user.email);
+    setPhoneNumber(user.phoneNumber);
+    setSelectedDate(user.dateOfBirth);
+
+  }, [eventName])
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  }, [pageNumber]);
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  }
+  return (
+    <section className="w-[85%]">
+      <div className="myWrapper py-10 flex items-start">
+        <Back className={"w-[20%] mt-2"} />
+        <div className="w-[75%]">
+          <h1 className="text-[clamp(1.8rem_,2.22vw,_2.3rem)] text-[#C192EE] font-extrabold mb-4 border-b pb-2">
+            Заявка на {eventName} {CURRENT_YEAR}
+          </h1>
+          {pageNumber === 1 && (
+            <div>
               <div className="mt-4">
                 <h2 className="text-[#C192EE] font-extrabold text-[clamp(1.3rem,_1.66vw,_1.8rem)]">
                   Заполнение анкеты
                 </h2>
                 <div>
-                  <Input question={"Фамилия"} />
-                  <Input question={"Имя"} />
-                  <Input question={"Адрес электронной почты"} />
-                  <Input
-                    question={"Дата рождения"}
-                    type={"date"}
-                    sublabel={
-                      "Формат месяц/день/год. На момент прохождения тренинга вам должно быть от 14 до 19 лет включительно."
-                    }
-                    onfocus="(this.type = 'date')"
-                    id="date"
-                    className="hover:cursor-pointer"
-                  />
-                  <Input question={"Номер телефона"} />
+                  <Input question={"Фамилия"} value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
+                  <Input question={"Имя"} value={lastName} onChange={(e) => setLastName(e.target.value)}/>
+                  <Input question={"Адрес электронной почты"} value={email} onChange={(e) => setEmail(e.target.value)}/>
+                  <InputDate label={'Дата рождения'} selected={selectedDate} onChange={handleDateChange} sublabel={'На момент прохождения тренинга вам должно быть от 14 до 19 лет включительно.'}/>
+                  <Input question={"Номер телефона"} value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}/>
                   <Radio question={'Из какого вы региона?'} options={['Кант']}/>
                   <Input
                     question={"Укажите ваш район, город или село"}
