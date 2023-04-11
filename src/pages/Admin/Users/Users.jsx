@@ -12,7 +12,7 @@ const User = ({ id, image, firstName, lastName, email, phoneNumber, status, isDe
       } rounded-[10px] grid grid-cols-[1fr_1fr_0.6fr_0.6fr_0.6fr] gap-4 items-center py-4 px-2 justify-between text-[0.875rem] my-3`}
     >
       <div className="flex items-center gap-2">
-        <img src={image.url} alt="user" className="w-[30px] h-[30px]"/>
+        <img src={image ? image?.url : userPhoto} alt="user" className="w-[30px] h-[30px]"/>
         <div>
           {firstName}
           {" "}
@@ -170,6 +170,7 @@ const Users = () => {
   useEffect(() => {
     axios.get("https://girls4girls.herokuapp.com/api/user").then(res => setUsers(res.data.data))
   }, [])
+
 
   return (
     <section className="bg-[#EAF0FF] w-full flex flex-col justify-end">
