@@ -35,12 +35,12 @@ const Events = ({ imgSource, eventName, description, time, date, location, handl
             <Button where={'/'} text={'Подробнее'} className={'text-[#662D91]'}/>
           </div>
         </div>
-        <div className="basis-1/2 w-fit rounded-md">
+        <div className="basis-1/2 h-[350px] rounded-md">
           <img
             src={imgSource}
             alt="girls"
             loading="lazy"
-            className="w-22 h-22 ml-auto min-w-[320px] rounded-md"
+            className="w-full h-full object-cover ml-auto min-w-[320px] rounded-md"
           />
         </div>
       </div>

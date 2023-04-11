@@ -7,50 +7,10 @@ import MySlider from "../../helpers/swiper/MySlider";
 import computer from "./assets/images/computer.svg";
 import stars from "./assets/images/stars.svg";
 import EventsSlider from "../../helpers/swiper/EventsSlider";
+import axios from "axios";
 
 const Forum = () => {
-  const [forums, setForums] = useState([
-    {
-      id: 1,
-      imgUrl: girlsTr,
-      eventName: "Time management",
-      description:
-        "Lorem ipsum dolor sit amet consecte adipiscing elit amethendrerit pretium nu.Lorem ipsum dolor sit nu.Lorem ipsum dolor sit amet consecteadipiscing elit amet",
-      time: "18:00",
-      date: "21 марта",
-      location: "Нарынская область, ул.Центральная 28а",
-    },
-    {
-      id: 2,
-      imgUrl: girlsTr,
-      eventName: "Education",
-      description:
-        "Lorem ipsum dolor sit amet consecte adipiscing elit amethendrerit pretium nu.Lorem ipsum dolor sit nu.Lorem ipsum dolor sit amet consecteadipiscing elit amet",
-      time: "18:00",
-      date: "21 марта",
-      location: "Нарынская область, ул.Центральная 28а",
-    },
-    {
-      id: 3,
-      imgUrl: girlsTr,
-      eventName: "Society and Its role",
-      description:
-        "Lorem ipsum dolor sit amet consecte adipiscing elit amethendrerit pretium nu.Lorem ipsum dolor sit nu.Lorem ipsum dolor sit amet consecteadipiscing elit amet",
-      time: "18:00",
-      date: "21 марта",
-      location: "Нарынская область, ул.Центральная 28а",
-    },
-    {
-      id: 4,
-      imgUrl: girlsTr,
-      eventName: "Cooking",
-      description:
-        "Lorem ipsum dolor sit amet consecte adipiscing elit amethendrerit pretium nu.Lorem ipsum dolor sit nu.Lorem ipsum dolor sit amet consecteadipiscing elit amet",
-      time: "18:00",
-      date: "21 марта",
-      location: "Нарынская область, ул.Центральная 28а",
-    },
-  ]);
+  const [forums, setForums] = useState([]);
   const events = [
     {
       id: 1,
@@ -95,6 +55,10 @@ const Forum = () => {
         "Pellentesque at dui vitae amet varius interdum pulvinar mi a egestas ultricies ut diam eget tempor tortor feugiat.",
     },
   ];
+
+  useEffect(() => {
+    axios.get("https://girls4girls.herokuapp.com/api/forum").then((res) => setForums(res.data.data))
+  }, [])
   useEffect(() => {
     window.scrollTo({
       top: 0,
