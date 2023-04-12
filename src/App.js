@@ -98,7 +98,7 @@ function App() {
         { path: 'mentoring-program', element: <AdminMentoringProgram /> },
         { path: 'trainings', element: <EditTrainingsLayout/>, children: [
           { path: 'future-trainings', element: <FutureTrainings/> },
-          { path: 'future-trainings/:id/add-questionnaire', element: <AddQuestionnaire/> },
+          { path: 'future-trainings/add-questionnaire', element: <AddQuestionnaire/> },
         ] },
         { path: 'forums', element: <></> },
         { path: 'achievements', element: <></> },

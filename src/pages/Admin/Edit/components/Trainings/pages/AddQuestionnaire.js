@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import SaveButton from "../../../../components/SaveButton";
 import QuestionCompleteItem from "../components/QuestionCompleteItem";
+import { NavLink } from "react-router-dom";
+import Back from "../components/Back";
 
 const AddQuestionnaire = () => {
-  // const [questions, setQuestions] = useState([{ id: 0, index: 0 }]);
   const [questions, setQuestions] = useState([]);
   const [questionCount, setQuestionCount] = useState(0);
   const trainingName = useSelector(
@@ -13,9 +14,6 @@ const AddQuestionnaire = () => {
 
   console.log(questions);
 
-  // const handleDelete = (id) => {
-  //   setQuestions((prev) => prev.filter((curr) => curr.id !== id));
-  // };
   const handleDelete = (id) => {
     setQuestions(prev => {
       // filter out the deleted question
@@ -49,8 +47,9 @@ const AddQuestionnaire = () => {
   }, [questions]);
   return (
     <div className="flex flex-col gap-4">
+      <Back />
       <p className="text-[#000000] font-semibold text-[1.25rem]">
-        {trainingName}
+        Тренинг
       </p>
       {questions.map(({ id, index }) => (
         <QuestionCompleteItem

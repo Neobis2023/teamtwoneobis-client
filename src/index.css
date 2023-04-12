@@ -125,7 +125,11 @@ html, body {
 /* textarea */
 
 textarea {
-  min-height: 300px;
+  min-height: 200px;
+}
+
+textarea::-webkit-scrollbar {
+  width: 0px;
 }
 
 #apply-textarea {
