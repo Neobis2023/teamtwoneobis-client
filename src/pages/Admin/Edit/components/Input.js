@@ -3,7 +3,7 @@ import React from 'react'
 const Input = ({ label,  className, value, ...props }) => {
     return (
       <div
-        className={`border-[#9960C3] border rounded-[8px] relative w-full ${className}`}
+        className={`border-[#9960C3] border rounded-[8px] w-full relative  ${className}`}
       >
         <input {...props} type={"text"} className="p-4 pb-1 pl-1 w-full border rounded-[8px] outline-none" id="link" value={value}/>
         <label

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Mission from '../Mentorship/Mission/Mission'
 import Application from './Application/Application'
 import Criteria from './Criteria/Criteria'
@@ -8,6 +8,13 @@ import Power from './Power/Power'
 import QA from './QA/QA'
 
 const Mentorship = () => {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  }, []);
   return (
     <>
         <Mission />

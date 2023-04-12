@@ -19,7 +19,7 @@ const Map = () => {
             областей и г. Бишкек.
           </p>
         </div>
-        <div className="relative w-full h-[0] pb-[60%]">
+        <div className="relative w-full h-[0] pb-[20rem]">
           <img src={kyrgyzstan} alt="map" style={{ marginInline: 'auto' }} className='w-[70%]'/>
           <img src={talas} alt="talas" className="absolute top-[8%] left-[36%] h-fit w-[4%]"/>
           <img src={chui} alt="chui" className="absolute top-[1%] left-[47.5%] h-fit w-[4%]"/>

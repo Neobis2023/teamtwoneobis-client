@@ -64,10 +64,6 @@ const Profile = () => {
     },
   ];
   const [favoriteBlogs, setFavoriteBlogs] = useState([]);
-  // useEffect(() => {
-  //   const token = localStorage.getItem('token');
-  //   setToken(token);
-  // }, [])
   useEffect(() => {
     const getFavorites = async () => {
       const token = localStorage.getItem('token');
@@ -104,9 +100,9 @@ const Profile = () => {
               Список всех достижений
             </p>
           </div>
-          <div className="flex justify-between gap-3 overflow-x-hidden">
+          <div className="flex gap-3 overflow-x-hidden">
             {achievements.slice(0, 7).map((achieve, index) => (
-              <Achievement {...achieve} key={index} />
+              <div className="basis-auto" key={index}><Achievement {...achieve} /></div>
             ))}
           </div>
         </div>
@@ -119,26 +115,8 @@ const Profile = () => {
               Посмотреть все
             </p>
           </div>
-          <div className="flex gap-2 justify-between">
-            {favoriteBlogs && favoriteBlogs.map(videoblog => {
-              return (<Blog blog={videoblog.blog}/>)
-            })}
-          </div>
-        </div>
-        <div>
-          <div className="flex justify-between mb-2">
-            <p className="text-[#403A64] text-[clamp(0.75rem,_1.39vw,_1.25rem)]">
-              Просмотренные видеолекции
-            </p>
-            <p className="text-[#5900B2] font-semibold text-[clamp(0.675rem,_0.972vw,_1.175rem)]">
-              Посмотреть все
-            </p>
-          </div>
-          <div className="flex gap-2 justify-between">
-            {favoriteBlogs && favoriteBlogs.map(videoblog => {
-              return (<Blog blog={videoblog.blog}/>)
-            })}
-
+          <div className="flex gap-4">
+            {favoriteBlogs.length ? favoriteBlogs.slice(0, 3).map((videoblog, index) => (<div key={index} className="basis-1/3"><Blog blog={videoblog.blog} /></div>)) : <div className="mx-auto mt-4">Не найдено...</div>}
           </div>
         </div>
       </div>

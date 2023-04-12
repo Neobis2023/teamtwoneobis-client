@@ -11,6 +11,14 @@ const SignupForm = () => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  }, []);
+
   const onSubmit = async (values, actions) => {
     try {
       const response = await handleSignup(values);
@@ -29,6 +37,8 @@ const SignupForm = () => {
       const response = await axios.post("/signup", JSON.stringify(userCopy));
 
       if (response?.status === 201 || response?.status === 200) {
+        localStorage.setItem("email", JSON.stringify(values.email));
+        localStorage.setItem("phoneNumber", JSON.stringify(values.phoneNumber));
         navigate("/signup/confirm");
         console.log(response);
       }

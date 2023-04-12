@@ -7,8 +7,8 @@ import userIcon from '../../assets/images/user.svg'
 const Language = () => {
   const [language, setLanguage] = useState(null);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [currentUser, setCurrentUser] = useState("");
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem('user'));
 
   const handleUserClick = () => {
     setUserMenuOpen((current) => !current)
@@ -17,11 +17,14 @@ const Language = () => {
 
   const handleLogout = () => {
     localStorage.clear();
+    setCurrentUser("");
     navigate('/');
   }
 
   useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
     setLanguage('РУС');
+    setCurrentUser(user);
     setUserMenuOpen(false);
   }, [])  
   
@@ -49,11 +52,11 @@ const Language = () => {
           КЫРГ
         </p>
       </div>
-      {user ? <div className="flex gap-2 items-center text-[#662D91] text-[0.8rem,_clamp(1.1vw,_1.3rem)] font-bold relative hover:cursor-pointer" onClick={handleUserClick} >
-        <img src={userIcon} />
-        <p>{user.firstName}</p>
-        {userMenuOpen ? <div className="absolute top-[50px] right-0 border rounded-md p-4">
-          <NavLink to={`/profile/${user.id}`}>Профиль</NavLink>
+      {currentUser ? <div className="flex gap-2 items-center text-[#662D91] text-[0.8rem,_clamp(1.1vw,_1.3rem)] font-bold relative hover:cursor-pointer" onClick={handleUserClick} >
+        <img src={currentUser.image.url || userIcon} className="w-10 h-10 rounded-full"/>
+        {/* <p>{currentUser.firstName}</p> */}
+        {userMenuOpen ? <div className="absolute top-[50px] right-0 border rounded-md p-4 bg-[white] z-15">
+          <NavLink to={`/profile/${currentUser.id}`}>Профиль</NavLink>
           <div onClick={handleLogout}>Выйти</div>
         </div> : null}
       </div>  :       <NavLink to="/signin" className={"basis-1/2"}>

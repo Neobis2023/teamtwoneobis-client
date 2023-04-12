@@ -245,6 +245,7 @@ const toolkitSlice = createSlice({
       message: `Lorim ipsum .. . . . . . . . . I am pleased to invite you all to our team building event that will be held next Friday, January 21st at 2 pm. The event will be held at the company's conference hall, we will have games`,
     },
     feedbackSearchValue: "",
+    trainingAddQuestionnaire: "",
   },
   reducers: {
     setFeedbackCurrentUser(state, action) {
@@ -253,9 +254,12 @@ const toolkitSlice = createSlice({
     setFeedbackSearchValue(state, action) {
       state.feedbackSearchValue = action.payload;
     },
+    setTrainingAddQuestionnaire(state, action) {
+      state.trainingAddQuestionnaire = action.payload;
+    }
   },
 });
 
 export default toolkitSlice.reducer;
-export const { setFeedbackCurrentUser, setFeedbackSearchValue } =
+export const { setFeedbackCurrentUser, setFeedbackSearchValue, setTrainingAddQuestionnaire } =
   toolkitSlice.actions;

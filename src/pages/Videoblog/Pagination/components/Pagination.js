@@ -8,12 +8,12 @@ const Pagination = ({ blogsPerPage, totalBlogs, paginate, currentPage }) => {
   let { id } = useParams();
   id = Number(id);
   
-  for (let i = 1; i <= Math.ceil(totalBlogs / blogsPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(totalBlogs?.length / blogsPerPage); i++) {
     pageNumbers.push(i);
   }
 
   return (
-    <nav className="">
+    <nav className="my-6">
       <div className="flex gap-2 pagination-numbers flex-wrap">
         {currentPage === 1 ? null : (
           <NavLink

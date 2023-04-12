@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from '../../../UI/Button/Button'
 import Input from "../../../UI/Input/Input";
 import line from '../assets/images/line-signin.png'
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import { signinSchema } from "../../../helpers/validation/schema";
 import axios from "../api/axios";
@@ -10,7 +10,17 @@ import axios from "../api/axios";
 
 const SigninForm = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [loggedin, setLoggedin] = useState(null);
+  const fromPage = location.state?.from?.pathname || '/';
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  }, []);
 
   const onSubmit = async (values, actions) => {
     if (!values.email) {
@@ -33,7 +43,17 @@ const SigninForm = () => {
             'Authorization': `Bearer ${token}`
           }
         })
-        console.log(getUser)
+        const getFavorites = await axios.get('/like', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+        getFavorites.data.map((blog) => {
+          localStorage.setItem(`blog-${blog.blog.id}-isFavorite`, "true");
+        });
+      
+        console.log(getFavorites.data)
+        console.log(getUser, 'this is user')
         const userInfo = {
           email: getUser.data.email,
           firstName: getUser.data.firstName,
@@ -45,9 +65,11 @@ const SigninForm = () => {
           gender: getUser.data.gender,
           id: getUser.data.id,
           image: getUser.data.image,
+          dateOfBirth: getUser.data.dateOfBirth,
         }
         localStorage.setItem("user", JSON.stringify(userInfo));
-        navigate(`/profile/${getUser.data.id}`);
+        navigate(fromPage, { replace: true })
+        // navigate(`/profile/${getUser.data.id}`);
         const getUsers = await axios.get('/user')
         console.log(getUsers);
       } 
