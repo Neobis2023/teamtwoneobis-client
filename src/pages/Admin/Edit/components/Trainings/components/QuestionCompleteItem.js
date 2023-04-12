@@ -14,7 +14,7 @@ const QuestionCompleteItem = ({ handleDelete, id }) => {
   const [anotherOption, setAnotherOption] = useState(false);
   const [isRequired, setIsRequired] = useState(false);
   const questionTypes = {
-    Текст: "text",
+    "Текст": "text",
     "Один из списка": "radio",
     "Несколько из списка": "checkbox",
     "Раскрывающийся список": "dropdown",
@@ -41,6 +41,7 @@ const QuestionCompleteItem = ({ handleDelete, id }) => {
 
   useEffect(() => {
     setQuestionType(Object.keys(questionTypes)[0]);
+    console.log('changed')
   }, []);
   return (
     <div className="flex justify-between my-4 border-b-2 pb-6">
@@ -51,14 +52,14 @@ const QuestionCompleteItem = ({ handleDelete, id }) => {
           {questionType === "Один из списка"
             ? handleOptions(
                 <>
-                  <img src={circleEmpty} />
+                  <img src={circleEmpty} alt="circle empty"/>
                   <Input label={"Вариант"} />
                 </>
               )
             : questionType === "Несколько из списка"
             ? handleOptions(
                 <>
-                  <img src={squareEmpty} />
+                  <img src={squareEmpty} alt="square empty"/>
                   <Input label={"Вариант"} />
                 </>
               )
