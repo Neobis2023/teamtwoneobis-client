@@ -13,8 +13,16 @@ const QuestionCompleteItem = ({ handleDelete, id }) => {
   const [numberOfOptions, setNumberOfOptions] = useState(1);
   const [anotherOption, setAnotherOption] = useState(false);
   const [isRequired, setIsRequired] = useState(false);
+  const [questionItem, setQuestionItem] = useState({
+    text: "",
+    description: "",
+    type: "TEXT",
+    variants: [],
+    correctVariantIndex: 0,
+  });
+
   const questionTypes = {
-    "Текст": "text",
+    Текст: "text",
     "Один из списка": "radio",
     "Несколько из списка": "checkbox",
     "Раскрывающийся список": "dropdown",
@@ -32,57 +40,102 @@ const QuestionCompleteItem = ({ handleDelete, id }) => {
       count.push("another");
     }
 
-    return count.map((option) => (
-      <div key={option} className="flex gap-2 items-center w-[92%] ml-auto">
-        {option !== "another" ? component : <Input label={"Другое"} disabled />}
-      </div>
-    ));
+    return count.map((option, index) => {
+      const variant = questionItem.variants[index];
+      const value = variant ? variant.text : "";
+      return (
+        <div key={option} className="flex gap-2 items-center w-[92%] ml-auto">
+          {option !== "another" ? (
+            <>
+              {component}{" "}
+              <Input
+                label={"Вариант"}
+                id={option}
+                value={value}
+                onChange={(e) =>
+                  setQuestionItem((prevState) => {
+                    const newVariants = [...prevState.variants];
+                    newVariants[index] = { text: e.target.value };
+                    return { ...prevState, variants: newVariants };
+                  })
+                }
+              />
+            </>
+          ) : (
+            <Input label={"Другое"} disabled />
+          )}
+        </div>
+      );
+    });
   };
+  console.log(questionItem);
 
   useEffect(() => {
     setQuestionType(Object.keys(questionTypes)[0]);
-    console.log('changed')
+    console.log("changed");
   }, []);
   return (
     <div className="flex justify-between my-4 border-b-2 pb-6">
       <div className="basis-[46%] flex flex-col justify-between gap-4">
-        <Input label={"Вопрос"} />
-        <Input label={"Уточнение"} />
+        <Input
+          label={"Вопрос"}
+          value={questionItem.text}
+          onChange={(e) =>
+            setQuestionItem((prev) => ({ ...prev, text: e.target.value }))
+          }
+        />
+        <Input
+          label={"Уточнение"}
+          value={questionItem.description || null}
+          onChange={(e) =>
+            setQuestionItem((prev) => ({
+              ...prev,
+              description: e.target.value,
+            }))
+          }
+        />
         <div className="flex flex-col gap-2">
           {questionType === "Один из списка"
             ? handleOptions(
                 <>
-                  <img src={circleEmpty} alt="circle empty"/>
-                  <Input label={"Вариант"} />
+                  <img src={circleEmpty} alt="circle empty" />
                 </>
               )
             : questionType === "Несколько из списка"
             ? handleOptions(
                 <>
-                  <img src={squareEmpty} alt="square empty"/>
-                  <Input label={"Вариант"} />
+                  <img src={squareEmpty} alt="square empty" />
                 </>
               )
             : questionType === "Раскрывающийся список"
-            ? handleOptions(
-                <>
-                  <Input label={"Вариант"} />
-                </>
-              )
+            ? handleOptions(<></>)
             : null}
           {questionType !== "Текст" && (
             <div className="flex flex-col gap-2 my-2 ml-7">
               <button
                 type="button"
                 className="w-fit underline"
-                onClick={() => setNumberOfOptions((curr) => curr + 1)}
+                onClick={(e) => {
+                  setNumberOfOptions((curr) => curr + 1);
+                  setQuestionItem((prevState) => ({
+                    ...prevState,
+                    variants: [...prevState.variants, { text: "" }],
+                  }));
+                }}
               >
                 Добавить вариант
               </button>
               <button
                 type="button"
                 className="w-fit underline text-red-500"
-                onClick={() => setNumberOfOptions((curr) => curr - 1)}
+                onClick={() => {
+                  setNumberOfOptions((curr) => curr - 1);
+                  setQuestionItem((prevState) => {
+                    const newVariants = [...prevState.variants];
+                    newVariants.pop();
+                    return { ...prevState, variants: newVariants };
+                  });
+                }}
               >
                 Удалить вариант
               </button>
