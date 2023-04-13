@@ -14,6 +14,7 @@ const CreateQuestionnaire = () => {
   const dispatch = useDispatch();
   const [questions, setQuestions] = useState([]);
   const [questionCount, setQuestionCount] = useState(0);
+  const [isPrevSaved, setIsPrevSaved] = useState(null);
   
   // const { data, isLoading } = useGetQuestionnairesQuery();
   const [ createQuestionnaire, { isLoading, data }] = useCreateQuestionnaireMutation();
@@ -35,16 +36,20 @@ const CreateQuestionnaire = () => {
   };
   
   const handleAddQuestion = () => {
-    setQuestions(prev => {
-      const newQuestion = {
-        id: questionCount,
-        index: prev.length
-      };
-      
-      setQuestionCount(prev => prev + 1);
-      
-      return [...prev, newQuestion];
-    });
+    if (isPrevSaved || (questionCount === 0)) {
+      setQuestions(prev => {
+        const newQuestion = {
+          id: questionCount,
+          index: prev.length
+        };
+        
+        setIsPrevSaved(false);
+        setQuestionCount(prev => prev + 1);
+        return [...prev, newQuestion];
+      });
+    }
+
+    console.log(isPrevSaved)
   };
   
   const getDataFromChild = (id, question) => {
@@ -64,10 +69,15 @@ const CreateQuestionnaire = () => {
     dispatch(saveQuestionnaireID(resultQuestionnaireID))
     console.log(result, "***");
   }
+
+  const getSavedStatus = (status) => {
+    setIsPrevSaved(status)
+  };
   
   useEffect(() => {
     console.log(questions);
   }, [questions]);
+
   
   return (
     <div className="flex flex-col gap-4">
@@ -80,16 +90,19 @@ const CreateQuestionnaire = () => {
           idx={index}
           getDataFromChild={getDataFromChild}
           handleDelete={handleDelete}
+          getSavedStatus={getSavedStatus}
         />
       ))}
+      <div className='flex flex-col gap-2 relative'>
       <button
         type="button"
-        className="w-fit text-[#9960C3] rounded-[8px] border border-[ #9960C3] p-2"
+        className="w-fit text-[#9960C3] rounded-[8px] border border-[#9960C3] p-2"
         onClick={handleAddQuestion}
       >
         Добавить вопрос
       </button>
       <SaveButton onClick={handleSave}  text={"Сохранить"} className="w-fit" />
+      </div>
     </div>
   );
 };

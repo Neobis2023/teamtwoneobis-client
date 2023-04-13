@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { arrowDown, circle, trash, square, circleEmpty, squareEmpty } from './assets/images';
 import InputV2 from './InputV2';
+import InfoIcon from '@mui/icons-material/Info';
 
-const CreateQuestion = ({ handleDelete, id, idx, getDataFromChild }) => {
+const CreateQuestion = ({ handleDelete, id, idx, getDataFromChild, getSavedStatus }) => {
   const [questionType, setQuestionType] = useState("");
   const [chooseType, setChooseType] = useState(false);
   const [numberOfOptions, setNumberOfOptions] = useState(1);
@@ -41,13 +42,13 @@ const CreateQuestion = ({ handleDelete, id, idx, getDataFromChild }) => {
     
     return count.map((option, index) => (
       <div key={option} className="flex gap-2 items-center w-[92%] ml-auto">
-        {option !== "another"
-          ?
+        {/* {option !== "another"
+          ? */}
            <>
             {component}
              <InputV2 onChange={(e) => handleVariantsChange(index, e.target.value)} label={"Вариант"} />
            </>
-           : <InputV2 label={"Другое"} disabled />}
+          {/* : <InputV2 label={"Другое"} disabled /> */}
       </div>
     ));
   };
@@ -77,7 +78,7 @@ const CreateQuestion = ({ handleDelete, id, idx, getDataFromChild }) => {
       question.variants = variants;
     }
     getDataFromChild(id, question);
-    console.log(question);
+    console.log(question, 'from create question');
   }
   
   useEffect(() => {
@@ -122,7 +123,7 @@ const CreateQuestion = ({ handleDelete, id, idx, getDataFromChild }) => {
                 Удалить вариант
               </button>
               
-              {questionType !== "Раскрывающийся список" && (
+              {/* {questionType !== "Раскрывающийся список" && (
                 <div className="flex flex-col">
                   или
                   <button
@@ -140,12 +141,12 @@ const CreateQuestion = ({ handleDelete, id, idx, getDataFromChild }) => {
                     Удалить вариант "Другое"
                   </button>
                 </div>
-              )}
+              )} */}
             </div>
           )}
         </div>
       </div>
-      <div className="border-l basis-[52%] pl-4 flex flex-col justify-between">
+      <div className="border-l basis-[52%] pl-4 flex flex-col justify-between gap-16">
         <div
           className="flex justify-between p-3 pl-1 border-[#9960C3] border rounded-[8px] w-full relative hover:cursor-pointer"
           onClick={() => setChooseType((curr) => !curr) }
@@ -171,7 +172,7 @@ const CreateQuestion = ({ handleDelete, id, idx, getDataFromChild }) => {
             </div>
           )}
         </div>
-        <div className="flex text-[0.875rem] text-[#292D32] gap-2 justify-between">
+        <div className="flex text-[0.875rem] text-[#292D32] gap-2 justify-between relative">
           <div className="flex gap-2 items-center hover:cursor-pointer">
             <img src={trash} alt="trash" />
             <button type="button" onClick={() => handleDelete(id)}>
@@ -182,12 +183,21 @@ const CreateQuestion = ({ handleDelete, id, idx, getDataFromChild }) => {
             <input
               type="checkbox"
               id="isRequired"
+              required
               checked={isRequired}
-              onClick={() => {setIsRequired((curr) => !curr); sendToParent()}}
+              onClick={() => {setIsRequired((curr) => {
+                getSavedStatus(!curr);
+                console.log(!curr, 'from question')
+                return !curr
+              }); sendToParent()}}
             />
             <label htmlFor="isRequired" className="hover:cursor-pointer">
-              Обязательный вопрос
+              Сохранить
             </label>
+            {!isRequired && <div className="absolute bottom-8 left-0 border p-1 text-[0.8rem] flex gap-2 items-center rounded-md">
+              <InfoIcon/>
+              Прежде чем добавить новый вопрос, пожалуйста сохраните текущий  👇🏻
+            </div>}
           </div>
         </div>
       </div>
