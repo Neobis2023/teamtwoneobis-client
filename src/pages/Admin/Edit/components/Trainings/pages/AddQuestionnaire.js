@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import SaveButton from "../../../../components/SaveButton";
 import QuestionCompleteItem from "../components/QuestionCompleteItem";
-import { NavLink } from "react-router-dom";
 import Back from "../components/Back";
+import CreateQuestionnaire from '../../../../../../modules/CreateQuestionnaire/CreateQuestionnaire';
 
 const AddQuestionnaire = () => {
   const [questions, setQuestions] = useState([]);
@@ -51,22 +51,23 @@ const AddQuestionnaire = () => {
       <p className="text-[#000000] font-semibold text-[1.25rem]">
         Тренинг
       </p>
-      {questions.map(({ id, index }) => (
-        <QuestionCompleteItem
-          key={id}
-          id={id}
-          index={index}
-          handleDelete={handleDelete}
-        />
-      ))}
-      <button
-        type="button"
-        className="w-fit text-[#9960C3] rounded-[8px] border border-[ #9960C3] p-2"
-        onClick={handleAddQuestion}
-      >
-        Добавить вопрос
-      </button>
-      <SaveButton text={"Сохранить"} className="w-fit" />
+      {/*{questions.map(({ id, index }) => (*/}
+      {/*  <QuestionCompleteItem*/}
+      {/*    key={id}*/}
+      {/*    id={id}*/}
+      {/*    index={index}*/}
+      {/*    handleDelete={handleDelete}*/}
+      {/*  />*/}
+      {/*))}*/}
+      {/*<button*/}
+      {/*  type="button"*/}
+      {/*  className="w-fit text-[#9960C3] rounded-[8px] border border-[ #9960C3] p-2"*/}
+      {/*  onClick={handleAddQuestion}*/}
+      {/*>*/}
+      {/*  Добавить вопрос*/}
+      {/*</button>*/}
+      {/*<SaveButton text={"Сохранить"} className="w-fit" />*/}
+      <CreateQuestionnaire />
     </div>
   );
 };
