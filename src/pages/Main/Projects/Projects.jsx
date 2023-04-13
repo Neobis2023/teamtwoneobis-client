@@ -34,10 +34,10 @@ export const Results = () => {
   );
 };
 
-const Projects = ({ ...animation }) => {
+const Projects = () => {
   return (
-    <section className="bg-[#EDEDED] py-12">
-      <div className="myWrapper text-[#662D91]" {...animation}>
+    <section className="bg-[#FAFAFA] py-12">
+      <div className="myWrapper text-[#662D91]">
         <div className="flex gap-5">
           <p className="font-medium text-[clamp(4rem,_6.5vw,_6.6rem)] leading-[7.5vw]">Наши проекты</p>
           <img src={arrowRight} className='pt-10 h-fit w-[10%]' alt="arrow" />
@@ -53,7 +53,7 @@ const Projects = ({ ...animation }) => {
               Программа индивидуального наставничества поможет вам поставить
               личные и профессиональные цели и достичь их
             </p>
-            <DetailsButton text="Узнать подробнее" to={"/"} />
+            <DetailsButton text="Узнать подробнее" to={"mentorship"} />
           </div>
         </div>
         <div className="trainings flex justify-between items-center gap-5 mt-12">
@@ -65,7 +65,7 @@ const Projects = ({ ...animation }) => {
               которые образовывают девушек в личных и профессиональных областях.
             </p>
             <div className='flex gap-x-12'>
-              <DetailsButton text="Узнать подробнее" to={"/"} className='h-fit self-end'/>
+              <DetailsButton text="Узнать подробнее" to={"trainings"} className='h-fit self-end'/>
               <img src={mug} alt="mug" className="h-fit w-[15%]"/>
             </div>
             

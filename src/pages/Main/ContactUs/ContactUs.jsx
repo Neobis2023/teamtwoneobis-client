@@ -3,7 +3,7 @@ import ContactUsForm from "../../../modules/ContactUsForm/components/ContactUsFo
 
 const ContactUs = () => {
   return (
-    <section className="py-20">
+    <section className="py-20 bg-[#FAFAFA]">
       <div className="myWrapper">
         <ContactUsForm />
       </div>

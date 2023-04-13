@@ -1,79 +1,25 @@
 import React from "react";
-import underline from "../assets/images/line.svg";
-import Input from "../../../UI/Input/Input";
-import DetailsButton from "../../../UI/DetailsButton/DetailsButton";
-import styles from './ContactUsForm.module.css';
+import flower from '../assets/images/flower.svg'
+import Modal from "./Modal";
+import { NavLink } from "react-router-dom";
 
-const ContactUsForm = ({ animation }) => {
+const ContactUsForm = () => {
   return (
-    <form
-      className="bg-[#F2F1FA] w-full min-w-[600px] max-w-[1400px] mx-auto p-20 text-center rounded-[100px]"
-      {...animation}
-    >
-      <h2 className="mySubtitle">Обратная связь</h2>
-      <img src={underline} alt="underline" className="mx-auto my-4" />
-      <p className="font-light text-3xl text-[rgba(71,_18,_128,_0.8)] mb-4">
-        Девочки - это круто
-      </p>
-      <div className="flex flex-col gap-8">
-        <div className="flex justify-between">
-          <Input
-            type={"text"}
-            placeholder="Имя"
-            className={
-              "basis-[49.5%] !border-2 !border-[rgba(71,_18,_128,_0.4)]"
-            }
-          />
-          <Input
-            type={"text"}
-            placeholder="Фамилия"
-            className={
-              "basis-[49.5%] !border-2 !border-[rgba(71,_18,_128,_0.4)]"
-            }
-          />
+    <section>
+      <div className="bg-[#FFFFFF] rounded-[20px] py-8 px-8 w-[70%] m-auto relative">
+        <div className="text-center flex flex-col gap-6 items-center">
+          <h2 className="text-[rgba(71,_18,_128,_0.8)] font-semibold text-[clamp(2.8rem,_3.33vw,_3.3rem)] border-b w-fit mx-auto pb-2">Обратная связь</h2>
+          <p className="text-[#4E477A] text-[clamp(0.925rem,_1.25vw,_1.425rem)]">
+            Пожалуйста, воспользуйтесь нашей формой обратной связи, чтобы
+            оставить нам сообщение. Расскажите, что бы вы хотели улучшить или
+            изменить, и мы обязательно рассмотрим ваше предложение.
+          </p>
+          <NavLink to={'/text-us'} className="py-4 px-6 bg-[rgba(102,_45,_145,_0.6)] rounded-[47px] text-[#fff] w-fit">Оставить отзыв</NavLink>
         </div>
-        <div className="flex justify-between">
-          <Input
-            type={"email"}
-            placeholder="Электронная почта"
-            className={
-              "basis-[49.5%] !border-2 !border-[rgba(71,_18,_128,_0.4)]"
-            }
-          />
-          <Input
-            type={"number"}
-            placeholder="Номер телефона"
-            className={
-              "basis-[49.5%] !border-2 !border-[rgba(71,_18,_128,_0.4)]"
-            }
-          />
-        </div>
-        <div className="flex">
-          <Input
-            type={"text"}
-            placeholder="Тема"
-            className={
-              "!border-2 !border-[rgba(71,_18,_128,_0.4)]"
-            }
-          />
-        </div>
-        <div className="flex">
-          <textarea
-            id={styles.textarea}
-            name="textarea"
-            cols="30"
-            rows="10"
-            placeholder="Расскажите нам что-нибудь"
-            className={styles.myInput}
-          ></textarea>
-        </div>
-        <DetailsButton
-          text={"Отправить"}
-          arrow={false}
-          className="!bg-[rgba(186,_148,_232,_0.7)] !w-[50%] justify-center mx-auto"
-        />
+        <img src={flower} alt="flower" className="absolute -right-[8%] -bottom-[12%] w-[15%]"/>
       </div>
-    </form>
+      {/* <Modal /> */}
+    </section>
   );
 };
 

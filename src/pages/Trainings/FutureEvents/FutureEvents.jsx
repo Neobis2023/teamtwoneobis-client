@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import girlsTr from "./assets/images/girlsTr.png";
 import EventsSlider from "../../../helpers/swiper/EventsSlider";
 import stars from './assets/images/stars.svg'
 import computer from './assets/images/computer.svg'

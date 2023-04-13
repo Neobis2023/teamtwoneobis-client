@@ -10,7 +10,7 @@ import hearts from './assets/images/hearts.png';
 
 const Forum = () => {
   return (
-    <section className="bg-[#EDEDED] py-20">
+    <section className="bg-[#FAFAFA] py-20">
       <div className="myWrapper">
         <div className="flex justify-center gap-4 mb-16 items-center">
           <h2 className="mySubtitle">Форум</h2>
@@ -37,7 +37,7 @@ const Forum = () => {
               достичь как можно большего числа девушек и помочь им развить свой
               потенциал.
             </p>
-            <DetailsButton text='Узнать подробнее'/>
+            <DetailsButton text='Узнать подробнее' to="forum"/>
           </div>
         </div>
       </div>

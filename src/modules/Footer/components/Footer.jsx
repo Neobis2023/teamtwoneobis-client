@@ -10,7 +10,7 @@ import instagram from '../assets/images/instagram.svg';
 
 const Footer = () => {
   return (
-    <footer className='pt-20'>
+    <footer className='pt-20 bg-[#FAFAFA]'>
         <div className="myWrapper">
             <div className='grid grid-cols-4 gap-4 mb-6'>
                 <NavLink to='/'>

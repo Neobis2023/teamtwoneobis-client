@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Button from "./Button/Button";
+import userPhoto from './assets/images/video-photo.svg'
 
 const Events = ({ imgSource, eventName, description, time, date, location, handleClick }) => {
   const eventUrl = eventName?.toLowerCase().split(' ').join('-');
@@ -37,7 +38,7 @@ const Events = ({ imgSource, eventName, description, time, date, location, handl
         </div>
         <div className="basis-1/2 h-[350px] rounded-md">
           <img
-            src={imgSource}
+            src={imgSource || userPhoto}
             alt="girls"
             loading="lazy"
             className="w-full h-full object-cover ml-auto min-w-[320px] rounded-md"

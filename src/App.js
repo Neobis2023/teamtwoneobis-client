@@ -39,6 +39,7 @@ import WithAuth from './hoc/WithAuth';
 import EditTrainingsLayout from './pages/Admin/layouts/EditTrainingsLayout';
 import FutureTrainings from './pages/Admin/Edit/components/Trainings/pages/FutureTrainings';
 import AddQuestionnaire from './pages/Admin/Edit/components/Trainings/pages/AddQuestionnaire';
+import Modal from './modules/ContactUsForm/components/Modal';
 
 
 
@@ -63,6 +64,9 @@ function App() {
         { path: 'profile/:userId', element: <WithAuth>
           <User />
         </WithAuth> },
+                { path: 'text-us', element: <WithAuth>
+                <Modal />
+              </WithAuth> },
       ]
     },
     {

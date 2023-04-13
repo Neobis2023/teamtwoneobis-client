@@ -30,7 +30,7 @@ const Videoblog = () => {
             alt="computer"
             className="absolute left-20 h-[6vw]"
           />
-          <DetailsButton className={"mx-auto mt-5"} text="Узнать подробнее" />
+          <DetailsButton className={"mx-auto mt-5"} text="Узнать подробнее" to="videoblog/1"/>
         </div>
       </div>
     </section>

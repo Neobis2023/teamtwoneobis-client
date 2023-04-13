@@ -40,7 +40,7 @@ const EventsSlider = ({ events }) => {
             return (
               <SwiperSlide key={event.id}>
                 <Events
-                  imgSource={event.images[0].url}
+                  imgSource={event.images[0]?.url}
                   eventName={event.title}
                   description={event.description}
                   time={event.time}
