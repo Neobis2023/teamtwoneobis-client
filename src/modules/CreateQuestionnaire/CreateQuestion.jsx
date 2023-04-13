@@ -1,44 +1,85 @@
 import React, { useEffect, useState } from "react";
-import Input from "../../Input";
-import arrowDown from "../assets/images/arrow-down.svg";
-import trash from "../assets/images/trash.svg";
-import circle from "../assets/images/circle.svg";
-import square from "../assets/images/square.svg";
-import circleEmpty from "../assets/images/circle-empty.svg";
-import squareEmpty from "../assets/images/square-empty.svg";
+import { arrowDown, circle, trash, square, circleEmpty, squareEmpty } from './assets/images';
+import InputV2 from './InputV2';
 
-const QuestionCompleteItem = ({ handleDelete, id }) => {
+const CreateQuestion = ({ handleDelete, id, idx, getDataFromChild }) => {
   const [questionType, setQuestionType] = useState("");
   const [chooseType, setChooseType] = useState(false);
   const [numberOfOptions, setNumberOfOptions] = useState(1);
   const [anotherOption, setAnotherOption] = useState(false);
   const [isRequired, setIsRequired] = useState(false);
+  
+  // Data to send for questionnaire
+  const [variants, setVariants] = useState([{ text: '' }]);
+  const [text, setText] = useState('');
+  const [description, setDescription] = useState(null);
+  
   const questionTypes = {
-    "Текст": "text",
-    "Один из списка": "radio",
-    "Несколько из списка": "checkbox",
-    "Раскрывающийся список": "dropdown",
+    "Текст": 'TEXT',
+    "Один из списка": "VARIANTS",
+    "Несколько из списка": "CHECK_BOX",
+    "Раскрывающийся список": "DROP_DOWN",
   };
-
-  console.log(id);
-
+  
+  const QuestionType =  {
+    VARIANTS: 'VARIANTS',
+    CHECK_BOX: 'CHECK_BOX',
+    TEXT:'TEXT',
+    DROP_DOWN: 'DROP_DOWN',
+  }
+  
+  
   const handleOptions = (component) => {
     let count = [];
     for (let i = 0; i < numberOfOptions; i++) {
       count.push(i);
     }
-
+    
     if (anotherOption) {
       count.push("another");
     }
-
-    return count.map((option) => (
+    
+    return count.map((option, index) => (
       <div key={option} className="flex gap-2 items-center w-[92%] ml-auto">
-        {option !== "another" ? component : <Input label={"Другое"} disabled />}
+        {option !== "another"
+          ?
+           <>
+            {component}
+             <InputV2 onChange={(e) => handleVariantsChange(index, e.target.value)} label={"Вариант"} />
+           </>
+           : <InputV2 label={"Другое"} disabled />}
       </div>
     ));
   };
-
+  
+  const addOption = () => {
+    setNumberOfOptions((curr) => curr + 1)
+    setVariants((cur) => [...cur, { text: '' }]);
+  }
+  
+  const removeOption = () => {
+    setNumberOfOptions((curr) => curr - 1);
+    setVariants((cur) => cur.slice(0, -1));
+  }
+  
+  const handleVariantsChange = (index, value) => {
+    const newVariants = [...variants];
+    newVariants[index].text = value;
+    setVariants(newVariants);
+  }
+  
+  const sendToParent = () => {
+    const question = {};
+    question.text = text;
+    question.description = description;
+    question.type = questionTypes[questionType];
+    if (question.type !== QuestionType.TEXT) {
+      question.variants = variants;
+    }
+    getDataFromChild(id, question);
+    console.log(question);
+  }
+  
   useEffect(() => {
     setQuestionType(Object.keys(questionTypes)[0]);
     console.log('changed')
@@ -47,47 +88,40 @@ const QuestionCompleteItem = ({ handleDelete, id }) => {
   return (
     <div className="flex justify-between my-4 border-b-2 pb-6">
       <div className="basis-[46%] flex flex-col justify-between gap-4">
-        <Input label={"Вопрос"} />
-        <Input label={"Уточнение"} />
+        <InputV2 value={text} onChange={(e) => setText(e.target.value)} label={"Вопрос"} />
+        <InputV2 value={description} onChange={(e) => setDescription(e.target.value)} label={"Уточнение"} />
         <div className="flex flex-col gap-2">
           {questionType === "Один из списка"
             ? handleOptions(
-                <>
-                  <img src={circleEmpty} alt="circle empty"/>
-                  <Input label={"Вариант"} />
-                </>
-              )
+                <img src={circleEmpty} alt="circle empty"/>
+            )
             : questionType === "Несколько из списка"
-            ? handleOptions(
-                <>
+              ? handleOptions(
                   <img src={squareEmpty} alt="square empty"/>
-                  <Input label={"Вариант"} />
-                </>
               )
-            : questionType === "Раскрывающийся список"
-            ? handleOptions(
-                <>
-                  <Input label={"Вариант"} />
-                </>
-              )
-            : null}
+              : questionType === "Раскрывающийся список"
+                ? handleOptions(
+                  <>
+                  </>
+                )
+                : null}
           {questionType !== "Текст" && (
             <div className="flex flex-col gap-2 my-2 ml-7">
               <button
                 type="button"
                 className="w-fit underline"
-                onClick={() => setNumberOfOptions((curr) => curr + 1)}
+                onClick={addOption}
               >
                 Добавить вариант
               </button>
               <button
                 type="button"
                 className="w-fit underline text-red-500"
-                onClick={() => setNumberOfOptions((curr) => curr - 1)}
+                onClick={removeOption}
               >
                 Удалить вариант
               </button>
-
+              
               {questionType !== "Раскрывающийся список" && (
                 <div className="flex flex-col">
                   или
@@ -114,7 +148,7 @@ const QuestionCompleteItem = ({ handleDelete, id }) => {
       <div className="border-l basis-[52%] pl-4 flex flex-col justify-between">
         <div
           className="flex justify-between p-3 pl-1 border-[#9960C3] border rounded-[8px] w-full relative hover:cursor-pointer"
-          onClick={() => setChooseType((curr) => !curr)}
+          onClick={() => setChooseType((curr) => !curr) }
         >
           <div className="flex gap-1">
             {questionType === "Один из списка" ? (
@@ -149,7 +183,7 @@ const QuestionCompleteItem = ({ handleDelete, id }) => {
               type="checkbox"
               id="isRequired"
               checked={isRequired}
-              onClick={() => setIsRequired((curr) => !curr)}
+              onClick={() => {setIsRequired((curr) => !curr); sendToParent()}}
             />
             <label htmlFor="isRequired" className="hover:cursor-pointer">
               Обязательный вопрос
@@ -161,4 +195,4 @@ const QuestionCompleteItem = ({ handleDelete, id }) => {
   );
 };
 
-export default QuestionCompleteItem;
+export default CreateQuestion;

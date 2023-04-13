@@ -11,7 +11,8 @@ const FutureTrainings = () => {
   
   useEffect(() => {
     axios.get("https://girls4girls.herokuapp.com/api/training").then(res => setTrainings(res.data.data)).catch(err => console.log(err));
-  }, []) 
+  }, [])
+  
   return (
     <div>
         <h3 className='font-semibold text-[1.25rem] text-[#000] mb-2'>Предстоящие тренинги</h3>
