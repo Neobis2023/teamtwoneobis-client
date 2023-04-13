@@ -10,7 +10,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {saveQuestionnaireID} from '../../helpers/reduxToolkit/questionnaireSlice';
 
 const CreateQuestionnaire = () => {
-  const questionnaireState = useSelector((state) => state.questionnaire.lastSavedQuestionnaireId);
+  const lastSavedQuestionnaireId = useSelector((state) => state.questionnaire.lastSavedQuestionnaireId);
   const dispatch = useDispatch();
   const [questions, setQuestions] = useState([]);
   const [questionCount, setQuestionCount] = useState(0);
@@ -18,7 +18,7 @@ const CreateQuestionnaire = () => {
   // const { data, isLoading } = useGetQuestionnairesQuery();
   const [ createQuestionnaire, { isLoading, data }] = useCreateQuestionnaireMutation();
   
-  console.log(questionnaireState);
+  console.log(lastSavedQuestionnaireId);
   console.log('response', data);
   
   const handleDelete = (id) => {
