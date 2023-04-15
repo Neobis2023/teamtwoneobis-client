@@ -88,6 +88,7 @@ const EditProfileModal = ({ onClose }) => {
             Authorization: `Bearer ${token}`,
           },
         });
+        console.log(formData)
         console.log(res, "this is req with imaage");
       }
       const getUser = await axios.get("/user/profile", {

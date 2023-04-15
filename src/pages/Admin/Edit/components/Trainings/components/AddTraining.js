@@ -14,7 +14,7 @@ import {
 
 const AddTraining = () => {
   const trainingRedux = useSelector((state) => state.admin.training);
-  const trainingImageSrc = trainingRedux.trainingImage || null;
+  const trainingImageSrc = trainingRedux.image || null;
 
   const [trainingImage, setTrainingImage] = useState(null);
 
@@ -35,11 +35,7 @@ const AddTraining = () => {
 
   const handleTrainingImageChange = (event) => {
     const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      setTrainingImage(reader.result);
-    };
+    setTrainingImage(file);
   };
 
   const handleTrainingImageClick = () => {
@@ -51,16 +47,31 @@ const AddTraining = () => {
   };
 
   const handleAddQuest = () => {
+    // const formData = new FormData();
+    // formData.append("title", title);
+    // formData.append("titleKG", titleKG);
+    // formData.append("image", trainingImage);
+    // formData.append("eventDate", eventDate);
+    // formData.append("time", time);
+    // formData.append("location", location);
+    // formData.append("description", description);
+    // formData.append("descriptionKG", descriptionKG);
+    // formData.append("address", null);
+    // formData.append("deadlineDate", null);
     const trainingData = {
       title,
       titleKG,
-      trainingImage, // store the base64-encoded string
+      image: trainingImage,
+      // imageVisual: URL.createObjectURL(trainingImage),
       eventDate,
       time,
       location,
       description,
       descriptionKG,
-    };
+      address: "somewhere",
+      deadlineDate: eventDate,
+    }
+
     dispatch(setTraining(trainingData));
     navigate("add-questionnaire");
   };
@@ -76,7 +87,7 @@ const AddTraining = () => {
       <div className="flex flex-col gap-4">
         <div className="h-[300px]">
           <img
-            src={trainingImageSrc || trainingImage || trainingPhoto}
+            src={(trainingImageSrc && URL.createObjectURL(trainingImageSrc)) || (trainingImage && URL.createObjectURL(trainingImage)) || trainingPhoto}
             alt="training-photo"
             className="object-cover w-full h-full rounded-[10px]"
           />

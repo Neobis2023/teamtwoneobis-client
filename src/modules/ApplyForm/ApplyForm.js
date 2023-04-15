@@ -71,25 +71,14 @@ import InputDate from "./components/InputDate";
               </div> */}
 
 const ApplyForm = () => {
-  const [pageNumber, setPageNumber] = useState(1);
+  // const [pageNumber, setPageNumber] = useState(1);
   const CURRENT_YEAR = new Date().getFullYear();
   const [eventName, setEventName] = useState("");
   // user info
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     console.log(user)
-    setEventName(JSON.parse(sessionStorage.getItem('eventName')));
-    setFirstName(user.firstName);
-    setLastName(user.lastName);
-    setEmail(user.email);
-    setPhoneNumber(user.phoneNumber);
-    setSelectedDate(user.dateOfBirth);
 
   }, [eventName])
 
@@ -99,11 +88,11 @@ const ApplyForm = () => {
       left: 0,
       behavior: "smooth"
     });
-  }, [pageNumber]);
+  }, []);
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  }
+  // const handleDateChange = (date) => {
+  //   setSelectedDate(date);
+  // }
   return (
     <section className="w-[85%]">
       <div className="myWrapper py-10 flex items-start">
@@ -112,18 +101,17 @@ const ApplyForm = () => {
           <h1 className="text-[clamp(1.8rem_,2.22vw,_2.3rem)] text-[#C192EE] font-extrabold mb-4 border-b pb-2">
             Заявка на {eventName} {CURRENT_YEAR}
           </h1>
-          {pageNumber === 1 && (
             <div>
               <div className="mt-4">
                 <h2 className="text-[#C192EE] font-extrabold text-[clamp(1.3rem,_1.66vw,_1.8rem)]">
                   Заполнение анкеты
                 </h2>
                 <div>
-                  <Input question={"Фамилия"} value={lastName} onChange={(e) => setFirstName(e.target.value)}/>
+                  {/* <Input question={"Фамилия"} value={lastName} onChange={(e) => setFirstName(e.target.value)}/>
                   <Input question={"Имя"} value={firstName} onChange={(e) => setLastName(e.target.value)}/>
                   <Input question={"Адрес электронной почты"} value={email} onChange={(e) => setEmail(e.target.value)}/>
                   <InputDate label={'Дата рождения'} selected={selectedDate} onChange={handleDateChange} sublabel={'На момент прохождения тренинга вам должно быть от 14 до 19 лет включительно.'}/>
-                  <Input question={"Номер телефона"} value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}/>
+                  <Input question={"Номер телефона"} value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}/> */}
                   <Radio question={'Из какого вы региона?'} options={['Кант']}/>
                   <Input
                     question={"Укажите ваш район, город или село"}
@@ -136,60 +124,10 @@ const ApplyForm = () => {
                   />
                   {/* <Radio question={'Где вы узнали о тренинге?'} options={['Инстаграм', 'Фейсбук', 'От друзей']} another={true}/> */}
                 </div>
-                <Button text={"Далее"} onClick={() => setPageNumber(2)} />
+                <Button text={"Отправить заявку"} />
               </div>
             </div>
-          )}
-          {pageNumber === 2 && (
-            <div>
-              <h2 className="text-[#C192EE] font-extrabold text-[clamp(1.3rem,_1.66vw,_1.8rem)]">
-                Главные вопросы для прохождения
-              </h2>
-              <Textarea
-                question={
-                  "Почему именно вы должны принять участие в этом тренинге?"
-                }
-                sublabel={
-                  "Перечислите 3 причины и объясните. Максимум 100 слов"
-                }
-              />
-              <Textarea
-                question={
-                  "Что вы ожидаете от нашего тренинга? Чему вы хотите научиться?"
-                }
-                sublabel={"50-100 слов"}
-              />
-              <Checkbox
-                question={"Какие из тем тренинга вас интересуют больше всего?"}
-                options={[
-                  "Карьерная готовность",
-                  "Тайм-менеджмент",
-                  "Цифровая грамотность",
-                  "Здоровый образ жизни",
-                  "Школьное насилие",
-                  "Репродуктивное здоровье",
-                  "Соблюдение прав человека",
-                ]}
-                another={true}
-              />
-              <Input
-                question={"Какие темы еще вас интересуют?"}
-                sublabel={
-                  "Мы хотим узнать ваши предпочтения, чтобы сделать тренинг как можно полезным именно для вас."
-                }
-              />
-              <Radio
-                question={"Где вы узнали о тренинге?"}
-                another={true}
-                options={["Инстаграм", "Фейсбук", "От друзей"]}
-              />
-              {/* <button type="button" onClick={() => setPageNumber((currentNum) => currentNum - 1)}>Назад</button> */}
-              <div className="flex gap-2">
-                <Button text={"Назад"} type="button" className="bg-[#fff]" onClick={() => setPageNumber((currentPage) => currentPage - 1)}/>
-                <Button text={"Отправить"} type="submit" />
-              </div>
-            </div>
-          )}
+          
         </div>
       </div>
     </section>
