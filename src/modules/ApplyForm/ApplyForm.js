@@ -6,12 +6,24 @@ import Button from "./components/Button";
 import Textarea from "./components/Textarea";
 import Checkbox from "./components/Checkbox";
 import InputDate from "./components/InputDate";
+import Dropdown from "./components/Dropdown";
 
 const ApplyForm = ({ questionnaire }) => {
   // const [pageNumber, setPageNumber] = useState(1);
   const CURRENT_YEAR = new Date().getFullYear();
   const [eventName, setEventName] = useState("");
-  const [localQuestionnaire, setLocalQuestionnaire] = useState([]);
+  const [questionnaireId, setQuestionnaireId] = useState(0);
+  const [questionnaireData, setQuestionnaireData] = useState({
+    questionnaireId,
+    answers: [
+
+    ]
+  });
+
+  const handleCheckboxChange = (checkedOptions) => {
+    console.log(checkedOptions)
+  }
+
   // user info
 
   useEffect(() => {
@@ -31,6 +43,7 @@ const ApplyForm = ({ questionnaire }) => {
 
   useEffect(() => {
     console.log(questionnaire?.questions.map((f) => f));
+    setQuestionnaireId(questionnaire && questionnaire.id)
   }, [questionnaire]);
 
   // const handleDateChange = (date) => {
@@ -59,6 +72,7 @@ const ApplyForm = ({ questionnaire }) => {
                             options={question?.variants}
                             question={question?.text}
                             sublabel={question?.description}
+                            
                           />
                         );
                       case "VARIANTS":
@@ -70,16 +84,25 @@ const ApplyForm = ({ questionnaire }) => {
                           />
                         );
                       case "TEXT":
-                        return <Input question={question?.text} sublabel={question?.description}/>;
-                      case "DROP_DOWN": 
-                        console.log('dropdown')
+                        return (
+                          <Input
+                            question={question?.text}
+                            sublabel={question?.description}
+                          />
+                        );
+                      case "DROP_DOWN":
+                        <Dropdown
+                          sublabel={question?.description}
+                          question={question?.text}
+                          options={question?.variants}
+                        />;
                       default:
                         console.log("Unknown question type: ", question?.type);
                         return null;
                     }
                   })}
-
               </div>
+
               <Button text={"Отправить заявку"} />
             </div>
           </div>
