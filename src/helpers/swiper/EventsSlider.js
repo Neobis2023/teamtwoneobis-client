@@ -11,9 +11,10 @@ import useLocalStorage from "../hooks/useLocalStorage";
 import { useEffect } from "react";
 
 const EventsSlider = ({ events }) => {
-  const handleClick = (eventName) => {
+  const handleClick = (eventName, eventId) => {
     sessionStorage.setItem('eventName', JSON.stringify(eventName))
-    console.log('clicked', eventName)
+    sessionStorage.setItem('eventId', JSON.stringify(eventId))
+    console.log('clicked', eventName, eventId);
   }
   return (
     <div className="eventsSlider">
@@ -40,6 +41,7 @@ const EventsSlider = ({ events }) => {
             return (
               <SwiperSlide key={event.id}>
                 <Events
+                  eventId={event.id}
                   imgSource={event.images[0]?.url}
                   eventName={event.title}
                   description={event.description}

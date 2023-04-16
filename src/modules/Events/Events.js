@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Button from "./Button/Button";
 import userPhoto from './assets/images/video-photo.svg'
 
-const Events = ({ imgSource, eventName, description, time, date, location, handleClick }) => {
+const Events = ({ imgSource, eventName, eventId, description, time, date, location, handleClick }) => {
   const eventUrl = eventName?.toLowerCase().split(' ').join('-');
   const newDate = new Date(date);
   const options = { day: "numeric", month: "numeric", year: "numeric" };
@@ -32,7 +32,7 @@ const Events = ({ imgSource, eventName, description, time, date, location, handl
             </div>
           </div>
           <div className="flex gap-2">
-            <Button where={`${eventUrl}/apply`} text={'Подать заявку'} className={'text-[#662D91] bg-[#E8E5FF]'} onClick={() => handleClick(eventName)}/>
+            <Button where={`${eventUrl}/apply`} text={'Подать заявку'} className={'text-[#662D91] bg-[#E8E5FF]'} onClick={() => handleClick(eventName, eventId)}/>
             <Button where={'/'} text={'Подробнее'} className={'text-[#662D91]'}/>
           </div>
         </div>
