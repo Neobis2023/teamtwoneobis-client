@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import UsersList from "../../components/UsersList";
 import userPhoto from "../../assets/images/userPhoto.svg";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 const TrainingsSub = () => {
   const dataUsers = [
@@ -69,6 +71,13 @@ const TrainingsSub = () => {
       isBlocked: false,
     },
   ];
+  const trainingId = useSelector((state) => state.admin.currentTrainingIdApplications);
+  const [users, setUsers] = useState([]);
+  console.log(trainingId)
+  useEffect(() => {
+    axios.get(`https://girls4girls.herokuapp.com/api/training/apply/${trainingId}`).then(res => setUsers(res.data))
+  }, [trainingId])
+  console.log(users)
   return (
     <div className="mt-6">
       <NavLink
@@ -77,7 +86,7 @@ const TrainingsSub = () => {
       >
         Посмотреть анкету
       </NavLink>
-      <UsersList data={dataUsers} />
+      <UsersList data={users} />
     </div>
   );
 };

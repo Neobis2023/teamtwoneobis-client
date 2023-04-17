@@ -12,6 +12,8 @@ const UsersList = ({ data }) => {
   const handleClose = () => {
     setIsModal(false);
   }
+
+  console.log(data)
   return (
     <div className="mt-6 max-w-full w-full">
       <div className="flex justify-between">
@@ -30,7 +32,7 @@ const UsersList = ({ data }) => {
         </div>
         <div>
           {data.map((user) => {
-            return <User {...user} key={user.id} handleClick={handleClick}/>;
+            return <User {...user.user} key={user?.user?.id} handleClick={handleClick} questionnaire={user?.user?.response[0]}/>;
           })}
         </div>
         {(isModal && userForModal) && <Modal {...userForModal} handleClose={handleClose}/>}

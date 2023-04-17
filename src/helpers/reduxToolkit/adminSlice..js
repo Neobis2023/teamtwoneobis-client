@@ -7,6 +7,7 @@ const adminSlice = createSlice({
     lecturers: [],
     createdLecturersId: [],
     questions: [],
+    currentTrainingIdApplications: null,
   },
   reducers: {
     setTraining(state, action) {
@@ -20,11 +21,14 @@ const adminSlice = createSlice({
     },
     setLecturerId(state, action) {
       state.createdLecturersId = [...state.createdLecturersId, action.payload]
+    },
+    setCurrentTrainingIdApplications(state, action) {
+      state.currentTrainingIdApplications = action.payload;
     }
 
   },
 });
 
 export default adminSlice.reducer;
-export const { setTraining, setLecturer, setQuestion, setLecturerId } =
+export const { setTraining, setLecturer, setQuestion, setLecturerId, setCurrentTrainingIdApplications } =
   adminSlice.actions;

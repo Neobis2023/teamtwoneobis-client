@@ -41,6 +41,7 @@ import AddQuestionnaire from "./pages/Admin/Edit/components/Trainings/pages/AddQ
 import Modal from "./modules/ContactUsForm/components/Modal";
 import ApplyFormTrainings from "./pages/ApplyForm/ApplyFormTraining";
 import ApplyFormForum from "./pages/ApplyForm/ApplyFormForum";
+import TrainingsList from "./pages/Admin/Edit/components/Trainings/pages/TrainingsList";
 
 function App() {
   const router = createBrowserRouter([
@@ -124,7 +125,8 @@ function App() {
               path: "trainings",
               element: <EditTrainingsLayout />,
               children: [
-                { path: "future-trainings", element: <FutureTrainings /> },
+                { path: "list", element: <TrainingsList /> },
+                { path: "list/future-trainings", element: <FutureTrainings /> },
                 {
                   path: "future-trainings/add-questionnaire",
                   element: <AddQuestionnaire />,
@@ -144,27 +146,23 @@ function App() {
               path: "forums",
               element: <ForumsLayout />,
               children: [
-                { path: "менторство", element: <ForumsSub /> },
-                { path: "как-работает-наша-система", element: <ForumsSub /> },
-                { path: "кухня", element: <ForumsSub /> },
+                { path: ":title", element: <ForumsSub /> },
               ],
             },
             {
               path: "mentoring-program",
               element: <MentoringProgramLayout />, // <AdminMentoringProgram />
               children: [
-                { path: "поток-1", element: <MentoringProgramSub /> },
-                { path: "поток-2", element: <MentoringProgramSub /> },
-                { path: "поток-3", element: <MentoringProgramSub /> },
+                { path: ":title", element: <MentoringProgramSub /> },
               ],
             },
             {
               path: "trainings",
               element: <TrainingsLayout />, // <AdminTrainings />
               children: [
-                { index: true, path: "образование", element: <TrainingsSub /> },
-                { path: "финансы", element: <TrainingsSub /> },
-                { path: "кухня", element: <TrainingsSub /> },
+                { path: ":title", element: <TrainingsSub /> },
+                // { path: "финансы", element: <TrainingsSub /> },
+                // { path: "кухня", element: <TrainingsSub /> },
               ],
             },
           ],

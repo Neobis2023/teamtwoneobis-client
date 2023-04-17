@@ -8,15 +8,18 @@ const Modal = ({
   lastName,
   email,
   phoneNumber,
-  imgUrl,
+  image,
   handleClose,
+  questionnaire,
 }) => {
+  console.log(questionnaire);
   return (
-    <div className="w-[100vw] h-[100vh] fixed left-0 z-10 top-0 flex items-center justify-center backdrop-blur-sm">
-      <div className="bg-[#f8f9fa] w-[70%] h-[95vh] rounded-[20px] px-10 py-6 relative overflow-y-scroll">
+    <>
+      <div className="w-[100vw] h-[100vh] fixed left-0 top-0 flex items-center justify-center bg-black opacity-40"></div>
+      <div className="absolute top-0 left-0 right-0 bottom-0 bg-[#f8f9fa] w-[70%] h-[95vh] rounded-[20px] px-10 py-6 z-30 overflow-y-scroll m-auto modal-applications">
         <div className="flex flex-col gap-4 mb-10">
           <div className="flex gap-2 items-center">
-            <img src={imgUrl} alt="photo" className="w-[10%]" />
+            <img src={image} alt="photo" className="w-12 h-12 rounded-full" />
             <div className="flex flex-col">
               <div className="text-[#000000] font-bold text-[1.25rem]">
                 Имя: <span className="font-normal">{firstName}</span>
@@ -32,17 +35,36 @@ const Modal = ({
           <div className="text-[#000000] font-bold text-[1.25rem]">
             Номер телефона: <span className="font-normal">{phoneNumber}</span>
           </div>
-          <div className="text-[#000000] font-bold text-[1.25rem]">
-            Регион: <span className="font-normal">Нарынская область</span>
-          </div>
-          <div className="text-[#000000] font-bold text-[1.25rem]">
-            Укажите район и село:{" "}
-            <span className="font-normal">Иссык-Атинская область, город Кант</span>
-          </div>
         </div>
         <div>
           <div className="flex flex-col gap-2 mb-8">
-            <p className="text-[#000000] font-bold text-[1.25rem]">Расскажите как вы узнали о нас?</p>
+            {questionnaire.questionAnswers.map((qa) => {
+              switch (qa.type) {
+                case "TEXT":
+                  return (
+                    <>
+                      <p className="text-[#000000] font-bold text-[1.25rem]">
+                        {qa.questionText}
+                      </p>
+                      <p className="font-normal">{qa.text}</p>
+                    </>
+                  );
+                case "CHECK_BOX":
+                  return (
+                    <>
+                      <p className="text-[#000000] font-bold text-[1.25rem]">
+                        {qa.questionText}
+                      </p>
+                      <p className="font-normal">{qa.multipleChoices.map((choice) => <p>{choice}</p>)}</p>
+                    </>
+                  );
+                default:
+                  return null;
+              }
+            })}
+            {/* <p className="text-[#000000] font-bold text-[1.25rem]">
+              Расскажите как вы узнали о нас?
+            </p>
             <p className="font-normal">
               Dorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
               vulputate libero et velit interdum, ac aliquet odio mattis. Dorem
@@ -55,7 +77,9 @@ const Modal = ({
             </p>
           </div>
           <div className="flex flex-col gap-2 mb-8">
-            <p className="text-[#000000] font-bold text-[1.25rem]">Расскажите как вы узнали о нас?</p>
+            <p className="text-[#000000] font-bold text-[1.25rem]">
+              Расскажите как вы узнали о нас?
+            </p>
             <p className="font-normal">
               Dorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
               vulputate libero et velit interdum, ac aliquet odio mattis. Dorem
@@ -68,7 +92,9 @@ const Modal = ({
             </p>
           </div>
           <div className="flex flex-col gap-2 mb-8">
-            <p className="text-[#000000] font-bold text-[1.25rem]">Расскажите как вы узнали о нас?</p>
+            <p className="text-[#000000] font-bold text-[1.25rem]">
+              Расскажите как вы узнали о нас?
+            </p>
             <p className="font-normal">
               Dorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
               vulputate libero et velit interdum, ac aliquet odio mattis. Dorem
@@ -78,7 +104,7 @@ const Modal = ({
               velit interdum, ac aliquet odio mattis.Dorem ipsum dolor sit amet,
               consectetur adipiscing elit. Nunc vulputate libero et velit
               interdum, ac aliquet odio mattis.
-            </p>
+            </p> */}
           </div>
           <div className="flex gap-2">
             <SaveButton text={"Одобрить"} />
@@ -96,7 +122,7 @@ const Modal = ({
           onClick={handleClose}
         />
       </div>
-    </div>
+    </>
   );
 };
 

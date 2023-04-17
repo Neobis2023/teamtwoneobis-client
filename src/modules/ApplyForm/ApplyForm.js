@@ -7,21 +7,22 @@ import Textarea from "./components/Textarea";
 import Checkbox from "./components/Checkbox";
 import InputDate from "./components/InputDate";
 import Dropdown from "./components/Dropdown";
+import axios from "./api/axios";
 
 const ApplyForm = ({ questionnaire }) => {
   // const [pageNumber, setPageNumber] = useState(1);
+
   const CURRENT_YEAR = new Date().getFullYear();
   const [eventName, setEventName] = useState("");
   const [questionnaireId, setQuestionnaireId] = useState(0);
   const [questionnaireData, setQuestionnaireData] = useState({
-    questionnaireId: questionnaire?.id || 0,
-    answers: []
+    questionnaireId: questionnaire?.id,
+    answers: [],
   });
 
-
   const handleCheckboxChange = (checkedOptions) => {
-    console.log(checkedOptions)
-  }
+    console.log(checkedOptions);
+  };
 
   // user info
 
@@ -42,12 +43,59 @@ const ApplyForm = ({ questionnaire }) => {
 
   useEffect(() => {
     console.log(questionnaire?.questions.map((f) => f));
-    setQuestionnaireId(questionnaire && questionnaire.id)
+    setQuestionnaireId(questionnaire && questionnaire.id);
   }, [questionnaire]);
 
   useEffect(() => {
-    console.log(questionnaireData)
-  }, [questionnaireData])
+    if (questionnaire) {
+      setQuestionnaireData((prevData) => ({
+        ...prevData,
+        questionnaireId: questionnaire.id,
+      }));
+    }
+  }, [questionnaire]);
+
+  useEffect(() => {
+    console.log(questionnaireData);
+  }, [questionnaireData]);
+
+  const handleSubmit = async () => {
+    const token = localStorage.getItem("token");
+    console.log(token)
+    console.log(questionnaireData);
+    try {
+      const res = await axios.post(
+        "/questionnaire/response",
+        questionnaireData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      console.log(res);
+
+      const trainingId = sessionStorage.getItem("eventId");
+      const questionnaireResponseId = res.data.id;
+
+      console.log(trainingId, questionnaireResponseId);
+
+      const isApplied = await axios.post(
+        `/training/apply?trainingId=${trainingId}&questionnaireResponseId=${questionnaireResponseId}`, null,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log(isApplied);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   // const handleDateChange = (date) => {
   //   setSelectedDate(date);
@@ -65,7 +113,7 @@ const ApplyForm = ({ questionnaire }) => {
               <h2 className="text-[#C192EE] font-extrabold text-[clamp(1.3rem,_1.66vw,_1.8rem)]">
                 Заполнение анкеты
               </h2>
-              <div>
+              <form>
                 {questionnaire &&
                   questionnaire.questions.map((question, index) => {
                     switch (question.type) {
@@ -111,9 +159,12 @@ const ApplyForm = ({ questionnaire }) => {
                         return null;
                     }
                   })}
-              </div>
-
-              <Button text={"Отправить заявку"} />
+                <Button
+                  text={"Отправить заявку"}
+                  type="button"
+                  onClick={handleSubmit}
+                />
+              </form>
             </div>
           </div>
         </div>

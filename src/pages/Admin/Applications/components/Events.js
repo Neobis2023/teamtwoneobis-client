@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const Events = ({ data, event }) => {
+
   return (
     <div className="flex flex-col gap-4">
       <div className="text-[#403A64] flex gap-4 flex-wrap">
@@ -12,18 +13,19 @@ const Events = ({ data, event }) => {
             }
               key={item.id}
               className={`adminEventsLink border border-[#79768D] rounded-[10px] p-2 flex flex-col gap-2 w-fit min-w-[200px]`}
+              onClick={() => console.log(item.id)}
             >
               <div className="flex items-center justify-between gap-8">
               <p className="text-[1.25rem] font-bold">
                 <span>{item.title}</span>
               </p>
-              {item.city && <p className="font-bold text-[0.875rem]">{item.city}</p>}
+              {item.city && <p className="font-bold text-[0.875rem]">{item.location}</p>}
               </div>  
               <p className="text-[0.875rem] font-bold mb-2">
-                Статус: <span>{item.status}</span>
+                Статус: <span>Открыт</span>
               </p>
               <p className="text-[0.875rem] font-semibold">
-                Дедлайн: {item.deadline}
+                Дедлайн: {item.deadlineDate}
               </p>
             </NavLink>
           );

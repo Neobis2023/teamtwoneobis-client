@@ -1,5 +1,8 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { NavLink, useLocation } from "react-router-dom";
+import { setCurrentTrainingIdApplications } from "../../../../helpers/reduxToolkit/adminSlice.";
 
 const AdminApplicationsNavbar = () => {
   const location = useLocation();
@@ -7,6 +10,15 @@ const AdminApplicationsNavbar = () => {
   const isActiveTrainings = location.pathname.startsWith('/admin/applications/trainings');
   const isActiveForums = location.pathname.startsWith('/admin/applications/forums');
   console.log(location)
+  const dispatch = useDispatch();
+  const [trainings, setTrainings] = useState("");
+  useEffect(() => {
+    axios.get("https://girls4girls.herokuapp.com/api/training").then((res) => { 
+      setTrainings(res.data.data)
+      dispatch(setCurrentTrainingIdApplications(res.data?.data[0]?.id))
+   });
+  }, [])
+
 
   const dataEventsMentoringProgram = [
     {
@@ -82,7 +94,7 @@ const AdminApplicationsNavbar = () => {
       <NavLink to={`/admin/applications/mentoring-program/${dataEventsMentoringProgram[0].title.toLowerCase().split(' ').join('-')}`} className={`nav-applications ${isActiveMentoringProgram ? 'active' : ''} bg-[#FDFDFD] px-4 py-3 rounded-[10px]`}>
         Менторская программа
       </NavLink>
-      <NavLink to={`/admin/applications/trainings/${dataEventsTrainings[0].title.toLowerCase().split(' ').join('-')}`} className={`nav-applications ${isActiveTrainings ? 'active' : ''} bg-[#FDFDFD] px-4 py-3 rounded-[10px]`}>
+      <NavLink to={`/admin/applications/trainings/${trainings[0]?.title.toLowerCase().split(' ').join('-')}`} className={`nav-applications ${isActiveTrainings ? 'active' : ''} bg-[#FDFDFD] px-4 py-3 rounded-[10px]`}>
         Тренинги
       </NavLink>
       <NavLink to={`/admin/applications/forums/${dataEventsForums[0].title.toLowerCase().split(' ').join('-')}`} className={`nav-applications ${isActiveForums ? 'active' : ''} bg-[#FDFDFD] px-4 py-3 rounded-[10px]`}>

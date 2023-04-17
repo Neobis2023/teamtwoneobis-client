@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Events from "../components/Events";
 import UsersList from "../components/UsersList";
 import userPhoto from "../assets/images/userPhoto.svg";
+import axios from "axios";
 
 const AdminTrainings = () => {
   const dataUsers = [
@@ -92,10 +93,15 @@ const AdminTrainings = () => {
       city: "Бишкек",
     },
   ];
+  const [trainings, setTrainings] = useState("");
+  useEffect(() => {
+    axios.get("https://girls4girls.herokuapp.com/api/training").then((res) => setTrainings(res.data.data));
+  }, [])
+
   return (
     <div>
-      <Events data={dataEvents} event={"trainings"} />
-      <UsersList data={dataUsers} />
+      <Events data={trainings} event={"trainings"} />
+      {/* <UsersList data={dataUsers} /> */}
     </div>
   );
 };

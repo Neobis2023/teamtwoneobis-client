@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import userPhoto from '../assets/images/userPhoto.svg';
 
 
-const User = ({ id, imgUrl, firstName, lastName, email, phoneNumber, handleClick }) => {
+const User = ({ id, image, firstName, lastName, email, phoneNumber, handleClick, questionnaire }) => {
   return (
     <div
       className={`${
@@ -9,7 +10,7 @@ const User = ({ id, imgUrl, firstName, lastName, email, phoneNumber, handleClick
       } rounded-[10px] grid grid-cols-[1fr_1fr_1fr_1fr_1fr] gap-4 items-center py-4 px-2 justify-between text-[0.875rem] my-3`}
     >
       <div className="flex items-center gap-2">
-        <img src={imgUrl} alt="user" />
+        <img src={image?.url || userPhoto} alt="user" className="h-8 w-8 rounded-full"/>
         <div>
           {firstName}
           {" "}
@@ -39,9 +40,10 @@ const User = ({ id, imgUrl, firstName, lastName, email, phoneNumber, handleClick
           id,
           email,
           phoneNumber,
-          imgUrl,
+          image: image?.url || userPhoto,
           firstName,
-          lastName
+          lastName,
+          questionnaire
         })}
       >
         Открыть

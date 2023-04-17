@@ -12,7 +12,7 @@ const SigninForm = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [loggedin, setLoggedin] = useState(null);
-  const fromPage = location.state?.from?.pathname || '/';
+  const fromPage = location.state?.from?.pathname;
 
   useEffect(() => {
     window.scrollTo({
@@ -48,11 +48,13 @@ const SigninForm = () => {
             'Authorization': `Bearer ${token}`
           }
         })
+
         getFavorites.data.map((blog) => {
-          localStorage.setItem(`blog-${blog.blog.id}-isFavorite`, "true");
+          if (blog.blog) {
+            localStorage.setItem(`blog-${blog.blog.id}-isFavorite`, "true");
+          }
         });
       
-        console.log(getFavorites.data)
         console.log(getUser, 'this is user')
         const userInfo = {
           email: getUser.data.email,
@@ -68,13 +70,15 @@ const SigninForm = () => {
           dateOfBirth: getUser.data.dateOfBirth,
         }
         localStorage.setItem("user", JSON.stringify(userInfo));
-        navigate(fromPage, { replace: true })
-        // navigate(`/profile/${getUser.data.id}`);
-        const getUsers = await axios.get('/user')
+
+        
+        const getUsers = await axios.get('/user');
+
+        fromPage ? navigate(fromPage, { replace: true }) : navigate(`/profile/${getUser.data.id}`);
         console.log(getUsers);
       } 
     } catch(e) {
-      console.log('Error: ', e.response.data.message);
+      console.log('Error: ', e);
       setLoggedin(false);
       console.log(errors)
       console.log(loggedin)
