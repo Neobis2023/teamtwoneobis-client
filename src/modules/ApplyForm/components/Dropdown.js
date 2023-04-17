@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import arrowDown from "../assets/images/arrow-down.svg";
 
 const Dropdown = ({
+  id,
   question,
   sublabel,
   options,
   value,
   onChange,
+  setData,
   ...props
 }) => {
   const [option, setOption] = useState("");
@@ -18,10 +20,30 @@ const Dropdown = ({
 
   const handleOptionChoose = (item, index) => {
     setOption(item);
-    setSelectedIndex(index)
+    setSelectedIndex(index);
+
+    const questionData = {
+      questionId: id,
+      type: "DROP_DOWN",
+      answerIndex: index,
+      multipleChoices: [
+        0,
+        1
+      ],
+      text: "Text",
+    };
+
+    console.log(questionData)
+
+    setData((curr) => ({
+      ...curr,
+      answers: [
+        ...curr.answers.filter((ans) => ans.questionId !== id),
+        questionData,
+      ],
+    }));
   } 
 
-  console.log(selectedIndex)
 
   return (
     <div className="flex flex-col gap-2 my-6">

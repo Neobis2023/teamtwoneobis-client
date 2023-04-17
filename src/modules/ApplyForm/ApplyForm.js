@@ -14,11 +14,10 @@ const ApplyForm = ({ questionnaire }) => {
   const [eventName, setEventName] = useState("");
   const [questionnaireId, setQuestionnaireId] = useState(0);
   const [questionnaireData, setQuestionnaireData] = useState({
-    questionnaireId,
-    answers: [
-
-    ]
+    questionnaireId: questionnaire?.id || 0,
+    answers: []
   });
+
 
   const handleCheckboxChange = (checkedOptions) => {
     console.log(checkedOptions)
@@ -46,6 +45,10 @@ const ApplyForm = ({ questionnaire }) => {
     setQuestionnaireId(questionnaire && questionnaire.id)
   }, [questionnaire]);
 
+  useEffect(() => {
+    console.log(questionnaireData)
+  }, [questionnaireData])
+
   // const handleDateChange = (date) => {
   //   setSelectedDate(date);
   // }
@@ -72,7 +75,8 @@ const ApplyForm = ({ questionnaire }) => {
                             options={question?.variants}
                             question={question?.text}
                             sublabel={question?.description}
-                            
+                            id={question?.id}
+                            setData={setQuestionnaireData}
                           />
                         );
                       case "VARIANTS":
@@ -81,6 +85,8 @@ const ApplyForm = ({ questionnaire }) => {
                             options={question?.variants}
                             question={question?.text}
                             sublabel={question?.description}
+                            id={question?.id}
+                            setData={setQuestionnaireData}
                           />
                         );
                       case "TEXT":
@@ -88,6 +94,8 @@ const ApplyForm = ({ questionnaire }) => {
                           <Input
                             question={question?.text}
                             sublabel={question?.description}
+                            id={question?.id}
+                            setData={setQuestionnaireData}
                           />
                         );
                       case "DROP_DOWN":
@@ -95,6 +103,8 @@ const ApplyForm = ({ questionnaire }) => {
                           sublabel={question?.description}
                           question={question?.text}
                           options={question?.variants}
+                          id={question?.id}
+                          setData={setQuestionnaireData}
                         />;
                       default:
                         console.log("Unknown question type: ", question?.type);

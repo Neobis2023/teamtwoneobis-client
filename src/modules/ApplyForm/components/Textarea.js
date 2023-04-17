@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-const Textarea = ({ question, sublabel = null, className, value, ...props }) => {
+const Textarea = ({ id, question, sublabel = null, className, value, ...props }) => {
     const [textareaHeight, setTextareaHeight] = useState("30px"); 
     const textareaRef = useRef();
 
