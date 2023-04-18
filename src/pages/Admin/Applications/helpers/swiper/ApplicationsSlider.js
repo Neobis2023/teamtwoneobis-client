@@ -14,6 +14,17 @@ import { setCurrentTrainingIdApplications } from "../../../../../helpers/reduxTo
 
 const ApplicationsSlider = ({ data, event }) => {
   const dispatch = useDispatch();
+
+  const transformDate = (itemDate) => {
+    const date = new Date(itemDate);
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const year = date.getFullYear().toString();
+    const formattedDate = `${day}/${month}/${year}`;
+    return formattedDate;
+  }
+
+  console.log(transformDate("2023-04-20T10:30:40.000Z"))
   return (
     <div className="applicationsSlider w-[700px]">
       <Swiper
@@ -68,7 +79,7 @@ const ApplicationsSlider = ({ data, event }) => {
                     Статус: <span>Открыт</span>
                   </p>
                   <p className="text-[0.875rem] font-semibold">
-                    Дедлайн: {item.deadlineDate}
+                    Дедлайн: {transformDate(item.deadlineDate)}
                   </p>
                 </NavLink> 
               </SwiperSlide>

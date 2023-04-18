@@ -73,7 +73,8 @@ const Profile = () => {
             'Authorization': `Bearer ${token}`
           }
         });
-        setFavoriteBlogs(response.data)
+        setFavoriteBlogs(response.data);
+        response?.data.map((blog) => localStorage.setItem(`blog-${blog.blog.id}-isFavorite`, true))
         console.log(response)
         console.log(token)
       } catch(e) {

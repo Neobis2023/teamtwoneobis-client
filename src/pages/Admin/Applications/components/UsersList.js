@@ -32,7 +32,7 @@ const UsersList = ({ data }) => {
         </div>
         <div>
           {data.map((user) => {
-            return <User {...user.user} key={user?.user?.id} handleClick={handleClick} questionnaire={user?.user?.response[0]}/>;
+            return <User {...user.user} key={user?.user?.id} handleClick={handleClick} questionnaire={user?.user?.response[0]} statusInfo={user}/>;
           })}
         </div>
         {(isModal && userForModal) && <Modal {...userForModal} handleClose={handleClose}/>}

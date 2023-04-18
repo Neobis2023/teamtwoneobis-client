@@ -1,8 +1,64 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import userPhoto from '../assets/images/userPhoto.svg';
+import SaveButton from "../../components/SaveButton";
+import axios from "../../../Videoblog/api/axios";
 
 
-const User = ({ id, image, firstName, lastName, email, phoneNumber, handleClick, questionnaire }) => {
+const User = ({ id, image, firstName, lastName, email, phoneNumber, handleClick, questionnaire, statusInfo }) => {
+  const ApplyStatus = {
+    "PENDING" : "В ожидании",
+    "APPROVED" : "Заявка одобрена",
+    "DECLINED" : "Заявка отклонена"
+  } 
+  const [statusUser, setStatusUser] = useState(ApplyStatus[statusInfo.applyStatus]);
+  const userData = {
+    id,
+    email,
+    phoneNumber,
+    image: image?.url || userPhoto,
+    firstName,
+    lastName,
+    questionnaire,
+    statusInfo
+  }
+
+  const handleApprove = () => {
+    try {
+      axios
+        .patch("https://girls4girls.herokuapp.com/api/training/apply", {
+          applicationId: statusInfo.id,
+          applyStatus: "APPROVED",
+        })
+        .then((res) => {
+          console.log(res);
+          setStatusUser("Заявка одобрена");
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500)
+        });
+    } catch (e) {
+      console.log(e.error);
+    }
+  };
+
+  const handleDecline = () => {
+    try {
+      axios
+        .patch("https://girls4girls.herokuapp.com/api/training/apply", {
+          applicationId: statusInfo.id,
+          applyStatus: "DECLINED",
+        })
+        .then((res) => {
+          console.log(res);
+          setStatusUser("Заявка отклонена");
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500)
+        });
+    } catch (e) {
+      console.log(e.error);
+    }
+  };
   return (
     <div
       className={`${
@@ -19,7 +75,7 @@ const User = ({ id, image, firstName, lastName, email, phoneNumber, handleClick,
       </div>
       <div>{email}</div>
       <div className="text-[#616161]">{phoneNumber}</div>
-      <div className="flex items-center gap-2">
+      {/* {statusInfo.applyStatus === 'PENDING' ? <div className="flex items-center gap-2">
         <button
           type="button"
           className="text-[#FFFFFF] font-bold bg-[#9960C3] p-2 rounded-[8px]"
@@ -32,19 +88,25 @@ const User = ({ id, image, firstName, lastName, email, phoneNumber, handleClick,
         >
           Отклонить
         </button>
-      </div>
+      </div> : statusInfo.applyStatus === 'APPROVED' ? <p className="text-base text-green-500">Одобрено</p> : <p className="text-base text-red-500">Отклонено</p>} */}
+                {statusUser === "В ожидании" ? (
+            <div className="flex gap-2">
+              <SaveButton text={"Одобрить"} onClick={handleApprove} />
+              <button
+                type="button"
+                className="rounded-[8px] bg-[transparent] text-[#9960C3] border border-[#9960C3] p-2"
+                onClick={handleDecline}
+              >
+                Отклонить
+              </button>
+            </div>
+          ) : (
+            <p className="text-base text-green-500">{statusUser}</p>
+          )}
       <button
         type="button"
         className={"justify-self-center underline text-[#616161]"}
-        onClick={(e) => handleClick({
-          id,
-          email,
-          phoneNumber,
-          image: image?.url || userPhoto,
-          firstName,
-          lastName,
-          questionnaire
-        })}
+        onClick={(e) => handleClick(userData)}
       >
         Открыть
       </button>

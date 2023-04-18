@@ -128,7 +128,7 @@ function App() {
                 { path: "list", element: <TrainingsList /> },
                 { path: "list/future-trainings", element: <FutureTrainings /> },
                 {
-                  path: "future-trainings/add-questionnaire",
+                  path: "list/future-trainings/add-questionnaire",
                   element: <AddQuestionnaire />,
                 },
               ],

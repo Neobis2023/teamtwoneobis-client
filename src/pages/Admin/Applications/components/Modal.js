@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import close from "../assets/images/close.svg";
 import SaveButton from "../../components/SaveButton";
+import axios from "axios";
 
 const Modal = ({
   id,
@@ -11,8 +12,56 @@ const Modal = ({
   image,
   handleClose,
   questionnaire,
+  statusInfo,
 }) => {
-  console.log(questionnaire);
+  const ApplyStatus = {
+    "PENDING" : "В ожидании",
+    "APPROVED" : "Заявка одобрена",
+    "DECLINED" : "Заявка отклонена"
+  } 
+  const [status, setStatus] = useState(ApplyStatus[statusInfo.applyStatus]);
+
+  console.log(questionnaire, "questionnaire");
+  console.log(statusInfo, "this is status info");
+  console.log(status)
+
+  const handleApprove = () => {
+    try {
+      axios
+        .patch("https://girls4girls.herokuapp.com/api/training/apply", {
+          applicationId: statusInfo.id,
+          applyStatus: "APPROVED",
+        })
+        .then((res) => {
+          console.log(res);
+          setStatus("Заявка одобрена");
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500)
+        });
+    } catch (e) {
+      console.log(e.error);
+    }
+  };
+
+  const handleDecline = () => {
+    try {
+      axios
+        .patch("https://girls4girls.herokuapp.com/api/training/apply", {
+          applicationId: statusInfo.id,
+          applyStatus: "DECLINED",
+        })
+        .then((res) => {
+          console.log(res);
+          setStatus("Заявка отклонена");
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500)
+        });
+    } catch (e) {
+      console.log(e.error);
+    }
+  };
   return (
     <>
       <div className="w-[100vw] h-[100vh] fixed left-0 top-0 flex items-center justify-center bg-black opacity-40"></div>
@@ -38,7 +87,7 @@ const Modal = ({
         </div>
         <div>
           <div className="flex flex-col gap-2 mb-8">
-            {questionnaire.questionAnswers.map((qa) => {
+            {questionnaire?.questionAnswers.map((qa) => {
               switch (qa.type) {
                 case "TEXT":
                   return (
@@ -55,66 +104,41 @@ const Modal = ({
                       <p className="text-[#000000] font-bold text-[1.25rem]">
                         {qa.questionText}
                       </p>
-                      <p className="font-normal">{qa.multipleChoices.map((choice) => <p>{choice}</p>)}</p>
+                      <p className="font-normal">
+                        {qa.multipleChoices.map((choice) => (
+                          <p>{choice}</p>
+                        ))}
+                      </p>
+                    </>
+                  );
+                case "VARIANTS":
+                  return (
+                    <>
+                      <p className="text-[#000000] font-bold text-[1.25rem]">
+                        {qa.questionText}
+                      </p>
+                      <p className="font-normal">{qa.answerText}</p>
                     </>
                   );
                 default:
                   return null;
               }
             })}
-            {/* <p className="text-[#000000] font-bold text-[1.25rem]">
-              Расскажите как вы узнали о нас?
-            </p>
-            <p className="font-normal">
-              Dorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-              vulputate libero et velit interdum, ac aliquet odio mattis. Dorem
-              ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate
-              libero et velit interdum, ac aliquet odio mattis.Dorem ipsum dolor
-              sit amet, consectetur adipiscing elit. Nunc vulputate libero et
-              velit interdum, ac aliquet odio mattis.Dorem ipsum dolor sit amet,
-              consectetur adipiscing elit. Nunc vulputate libero et velit
-              interdum, ac aliquet odio mattis.
-            </p>
           </div>
-          <div className="flex flex-col gap-2 mb-8">
-            <p className="text-[#000000] font-bold text-[1.25rem]">
-              Расскажите как вы узнали о нас?
-            </p>
-            <p className="font-normal">
-              Dorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-              vulputate libero et velit interdum, ac aliquet odio mattis. Dorem
-              ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate
-              libero et velit interdum, ac aliquet odio mattis.Dorem ipsum dolor
-              sit amet, consectetur adipiscing elit. Nunc vulputate libero et
-              velit interdum, ac aliquet odio mattis.Dorem ipsum dolor sit amet,
-              consectetur adipiscing elit. Nunc vulputate libero et velit
-              interdum, ac aliquet odio mattis.
-            </p>
-          </div>
-          <div className="flex flex-col gap-2 mb-8">
-            <p className="text-[#000000] font-bold text-[1.25rem]">
-              Расскажите как вы узнали о нас?
-            </p>
-            <p className="font-normal">
-              Dorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-              vulputate libero et velit interdum, ac aliquet odio mattis. Dorem
-              ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate
-              libero et velit interdum, ac aliquet odio mattis.Dorem ipsum dolor
-              sit amet, consectetur adipiscing elit. Nunc vulputate libero et
-              velit interdum, ac aliquet odio mattis.Dorem ipsum dolor sit amet,
-              consectetur adipiscing elit. Nunc vulputate libero et velit
-              interdum, ac aliquet odio mattis.
-            </p> */}
-          </div>
-          <div className="flex gap-2">
-            <SaveButton text={"Одобрить"} />
-            <button
-              type="button"
-              className="rounded-[8px] bg-[transparent] text-[#9960C3] border border-[#9960C3] p-2"
-            >
-              Отклонить
-            </button>
-          </div>
+          {status === "В ожидании" ? (
+            <div className="flex gap-2">
+              <SaveButton text={"Одобрить"} onClick={handleApprove} />
+              <button
+                type="button"
+                className="rounded-[8px] bg-[transparent] text-[#9960C3] border border-[#9960C3] p-2"
+                onClick={handleDecline}
+              >
+                Отклонить
+              </button>
+            </div>
+          ) : (
+            <p className="text-base text-green-500">{status}</p>
+          )}
         </div>
         <img
           src={close}

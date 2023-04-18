@@ -51,11 +51,11 @@ const MySlider = ({ videoblog = null, events = null, mentors = null, graduates =
         }}
       >
         {videoblog &&
-          videoblog.map((videoUrl, index) => {
+          videoblog.map((video, index) => {
             return (
               <SwiperSlide key={index}>
-                <VideoPlayer key={videoUrl} videoUrl={videoUrl} />
-                <p>Title</p>
+                <VideoPlayer key={index} videoUrl={video.videoUrl} />
+                <p>{video.title}</p>
               </SwiperSlide>
             );
           })}
