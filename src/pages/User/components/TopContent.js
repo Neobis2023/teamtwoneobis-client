@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import flowers from '../assets/images/flowers.svg'
-import user from '../assets/images/user.svg'
 import EditProfileModal from './EditProfileModal'
+import userPhoto from '../assets/images/user.svg';
 
 const TopContent = () => {
   const [name, setName] = useState('Пользователь'); 
@@ -12,15 +12,14 @@ const TopContent = () => {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
     setName(user.firstName);
-    setUserImage(user.image.url);
-    console.log(user.image.url)
+    setUserImage(user?.image?.url || userPhoto);
     
   }, [])
   return (
     <section className='bg-[radial-gradient(100%_498.87%_at_102.29%_100%,_#FAEFFF_40.59%,_#F3F2FF_100%)]'>
         <div className='flex justify-between items-center myWrapper'>
             <div className='flex gap-4 items-center'>
-                <img src={userImage || user} alt='profile photo' className='w-24 h-24 rounded-full'/>
+                <img src={userImage || userPhoto} alt='profile photo' className='w-24 h-24 rounded-full'/>
                 <div className='flex flex-col gap-2'>
                     <p className='w-fit text-[#C192EE] font-extrabold text-[clamp(1.3rem,_1.66vw,_1.8rem)] px-4 py-2 border bg-[#FFFFFF]  rounded-[12px]'>Привет, {name}!</p>
                     <NavLink to={'/'} className='underline'>Заполнить информацию о себе</NavLink>

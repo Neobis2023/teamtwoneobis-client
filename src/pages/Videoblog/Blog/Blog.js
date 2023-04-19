@@ -6,63 +6,7 @@ import axios from "../api/axios";
 import VideoPlayer from "../../../helpers/videoplayer/VideoPlayer";
 
 const Blog = memo(({ blog }) => {
-  // const date = new Date(blog.createdAt);
-  // const options = { day: "numeric", month: "numeric", year: "numeric" };
-  // const formattedDate = date.toLocaleDateString("en-GB", options);
-  // const [token, setToken] = useState("");
-  // const [isFavorite, setIsFavorite] = useState(false);
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-  //   setToken(token);
-  // }, []);
-
-  // useEffect(() => {
-  //   if (token) {
-  //     axios
-  //       .get(`https://girls4girls.herokuapp.com/api/like/${blog.id}`, {
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       })
-  //       .then((res) => {
-  //         if (res.data) {
-  //           setIsFavorite(true);
-  //         }
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //         setIsFavorite(false);
-  //       });
-  //   }
-  // }, [blog.id, token]);
-
-  // const handleFavorites = async () => {
-  //   try {
-  //     if (isFavorite) {
-  //       await axios.delete(`/like/${blog.id}`, {
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       });
-  //       setIsFavorite(false);
-  //     } else {
-  //       await axios.post(
-  //         `/like/${blog.id}`,
-  //         {
-  //           blogId: blog.id,
-  //         },
-  //         {
-  //           headers: {
-  //             Authorization: `Bearer ${token}`,
-  //           },
-  //         }
-  //       );
-  //       setIsFavorite(true);
-  //     }
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
+  console.log(blog, 'from blog.js')
   const date = new Date(blog.createdAt);
   const options = { day: "numeric", month: "numeric", year: "numeric" };
   const formattedDate = date.toLocaleDateString("en-GB", options);
@@ -83,19 +27,20 @@ const Blog = memo(({ blog }) => {
   useEffect(() => {
     if (token) {
       axios
-        .get(`https://girls4girls.herokuapp.com/api/like/${blog.id}`, {
+        .get(`https://girls4girls.herokuapp.com/api/like/${blog.id}`, null, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         })
         .then((res) => {
-          if (res.data) {
-            setIsFavorite(true);
-            localStorage.setItem(`blog-${blog.id}-isFavorite`, "true");
-          }
+          console.log(res, 'from ...')
+            if (res.data) {
+              setIsFavorite(true);
+              localStorage.setItem(`blog-${blog.id}-isFavorite`, "true");
+            }
         })
         .catch((error) => {
-          console.log(error);
+          console.log(error, 'from ...');
           setIsFavorite(false);
           localStorage.setItem(`blog-${blog.id}-isFavorite`, "false");
         });

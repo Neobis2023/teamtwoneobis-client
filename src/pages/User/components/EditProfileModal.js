@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import close from "../assets/images/close.svg";
-import user from "../assets/images/user.svg";
+import userPhoto from "../assets/images/user.svg";
 import camera from "../assets/images/camera.svg";
 import Input from "./Input";
 import Dropwdown from "./Dropwdown";
@@ -125,7 +125,7 @@ const EditProfileModal = ({ onClose }) => {
     setToken(token);
     const gender = user.gender;
     setCurrentEmail(user.email);
-    setCurrentUserImage(user.image.url);
+    setCurrentUserImage(user?.image?.url || userPhoto);
     setCurrentRegion(user.region);
     setCurrentPhoneNumber(user.phoneNumber);
     setCurrentFirstName(user.firstName);
