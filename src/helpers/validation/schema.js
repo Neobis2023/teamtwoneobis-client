@@ -1,6 +1,8 @@
 import * as yup from 'yup';
 
+
 const phoneRegExp = /^996[0-9]{6,12}$/;
+
 
 export const signupSchema = yup.object().shape({
     email: yup
@@ -9,7 +11,7 @@ export const signupSchema = yup.object().shape({
         .email('Пожалуйста введите действительный адрес электронной почты'),
     password: yup 
         .string()
-        .required('Введите пароль')
+        .required("Введите пароль")
         .min(6, 'Пароль должен содержать не менее 8 знаков')
         .max(16, 'Пароль не должен превышать 16 знаков'),
     confirmPassword: yup

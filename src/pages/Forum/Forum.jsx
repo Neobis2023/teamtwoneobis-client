@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import StartSection from "../../modules/StartSection/components/StartSection";
-import girlsTr from "./assets/images/girlsTr.png";
 import eventGirls from "./assets/images/eventGirls.png";
 import girls from "./assets/images/girls.jpg";
 import MySlider from "../../helpers/swiper/MySlider";
@@ -8,6 +7,7 @@ import computer from "./assets/images/computer.svg";
 import stars from "./assets/images/stars.svg";
 import EventsSlider from "../../helpers/swiper/EventsSlider";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 const Forum = () => {
   const [forums, setForums] = useState([]);
@@ -55,6 +55,7 @@ const Forum = () => {
         "Pellentesque at dui vitae amet varius interdum pulvinar mi a egestas ultricies ut diam eget tempor tortor feugiat.",
     },
   ];
+  const { t } = useTranslation();
 
   useEffect(() => {
     axios.get("https://girls4girls.herokuapp.com/api/forum").then((res) => setForums(res.data.data))
@@ -69,15 +70,13 @@ const Forum = () => {
   return (
     <section className="forum">
       <StartSection
-        title={"Форум Girls for Girls"}
-        subtitle={
-          "Наш форум по расширению прав и возможностей девочек - это ступенька на пути к раскрытию потенциала и высвобождению уверенности, которая заложена в каждой девочке"
-        }
+        title={t('Forums.firstSection.title')}
+        subtitle={t('Forums.firstSection.desc')}
         imgSource={girls}
       />
       <div className="relative pt-20 w-[95%] mx-auto pb-[4%]">
         <h2 className="text-[#662D91] font-semibold text-[clamp(2.2rem,_2.78vw,_2.8rem)] text-center">
-          Предстоящие форумы
+          {t('Forums.secondSection.title')}
         </h2>
         <img
           src={computer}

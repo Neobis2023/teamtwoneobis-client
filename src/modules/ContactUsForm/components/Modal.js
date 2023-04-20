@@ -4,10 +4,12 @@ import Textarea from "./Textarea";
 import Button from "../../../UI/Button/Button";
 import close from '../assets/images/close.svg'
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function Modal(props) {
   const [inputValue, setInputValue] = useState("");
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   function handleInputChange(event) {
     setInputValue(event.target.value);
@@ -25,12 +27,12 @@ function Modal(props) {
         <div className="fixed inset-0 bg-gray-500 bg-opacity-75"></div>
         <div className="relative bg-white rounded-[20px] w-1/2 p-6">
           <h2 className="text-[rgba(71,_18,_128,_0.8)] font-semibold text-[clamp(2.8rem,_3.33vw,_3.3rem)] border-b w-fit mx-auto pb-2">
-            Обратная связь
+            {t('Main.ContactUs.title')}
           </h2>
           <form className="p-8 flex flex-col gap-6" onSubmit={handleSubmit}>
-            <Input label={"Тема"} />
-            <Textarea label={"Расскажите нам что-нибудь..."} />
-            <Button text={'Отправить'} className={'!w-[70%] mx-auto'}/>
+            <Input label={t('Main.ContactUs.topicInput')} />
+            <Textarea label={t('Main.ContactUs.textarea')}  />
+            <Button text={t('Main.ContactUs.sendButton')} className={'!w-[70%] mx-auto'}/>
           </form>
           <img src={close} alt="close" className="absolute top-2 right-2 hover:cursor-pointer" onClick={() => navigate('/')}/>
         </div>

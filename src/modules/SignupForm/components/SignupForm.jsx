@@ -6,10 +6,12 @@ import { signupSchema } from "../../../helpers/validation/schema";
 import Button from "../../../UI/Button/Button";
 import Input from "../../../UI/Input/Input";
 import axios from "../api/axios";
+import { useTranslation } from "react-i18next";
 
 const SignupForm = () => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
+  const { t } = useTranslation();
 
   useEffect(() => {
     window.scrollTo({
@@ -75,7 +77,7 @@ const SignupForm = () => {
     >
       <div className="w-full">
         <Input
-          placeholder={"email"}
+          placeholder={t('Signup.email')}
           name="email"
           type="email"
           value={values.email}
@@ -88,7 +90,7 @@ const SignupForm = () => {
       ) : null}
       <div className="w-full">
         <Input
-          placeholder={"Номер  телефона"}
+          placeholder={t('Signup.phoneNumber')}
           name="phoneNumber"
           type="text"
           value={values.phoneNumber}
@@ -103,7 +105,7 @@ const SignupForm = () => {
       ) : null}
       <div className="w-full">
         <Input
-          placeholder={"Имя"}
+          placeholder={t('Signup.firstName')}
           name="firstName"
           type="text"
           value={values.firstName}
@@ -117,7 +119,7 @@ const SignupForm = () => {
       <div className="w-full">
         {" "}
         <Input
-          placeholder={"Фамилия"}
+          placeholder={t('Signup.lastName')}
           name="lastName"
           type="text"
           value={values.lastName}
@@ -130,7 +132,7 @@ const SignupForm = () => {
       ) : null}
       <div className="w-full">
         <Input
-          placeholder={"Пароль"}
+          placeholder={t('Signup.password')}
           name="password"
           type="password"
           value={values.password}
@@ -144,7 +146,7 @@ const SignupForm = () => {
       <div className="w-full">
         {" "}
         <Input
-          placeholder={"Пароль ещё раз"}
+          placeholder={t('Signup.passwordAgain')}
           name="confirmPassword"
           type="password"
           value={values.confirmPassword}
@@ -159,7 +161,7 @@ const SignupForm = () => {
       ) : null}
       <div className="w-full">
         <Button
-          text={"Зарегистрироваться"}
+          text={t('Signup.signup')}
           disabled={
             isSubmitting ||
             errors.email ||
@@ -177,7 +179,7 @@ const SignupForm = () => {
           }
         />
       </div>
-      {error && <p className="text-sm text-red-500 mx-auto">{error === 'User already exists' ? 'Пользователь уже существует' : null}</p>}
+      {error && <p className="text-sm text-red-500 mx-auto">{error === 'User already exists' ? t('Signup.error') : null}</p>}
     </form>
   );
 };

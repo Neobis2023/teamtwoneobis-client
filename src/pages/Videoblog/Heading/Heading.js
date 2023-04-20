@@ -5,13 +5,16 @@ import arrowDown from '../assets/images/arrow-down.svg';
 import { useDispatch, useSelector } from "react-redux";
 import { setCategoryRdx, setSearchValue } from "../../../helpers/reduxToolkit/searchSlice";
 import axios from "../api/axios";
+import { useTranslation } from "react-i18next";
 
 const Heading = () => {
+  const { t } = useTranslation();
   const searchValue = useSelector(state => state.searchValues.searchValue);
-  const [category, setCategory] = useState("Все");
+  const [category, setCategory] = useState(t('Videoblog.all'));
   const [chooseCategory, setChooseCategory] = useState(false);
   const [categories, setCategories] = useState([]);
   const dispatch = useDispatch();
+  
 
   useEffect(() => {
     dispatch(setCategoryRdx('Все'))
@@ -40,13 +43,12 @@ const Heading = () => {
             Видеоблог
           </h1>
           <p className="text-[#4E477A] font-medium text-[clamp(1.2rem,_1.11vw,_1.8rem)]">
-            Наш видеоблог - это сборник лекций от наших менторов на самые
-            различные темы: от ментального здоровья до личной гигиены.
+            {t('Videoblog.desc')}
           </p>
           <div className="flex gap-4 w-[fit] text-[#B3ABE3] font-semibold text-[clamp(0.8rem,_1.1vw,_1.rem)]">
             <div className="w-fit basis-1/3 flex gap-2 border border-[#B3ABE3] rounded-[12px] p-2">
               <img src={searchIcon} alt="search-icon"/>
-              <input placeholder="Поиск" className="outline-none" value={searchValue} onChange={(e) => dispatch(setSearchValue(e.target.value))}/>
+              <input placeholder={t('Videoblog.search')} className="outline-none" value={searchValue} onChange={(e) => dispatch(setSearchValue(e.target.value))}/>
             </div>
             <div className="relative basis-1/3 w-fit flex justify-between items-center border border-[#B3ABE3] rounded-[12px] p-2 gap-4 hover:cursor-pointer" onClick={() => setChooseCategory(curr => !curr)}>
               <p>{category}</p>

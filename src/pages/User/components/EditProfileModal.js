@@ -7,6 +7,7 @@ import Dropwdown from "./Dropwdown";
 import InputDate from "./InputDate";
 import PasswordChange from "./PasswordChange";
 import axios from "../api/axios";
+import { useTranslation } from "react-i18next";
 
 const EditProfileModal = ({ onClose }) => {
   const [saveStatus, setSaveStatus] = useState("");
@@ -135,12 +136,13 @@ const EditProfileModal = ({ onClose }) => {
       ? setCurrentGender("Женский")
       : setCurrentGender("Мужской");
   }, []);
+  const { t } = useTranslation();
   return (
     <div className="fixed inset-0 bg-gray-900 bg-opacity-50 z-50">
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg p-6">
         <div className="flex items-start border-b relative justify-between">
           <h2 className="text-2xl font-bold pb-2 text-[#403A64] text-[1.3rem,_1.66vw,_1.8rem]">
-            Редактировать информацию
+            {t('Profile.editProfile.title')}
           </h2>
           <img src={close} onClick={onClose} className="hover:cursor-pointer" />
         </div>
@@ -162,13 +164,13 @@ const EditProfileModal = ({ onClose }) => {
           </div>
           <div className="flex gap-3 justify-between mt-2 w-full">
             <Input
-              label={"Имя"}
+              label={t('Profile.editProfile.firstName')}
               value={currentFirstName}
               type="text"
               onChange={(e) => setCurrentFirstName(e.target.value)}
             />
             <Input
-              label={"Фамилия"}
+              label={t('Profile.editProfile.lastName')}
               value={currentLastName}
               type="text"
               onChange={(e) => setCurrentLastName(e.target.value)}
@@ -176,26 +178,26 @@ const EditProfileModal = ({ onClose }) => {
           </div>
           <div className="flex w-full gap-3 justify-between mt-2">
             <Dropwdown
-              label={"Пол"}
+              label={t('Profile.editProfile.gender')}
               options={["Мужской", "Женский"]}
               value={currentGender}
               onChange={handleGenderChange}
             />
             <InputDate
-              label={"Дата рождения"}
+              label={t('Profile.editProfile.birthday')}
               selected={selectedDate}
               onChange={handleDateChange}
             />
           </div>
           <div className="flex gap-3 justify-between mt-2 w-full">
             <Dropwdown
-              label={"Выберите регион"}
+              label={t('Profile.editProfile.region')}
               options={["Кант", "Чуй", "Ош"]}
               onChange={handleRegionChange}
               value={!currentRegion ? "Не выбрано" : currentRegion}
             />
             <Input
-              label={"Номер телефона"}
+              label={t('Profile.editProfile.phoneNumber')}
               value={currentPhoneNumber}
               onChange={(e) => setCurrentPhoneNumber(e.target.value)}
               type="text"
@@ -207,7 +209,7 @@ const EditProfileModal = ({ onClose }) => {
               onClick={handleSubmit}
               className="bg-[#8860C3] text-white px-4 py-2 rounded-lg mt-4 mr-auto w-[48%] mb-2"
             >
-              Сохранить и выйти
+              {t('Profile.editProfile.save')}
             </button>
           ) : (
             <p className="text-base text-green-500">{saveStatus}</p>

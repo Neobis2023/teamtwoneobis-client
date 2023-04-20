@@ -2,6 +2,7 @@ import React from "react";
 import MySlider from "../../../helpers/swiper/MySlider";
 import girls from './assets/images/girls.png';
 import EventsPast from "../../../modules/EventsPast/EventsPast";
+import { useTranslation } from "react-i18next";
 
 const PastEvents = () => {
   const events = [
@@ -48,9 +49,10 @@ const PastEvents = () => {
         "Pellentesque at dui vitae amet varius interdum pulvinar mi a egestas ultricies ut diam eget tempor tortor feugiat.",
     },
   ];
+  const { t } = useTranslation();
   return (
     <section className="pastTrainings">
-      <EventsPast title={'Прошедшие тренинги'}/>
+      <EventsPast title={t('Trainings.fourthSection.title')}/>
       <MySlider dataEvents={events} />
     </section>
   );

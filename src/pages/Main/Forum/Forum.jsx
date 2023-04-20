@@ -7,13 +7,15 @@ import simple from './assets/images/simple.png'
 import thoughts from './assets/images/thoughts.png';
 import stars from './assets/images/stars.png';
 import hearts from './assets/images/hearts.png';
+import { useTranslation } from "react-i18next";
 
 const Forum = () => {
+  const { t } = useTranslation();
   return (
     <section className="bg-[#FAFAFA] py-20">
       <div className="myWrapper">
         <div className="flex justify-center gap-4 mb-16 items-center">
-          <h2 className="mySubtitle">Форум</h2>
+          <h2 className="mySubtitle">{t('Main.Forum.forumTitle')}</h2>
           <img src={check} alt="check" className="h-fit w-[5%]"/>
         </div>
         <div className="flex gap-2 justify-between items-center">
@@ -31,13 +33,9 @@ const Forum = () => {
           </div>
           <div className="flex flex-col gap-5 basis-[48%]">
             <p className="we-do">
-              Мы покрываем широкий спектр тем в нашей обучающей программе,
-              которые образовывают девушек в личных и профессиональных областях.
-              Кроме того, мы охватываем все 7 регионов Кыргызстана, чтобы
-              достичь как можно большего числа девушек и помочь им развить свой
-              потенциал.
+              {t('Main.Forum.forumDesc')}
             </p>
-            <DetailsButton text='Узнать подробнее' to="forum"/>
+            <DetailsButton text={t('Main.Forum.button')} to="forum"/>
           </div>
         </div>
       </div>
