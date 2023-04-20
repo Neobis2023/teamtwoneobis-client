@@ -4,6 +4,7 @@ import aykanysh from './assets/images/aykanysh.png';
 import salkynay from './assets/images/salkynay.png';
 import aysezim from './assets/images/aysezim.png';
 import nurayim from './assets/images/nurayim.png';
+import { useTranslation } from 'react-i18next';
 
 const Mentors = () => {
   const mentors = [
@@ -56,9 +57,10 @@ const Mentors = () => {
       desc: 'Vitae sapien pellentesque habitant morbi nunc. Viverra aliquet  porttitor rhoncus libero justo laoreet sit amet vitae.',
     },
   ];
+  const { t } = useTranslation();
   return (
     <section className='pb-20 bg-[#F8F9FA] mentors'>
-        <h2 className='text-[#662D91] font-semibold text-[clamp(1.2rem,_2.5vw,_2.5rem)] text-center pb-10'>Менторы</h2>
+        <h2 className='text-[#662D91] font-semibold text-[clamp(1.2rem,_2.5vw,_2.5rem)] text-center pb-10'>{t('Mentorship.fourthSection.title')}</h2>
         <MySlider mentors={mentors}/>
     </section>
   )

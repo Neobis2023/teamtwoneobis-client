@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import Button from "./Button/Button";
 import userPhoto from './assets/images/video-photo.svg'
+import { useTranslation } from "react-i18next";
 
 const Events = ({ imgSource, eventName, eventId, description, time, date, location, handleClick }) => {
   const eventUrl = eventName?.toLowerCase().split(' ').join('-');
   const newDate = new Date(date);
   const options = { day: "numeric", month: "numeric", year: "numeric" };
   const formattedDate = newDate.toLocaleDateString("en-GB", options);
-
+  const { t } = useTranslation();
   return (
     <div className="pb-20">
       <div className="myWrapper flex justify-between items-center">
@@ -32,8 +33,8 @@ const Events = ({ imgSource, eventName, eventId, description, time, date, locati
             </div>
           </div>
           <div className="flex gap-2">
-            <Button where={`${eventUrl}/apply`} text={'Подать заявку'} className={'text-[#662D91] bg-[#E8E5FF]'} onClick={() => handleClick(eventName, eventId)}/>
-            <Button where={'/'} text={'Подробнее'} className={'text-[#662D91]'}/>
+            <Button where={`${eventUrl}/apply`} text={t('Trainings.secondSection.firstButton')} className={'text-[#662D91] bg-[#E8E5FF]'} onClick={() => handleClick(eventName, eventId)}/>
+            <Button where={'/'} text={t('Trainings.secondSection.secondButton')} className={'text-[#662D91]'}/>
           </div>
         </div>
         <div className="basis-1/2 h-[350px] rounded-md">

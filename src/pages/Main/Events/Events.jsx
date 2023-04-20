@@ -7,6 +7,7 @@ import thirdFutureE from "./assets/images/thirdFutureE.png";
 import firstPastE from "./assets/images/firstPastE.png"
 import secondPastE from "./assets/images/secondPastE.png";
 import thirdPastE from "./assets/images/thirdPastE.png";
+import { useTranslation } from "react-i18next";
 
 const data = {
   futureEvents: [
@@ -64,32 +65,34 @@ const data = {
 };
 
 export const FutureEvents = () => {
+  const { t } = useTranslation();
   return (
     <section className="py-20 events">
       <div>
         <div className="myWrapper pb-16">
           <h2 className="mySubtitle text-center future-events-title">
-            Предстоящие события
+            {t('Main.futureEvents.title')}
           </h2>
         </div>
         <MySlider events={data.futureEvents} />
-        <DetailsButton className="mx-auto mt-14" text="Узнать подробнее" />
+        <DetailsButton className="mx-auto mt-14" text={t('Main.futureEvents.button')} />
       </div>
     </section>
   );
 };
 
 export const PastEvents = () => {
+  const { t } = useTranslation();
   return (
     <section className="pb-20">
       <div>
         <div className="myWrapper pb-16">
           <h2 className="mySubtitle text-center future-events-title">
-            Прошедшие события
+          {t('Main.pastEvents.title')} 
           </h2>
         </div>
         <MySlider events={data.pastEvents} />
-        <DetailsButton text="Узнать подробнее" className="mx-auto mt-14" />
+        <DetailsButton text={t('Main.pastEvents.button')}  className="mx-auto mt-14" />
       </div>
     </section>
   );

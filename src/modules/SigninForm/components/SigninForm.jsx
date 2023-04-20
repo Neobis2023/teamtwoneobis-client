@@ -6,6 +6,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import { signinSchema } from "../../../helpers/validation/schema";
 import axios from "../api/axios";
+import { useTranslation } from "react-i18next";
 
 
 const SigninForm = () => {
@@ -13,7 +14,7 @@ const SigninForm = () => {
   const location = useLocation();
   const [loggedin, setLoggedin] = useState(null);
   const fromPage = location.state?.from?.pathname;
-
+  const { t } = useTranslation();
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -98,32 +99,32 @@ const SigninForm = () => {
   return (
     <form onSubmit={handleSubmit} className="w-full flex flex-col items-center gap-4 mb-5">
       <div className="w-full">
-        <Input placeholder={'Электронная почта'} type='email' name='email' onChange={handleChange} onBlur={handleBlur} value={values.email}/>
+        <Input placeholder={t('Signin.email')} type='email' name='email' onChange={handleChange} onBlur={handleBlur} value={values.email}/>
         {touched.email && errors.email ? <p className="text-sm text-red-500 mr-auto pl-2">{errors.email}</p> : null}
       </div>
       <div className="flex items-center gap-2">
         <img src={line} alt="line" className="h-fit" />
-        <p className="text-[rgba(41,_45,_50,_0.6)]">или</p>
+        <p className="text-[rgba(41,_45,_50,_0.6)]">{t('Signin.or')}</p>
         <img src={line} alt="line" className="h-fit" />
       </div>
       <div className="w-full">
-        <Input placeholder={'Номер телефона'} type='text' name='phoneNumber' onChange={handleChange} onBlur={handleBlur} value={values.phoneNumber}/>
+        <Input placeholder={t('Signin.phoneNumber')} type='text' name='phoneNumber' onChange={handleChange} onBlur={handleBlur} value={values.phoneNumber}/>
         {touched.phoneNumber && errors.phoneNumber ? <p className="text-sm text-red-500 mr-auto pl-2">{errors.phoneNumber}</p> : null}
       </div>
       <div className="w-full">
-        <Input placeholder={'Пароль'} type='password' name='password' onChange={handleChange} onBlur={handleBlur} value={values.password}/>
+        <Input placeholder={t('Signin.password')} type='password' name='password' onChange={handleChange} onBlur={handleBlur} value={values.password}/>
         {touched.password && errors.password ? <p className="text-sm text-red-500 mr-auto pl-2">{errors.password}</p> : null}
       </div>
       <div className="w-full">
         {/* <Button text={'Войти'} disabled={isSubmitting || (!values.password || (!values.phoneNumber && !values.email))}/> */}
-        <Button text={'Войти'} disabled={isSubmitting || (!values.password || (!values.phoneNumber && !values.email)) || (errors.phoneNumber || errors.email)}/>
+        <Button text={t('Signin.login')} disabled={isSubmitting || (!values.password || (!values.phoneNumber && !values.email)) || (errors.phoneNumber || errors.email)}/>
       </div>
-      {loggedin===false && <p className="text-sm text-red-500 mr-auto pl-2 mx-auto">Неверный логин или пароль</p>}
+      {loggedin===false && <p className="text-sm text-red-500 mr-auto pl-2 mx-auto">{t('Signin.error')}</p>}
       <NavLink
         to="/"
         className="text-[rgba(41,_45,_50,_0.6)] ml-auto font-normal text-[1.25rem]"
       >
-        Забыли пароль?
+        {t('Signin.forget')}
       </NavLink>
     </form>
   );

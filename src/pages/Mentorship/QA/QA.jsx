@@ -1,90 +1,80 @@
 import React from "react";
 import QAItem from "./QAItem";
+import { useTranslation } from "react-i18next";
 
 const QA = () => {
+  const { t } = useTranslation();
+  const firstQuestion = t('Mentorship.lastSection.firstQuestion');
+  const secondQuestion = t('Mentorship.lastSection.secondQuestion');
+  const thirdQuestion = t('Mentorship.lastSection.thirdQuestion');
+  const fourthQuestion = t('Mentorship.lastSection.fourthQuestion');
   const data = [
     {
       id: 1,
-      question: "Какие цели у программы?",
+      question: firstQuestion,
       answer: (
         <ol>
           <li>
-            1. Укрепить самоуважения и уверенность в себе у молодых девушек.
+            {t('Mentorship.lastSection.firstAnswer.1')}
           </li>
           <li>
-            2. Вооружить девочек навыками и знаниями, необходимыми для того
-            чтобы справляться с трудными ситуациями и преодолевать препятствия.
+          {t('Mentorship.lastSection.firstAnswer.2')}
           </li>
           <li>
-            3. Обеспечить безопасную и благоприятную среду для девочек, чтобы
-            они могли исследовать свои интересы, увлечения и цели.{" "}
+          {t('Mentorship.lastSection.firstAnswer.3')}
           </li>
           <li>
-            4. Развивать чувство общности и принадлежности среди девочек из
-            разных слоев общества.{" "}
+          {t('Mentorship.lastSection.firstAnswer.4')}
           </li>
           <li>
-            5. Поощрять девочек быть лидерами и вдохновлять их на позитивное
-            влияние в своих сообществах.
+          {t('Mentorship.lastSection.firstAnswer.5')}
           </li>
         </ol>
       ),
     },
     {
       id: 2,
-      question: "Ценности",
+      question: secondQuestion,
       answer: (
         <ol>
-          <li>1. Расширение прав и возможностей.</li>
+          <li>{t('Mentorship.lastSection.secondAnswer.1')}</li>
           <li>
-            2. Мы верим в расширение прав и возможностей девочек, чтобы они
-            могли взять свою жизнь в свои руки и полностью раскрыть свой
-            потенциал.
+          {t('Mentorship.lastSection.secondAnswer.2')}
           </li>
-          <li>3. Инклюзивность.</li>
+          <li>{t('Mentorship.lastSection.secondAnswer.3')}</li>
           <li>
-            4. Мы стремимся создать инклюзивную среду, в которой девочки из всех
-            слоев общества чувствуют, что их ценят и поддерживают.
+          {t('Mentorship.lastSection.secondAnswer.4')}
           </li>
-          <li>5. Устойчивость/стойкость.</li>
+          <li>{t('Mentorship.lastSection.secondAnswer.5')}</li>
           <li>
-            6. Мы верим в воспитание стойкости у девочек, помогая им
-            преодолевать препятствия и добиваться успеха в жизни.
+          {t('Mentorship.lastSection.secondAnswer.6')}
           </li>
-          <li>7. Менторство. </li>
+          <li>{t('Mentorship.lastSection.secondAnswer.7')} </li>
           <li>
-            8. Мы верим в силу наставничества, обеспечивающего руководство,
-            поддержку и положительные ролевые модели для девочек.{" "}
+          {t('Mentorship.lastSection.secondAnswer.8')}
           </li>
-          <li>9. Рост</li>
+          <li>{t('Mentorship.lastSection.secondAnswer.9')}</li>
           <li>
-            10. Мы верим в то, что способствуем личностному и профессиональному
-            росту девочек, вооружая их навыками, необходимыми для достижения
-            успеха в жизни.
+          {t('Mentorship.lastSection.secondAnswer.10')}
           </li>
         </ol>
       ),
     },
     {
       id: 3,
-      question: "Видение",
+      question: thirdQuestion,
       answer: (
         <p>
-          Наше видение - создать мир, в котором у каждой девочки есть
-          инструменты, навыки и поддержка, необходимые для успешной жизни,
-          независимо от того, с какими препятствиями она может столкнуться.
+          {t('Mentorship.lastSection.thirdAnswer.1')}
         </p>
       ),
     },
     {
       id: 4,
-      question: "Миссия",
+      question: fourthQuestion,
       answer: (
         <p>
-          Наша миссия - дать девочкам возможность поверить в себя и свои
-          способности, повысить их самооценку и устойчивость, а также поддержать
-          их в преодолении трудностей, связанных с взрослением в современном
-          мире.
+          {t('Mentorship.lastSection.fourthAnswer.1')}
         </p>
       ),
     },

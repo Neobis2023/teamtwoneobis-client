@@ -4,6 +4,9 @@ import axios from "../api/axios";
 import Blog from "../../Videoblog/Blog/Blog";
 import {useGetProfileQuery} from '../../../helpers/reduxToolkit/apis/user-api';
 import {LoadingSpinner} from '../../../components/loading-spinner/LoadingSpinner';
+import { useTranslation } from "react-i18next";
+
+
 
 const Profile = () => {
   
@@ -33,7 +36,7 @@ const Profile = () => {
   return (
     <section className="w-[75%]">
       <p className="text-[#403A64] font-extrabold text-[clamp(1.3rem,_1.66vw,_1.8rem)] mb-4">
-        Мой профиль
+        {t('Profile.main.title')}
       </p>
       <div className="flex flex-col">
         <div className="mb-[5%]">
@@ -84,10 +87,10 @@ const Profile = () => {
         <div>
           <div className="flex justify-between mb-2">
             <p className="text-[#403A64] text-[clamp(0.75rem,_1.39vw,_1.25rem)]">
-              Избранные видеолекции
+            {t('Profile.main.favoriteBlogs')}
             </p>
             <p className="text-[#5900B2] font-semibold text-[clamp(0.675rem,_0.972vw,_1.175rem)]">
-              Посмотреть все
+            {t('Profile.main.allVideos')}
             </p>
           </div>
           <div className="flex gap-4">

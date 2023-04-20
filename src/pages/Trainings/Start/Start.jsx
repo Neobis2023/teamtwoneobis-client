@@ -1,14 +1,16 @@
 import React from "react";
 import girls from "./assets/images/girls.jpg";
 import StartSection from "../../../modules/StartSection/components/StartSection";
+import { useTranslation } from "react-i18next";
 
 const Start = () => {
+  const { t } = useTranslation();
   return (
     <section>
       <StartSection
-        title={"Тренинги Girls for Girls"}
+        title={t('Trainings.firstSection.title')}
         subtitle={
-          "Наш тренинг по расширению прав и возможностей девочек - это ступенька на пути к раскрытию потенциала и высвобождению уверенности, которая заложена в каждой девочке"
+          t('Trainings.firstSection.desc')
         }
         imgSource={girls}
       />

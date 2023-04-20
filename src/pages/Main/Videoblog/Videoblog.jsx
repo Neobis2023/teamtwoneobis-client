@@ -5,8 +5,10 @@ import computer from './assets/images/computer.png';
 import MySlider from "../../../helpers/swiper/MySlider";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const Videoblog = () => {
+  const { t } = useTranslation();
   document.cookie = "myCookie=value; SameSite=Strict";
   const videoUrls = [
     "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
@@ -47,7 +49,7 @@ const Videoblog = () => {
             alt="computer"
             className="absolute left-20 h-[6vw]"
           />
-          <DetailsButton className={"mx-auto mt-5"} text="Узнать подробнее" to="videoblog/1"/>
+          <DetailsButton className={"mx-auto mt-5"} text={t('Main.Videoblog.button')} to="videoblog/1"/>
         </div>
       </div>
     </section>
