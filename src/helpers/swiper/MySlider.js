@@ -53,7 +53,7 @@ const MySlider = ({
         spaceBetween={mentors || graduates || dataEvents ? 40 : 60}
         navigation={mentors || graduates || dataEvents ? false : true}
         pagination={{
-          dynamicBullets: true,
+          // dynamicBullets: true,
           clickable: true,
         }}
       >
@@ -62,6 +62,7 @@ const MySlider = ({
             return (
               <SwiperSlide key={index}>
                 <VideoPlayer key={index} videoUrl={video.videoUrl} />
+                
                 <p>{video.title}</p>
               </SwiperSlide>
             );
