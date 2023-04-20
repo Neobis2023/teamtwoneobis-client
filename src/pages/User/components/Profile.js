@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 
 
 const Profile = () => {
-  
+  const { t } = useTranslation();
   const { data, isLoading } = useGetProfileQuery();
   
   console.log(data);
