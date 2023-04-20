@@ -39,15 +39,15 @@ const EventsSlider = ({ events }) => {
         {events &&
           events.map((event) => {
             return (
-              <SwiperSlide key={event.id}>
+              <SwiperSlide key={event?.id}>
                 <Events
-                  eventId={event.id}
-                  imgSource={event.images[0]?.url}
-                  eventName={event.title}
-                  description={event.description}
-                  time={event.time}
-                  date={event.eventDate}
-                  location={event.location}
+                  eventId={event?.id}
+                  imgSource={event?.images[0]?.url}
+                  eventName={event?.title}
+                  description={event?.description}
+                  time={event?.time}
+                  date={event?.eventDate}
+                  location={event?.location}
                   handleClick={handleClick}
                 />
               </SwiperSlide>
