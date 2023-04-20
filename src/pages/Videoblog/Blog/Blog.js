@@ -6,7 +6,6 @@ import axios from "../api/axios";
 import VideoPlayer from "../../../helpers/videoplayer/VideoPlayer";
 
 const Blog = memo(({ blog }) => {
-  console.log(blog, 'from blog.js')
   const date = new Date(blog.createdAt);
   const options = { day: "numeric", month: "numeric", year: "numeric" };
   const formattedDate = date.toLocaleDateString("en-GB", options);
