@@ -16,6 +16,7 @@ const AdminApplicationsNavbar = () => {
     axios.get("https://girls4girls.herokuapp.com/api/training").then((res) => { 
       setTrainings(res.data.data)
       dispatch(setCurrentTrainingIdApplications(res.data?.data[0]?.id))
+      console.log(res.data.data)
    });
   }, [])
 

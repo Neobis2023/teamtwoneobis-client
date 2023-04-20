@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import User from "./User";
 import Modal from "./Modal";
 
@@ -12,6 +12,12 @@ const UsersList = ({ data }) => {
   const handleClose = () => {
     setIsModal(false);
   }
+  const [localData, setLocalData] = useState(null);
+  
+  useEffect(() => {
+    setLocalData(null); // clear the previous data
+    setLocalData(data); // set the new data
+  }, [data]);
 
   console.log(data)
   return (
@@ -31,9 +37,9 @@ const UsersList = ({ data }) => {
           <div className="justify-self-center">Подробная анкета</div>
         </div>
         <div>
-          {data.map((user) => {
+          {localData ? localData.map((user) => {
             return <User {...user.user} key={user?.user?.id} handleClick={handleClick} questionnaire={user?.user?.response[0]} statusInfo={user}/>;
-          })}
+          }) : null }
         </div>
         {(isModal && userForModal) && <Modal {...userForModal} handleClose={handleClose}/>}
       </div>

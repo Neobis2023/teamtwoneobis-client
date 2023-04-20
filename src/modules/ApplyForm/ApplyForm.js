@@ -8,10 +8,12 @@ import Checkbox from "./components/Checkbox";
 import InputDate from "./components/InputDate";
 import Dropdown from "./components/Dropdown";
 import axios from "./api/axios";
+import Modal from "./components/Modal";
 
 const ApplyForm = ({ questionnaire }) => {
   // const [pageNumber, setPageNumber] = useState(1);
 
+  const [isModalActive, setIsModalActive] = useState(false);
   const CURRENT_YEAR = new Date().getFullYear();
   const [eventName, setEventName] = useState("");
   const [questionnaireId, setQuestionnaireId] = useState(0);
@@ -91,6 +93,7 @@ const ApplyForm = ({ questionnaire }) => {
         }
       );
 
+      setIsModalActive(true);
       console.log(isApplied);
     } catch (e) {
       console.log(e);
@@ -102,6 +105,8 @@ const ApplyForm = ({ questionnaire }) => {
   // }
   return (
     <section className="w-[85%]">
+      {isModalActive ? <Modal onClose={() => setIsModalActive(false)}/> : null}
+      
       <div className="myWrapper py-10 flex items-start">
         <Back className={"w-[20%] mt-2"} />
         <div className="w-[75%]">

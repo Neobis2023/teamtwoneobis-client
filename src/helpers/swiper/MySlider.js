@@ -177,7 +177,7 @@ const MySlider = ({
                     <Button
                       text={t('Trainings.fourthSection.button')}
                       className={
-                        "!rounded-[40px] text-base font-semibold !text-[#662D91] !bg-[#E8E5FF] border border-solid border-[#CDB4DB]"
+                        "!rounded-[40px] text-base font-semibold !text-[#662D91] !bg-[#E8E5FF] border border-solid border-[#CDB4DB] transition hover:!text-white hover:!bg-[#9960C3]"
                       }
                     />
                   </NavLink>

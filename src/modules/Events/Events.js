@@ -33,7 +33,7 @@ const Events = ({ imgSource, eventName, eventId, description, time, date, locati
             </div>
           </div>
           <div className="flex gap-2">
-            <Button where={`${eventUrl}/apply`} text={t('Trainings.secondSection.firstButton')} className={'text-[#662D91] bg-[#E8E5FF]'} onClick={() => handleClick(eventName, eventId)}/>
+            <Button where={`${eventUrl}/apply`} text={t('Trainings.secondSection.firstButton')} className={'text-[#662D91] bg-[#E8E5FF] transition hover:!text-white hover:!bg-[#9960C3]'} onClick={() => handleClick(eventName, eventId)}/>
             <Button where={'/'} text={t('Trainings.secondSection.secondButton')} className={'text-[#662D91]'}/>
           </div>
         </div>

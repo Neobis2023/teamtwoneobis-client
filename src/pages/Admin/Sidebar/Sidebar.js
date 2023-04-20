@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import logo from "./assets/images/logo.svg";
 import chart from "./assets/images/chart.svg";
@@ -7,6 +7,7 @@ import applications from "./assets/images/applications.svg";
 import users from "./assets/images/users.svg";
 import feedback from "./assets/images/feedback.svg";
 import logout from "./assets/images/logout.svg";
+import axios from "axios";
 
 const Sidebar = () => {
   const location = useLocation();
@@ -15,26 +16,31 @@ const Sidebar = () => {
   const isActiveEdit = location.pathname.startsWith("/admin/edit");
   const isActiveStatistics = location.pathname.startsWith("/admin/statistics");
   const isActiveUsers = location.pathname.startsWith("/admin/users");
-  const dataEvents = [
-    {
-        id: 1, 
-        title: 'Поток 1',
-        status: 'Закрыт',
-        deadline: '03.02.2023'
-    },
-    {
-        id: 2, 
-        title: 'Поток 2',
-        status: 'Закрыт',
-        deadline: '03.02.2023'
-    },
-    {
-        id: 3, 
-        title: 'Поток 3',
-        status: 'Открыт',
-        deadline: '03.02.2023'
-    }
-  ]
+  // const dataEvents = [
+  //   {
+  //       id: 1, 
+  //       title: 'Поток 1',
+  //       status: 'Закрыт',
+  //       deadline: '03.02.2023'
+  //   },
+  //   {
+  //       id: 2, 
+  //       title: 'Поток 2',
+  //       status: 'Закрыт',
+  //       deadline: '03.02.2023'
+  //   },
+  //   {
+  //       id: 3, 
+  //       title: 'Поток 3',
+  //       status: 'Открыт',
+  //       deadline: '03.02.2023'
+  //   }
+  // ]
+  const [trainings, setTrainings] = useState("");
+  useEffect(() => {
+    axios.get("https://girls4girls.herokuapp.com/api/training").then((res) => setTrainings(res.data.data));
+  }, [])
+  console.log(trainings, 'from sidebar')
   return (
     <section className="bg-[#FDFDFD] min-w-[270px] h-screen">
       <div className="flex flex-col h-full fixed min-h-[650px] w-[270px]">
@@ -74,7 +80,7 @@ const Sidebar = () => {
             </li>
             <li>
               <NavLink
-                to={`/admin/applications/mentoring-program/${dataEvents[0].title.toLowerCase().split(' ').join('-')}`}
+                to={trainings && `/admin/applications/trainings/${trainings[0].title.toLowerCase().split(' ').join('-')}`}
                 className={`nav-admin flex items-center gap-2 py-3 px-8 ${
                   isActiveApplications ? "active" : ""
                 }`}

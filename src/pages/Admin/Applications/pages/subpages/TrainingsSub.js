@@ -86,7 +86,7 @@ const TrainingsSub = () => {
       >
         Посмотреть анкету
       </NavLink>
-      <UsersList data={users} />
+      <UsersList data={users && users} />
     </div>
   );
 };
