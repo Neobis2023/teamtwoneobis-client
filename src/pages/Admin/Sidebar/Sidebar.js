@@ -80,7 +80,7 @@ const Sidebar = () => {
             </li>
             <li>
               <NavLink
-                to={trainings && `/admin/applications/trainings/${trainings[0].title.toLowerCase().split(' ').join('-')}`}
+                to={trainings && `/admin/applications/trainings/${trainings[0]?.title.toLowerCase().split(' ').join('-')}`}
                 className={`nav-admin flex items-center gap-2 py-3 px-8 ${
                   isActiveApplications ? "active" : ""
                 }`}

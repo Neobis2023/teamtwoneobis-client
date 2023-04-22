@@ -50,7 +50,7 @@ const MySlider = ({
         slidesPerView={mentors || dataEvents ? 4 : 3}
         loop={true}
         centeredSlides={mentors || dataEvents ? false : true}
-        spaceBetween={mentors || graduates || dataEvents ? 40 : 60}
+        spaceBetween={videoblog || mentors || graduates || dataEvents ? 40 : 60}
         navigation={mentors || graduates || dataEvents ? false : true}
         pagination={{
           // dynamicBullets: true,
@@ -61,9 +61,9 @@ const MySlider = ({
           videoblog.map((video, index) => {
             return (
               <SwiperSlide key={index}>
-                <VideoPlayer key={index} videoUrl={video.videoUrl} />
+                <VideoPlayer key={index} videoUrl={video?.videoUrl} />
                 
-                <p>{video.title}</p>
+                <p className="mx-auto text-center">{video?.title}</p>
               </SwiperSlide>
             );
           })}

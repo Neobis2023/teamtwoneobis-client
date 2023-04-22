@@ -78,7 +78,7 @@ const Profile = () => {
           <div className="flex gap-3 overflow-x-hidden" style={{ marginBottom: '40px'}}>
             { isLoading
               ? <LoadingSpinner />
-              : data.jetons.filter((jeton) => jeton.type === 'CARD').map((achievement, index) => (
+              : data?.jetons.filter((jeton) => jeton.type === 'CARD').map((achievement, index) => (
                 <div className="basis-auto" key={index}><Achievement achievement={achievement} /></div>
               ))}
           </div>
