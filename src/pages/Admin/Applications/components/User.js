@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import userPhoto from '../assets/images/userPhoto.svg';
 import SaveButton from "../../components/SaveButton";
 import axios from "../../../Videoblog/api/axios";
+import {textShortener} from '../../../../utils/text-shortener';
 
 
 const User = ({ id, image, firstName, lastName, email, phoneNumber, handleClick, questionnaire, statusInfo }) => {
@@ -9,7 +10,7 @@ const User = ({ id, image, firstName, lastName, email, phoneNumber, handleClick,
     "PENDING" : "В ожидании",
     "APPROVED" : "Заявка одобрена",
     "DECLINED" : "Заявка отклонена"
-  } 
+  }
   const [statusUser, setStatusUser] = useState(ApplyStatus[statusInfo.applyStatus]);
   const userData = {
     id,
@@ -73,7 +74,7 @@ const User = ({ id, image, firstName, lastName, email, phoneNumber, handleClick,
           {lastName}
         </div>
       </div>
-      <div>{email}</div>
+      <div>{textShortener(email, 20)}</div>
       <div className="text-[#616161]">{phoneNumber}</div>
       {/* {statusInfo.applyStatus === 'PENDING' ? <div className="flex items-center gap-2">
         <button

@@ -106,7 +106,7 @@ const MySlider = ({
                     {mentor.fullName}
                   </p>
                   <img src={line} alt="line" />
-                  <p className="font-normal text-[clamp(.5rem,_0.83vw,_1rem)] text-[#662D91]">
+                  <p style={{ height: '40px', overflow: 'hidden'}} className="font-normal text-[clamp(.5rem,_0.83vw,_1rem)] text-[#662D91]">
                     {mentor.desc}
                   </p>
                   <NavLink to="/">
