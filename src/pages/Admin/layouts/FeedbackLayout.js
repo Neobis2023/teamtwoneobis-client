@@ -2,22 +2,38 @@ import { Outlet } from "react-router-dom";
 import Chat from "../Feedback/components/Chat";
 import LeftTop from "../Feedback/components/LeftTop";
 import userImg from '../Feedback/assets/images/user-img.svg'
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import useLocalStorage from "../../../helpers/hooks/useLocalStorage";
 import { useSelector } from "react-redux";
+import {useGetFeedbacksQuery} from '../../../helpers/reduxToolkit/apis/feedback-api';
+import {LoadingSpinner} from '../../../components/loading-spinner/LoadingSpinner';
 
 const FeedbackLayout = () => {
-
   const feedbackCurrentUser = useSelector(state => state.toolkit.feedbackCurrentUser);
+  
+  const { data, isLoading } = useGetFeedbacksQuery();
+  
+  console.log('feedbacks', data);
+  
+  useEffect(() => {
+    if (data) {
+      console.log('Data is successfully retrieved', data);
+    }
+  }, [data])
+  
   return (
     <section className="bg-[#EAF0FF] w-full flex flex-col justify-end">
-      <div className="mx-6 pb-6 pt-4 pr-4 overflow-hidden rounded-[10px] min-h-[85%] mt-[15vh] bg-[#fff] grid grid-cols-[30%_70%] gap-4">
-          <div className="h-full">
-            <LeftTop />
-            <Outlet />
+      {
+        isLoading ? <LoadingSpinner /> :
+          <div className="mx-6 pb-6 pt-4 pr-4 overflow-hidden rounded-[10px] min-h-[85%] mt-[15vh] bg-[#fff] grid grid-cols-[30%_70%] gap-4">
+            <div className="h-full">
+              <LeftTop />
+              <Outlet />
+            </div>
+            <Chat user={feedbackCurrentUser} />
           </div>
-          <Chat user={feedbackCurrentUser}/>
-      </div>
+      }
+      
     </section>
   );
 };

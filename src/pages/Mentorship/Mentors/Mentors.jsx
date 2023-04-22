@@ -7,56 +7,47 @@ import nurayim from './assets/images/nurayim.png';
 import { useTranslation } from 'react-i18next';
 
 const Mentors = () => {
-  const mentors = [
+  const data = [
     {
       id: 1,
       img: aykanysh,
       fullName: 'Айканыш Сыдыкова',
-      desc: 'Vitae sapien pellentesque habitant morbi nunc. Viverra aliquet  porttitor rhoncus libero justo laoreet sit amet vitae.',
-    }, 
+      desc: '🇺🇸 Выпускница программ FLEX ‘13 и 🌎 Global Village ‘22\n' +
+        '\n' +
+        '👩🏻‍💻Программный координатор в Американских Советах по международному образованию\n' +
+        '\n' +
+        '💻Проектный менеджер в Neobis\n' +
+        '\n' +
+        '💜Со-основательница Girls for Girls',
+    },
     {
       id: 2,
       img: salkynay,
       fullName: 'Салкынай Эмилбекова',
-      desc: 'Vitae sapien pellentesque habitant morbi nunc. Viverra aliquet  porttitor rhoncus libero justo laoreet sit amet vitae.',
-    },
-    {
-      id: 3,
-      img: aysezim,
-      fullName: 'Айсезим Арымбаева',
-      desc: 'Vitae sapien pellentesque habitant morbi nunc. Viverra aliquet  porttitor rhoncus libero justo laoreet sit amet vitae.',
+      desc: '👩‍🎓студентка 4 курса в АУЦА по направлению Бизнес Администрация\n' +
+        '🇺🇸 является координатором выпускников программы ФЛЕКC 👩🏻‍💻работает проектным координатором в исследовательской компании Эмпирика',
     },
     {
       id: 4,
       img: nurayim,
       fullName: 'Нурайым Нургазиева',
-      desc: 'Vitae sapien pellentesque habitant morbi nunc. Viverra aliquet  porttitor rhoncus libero justo laoreet sit amet vitae.',
+      desc: '👩🏻‍🎓 Студентка 4-курса в Международном Университете в Центральной Азии (МУЦА) Управление Бизнесом\n' +
+        '💼 Экс-капитан команды Enactus МУЦА\n' +
+        '✈️ Выпускница FLEX ‘19\n' +
+        '🇺🇸 Представитель пр. FLEX в МУЦА и города Токмок\n' +
+        '🇺🇳 Волонтер UNICEF',
     },
     {
       id: 5,
       img: aysezim,
       fullName: 'Айсезим Арымбаева',
-      desc: 'Vitae sapien pellentesque habitant morbi nunc. Viverra aliquet  porttitor rhoncus libero justo laoreet sit amet vitae.',
-    },
-    {
-      id: 6,
-      img: aysezim,
-      fullName: 'Айсезим Арымбаева',
-      desc: 'Vitae sapien pellentesque habitant morbi nunc. Viverra aliquet  porttitor rhoncus libero justo laoreet sit amet vitae.',
-    },
-    {
-      id: 7,
-      img: aysezim,
-      fullName: 'Айсезим Арымбаева',
-      desc: 'Vitae sapien pellentesque habitant morbi nunc. Viverra aliquet  porttitor rhoncus libero justo laoreet sit amet vitae.',
-    },
-    {
-      id: 8,
-      img: aysezim,
-      fullName: 'Айсезим Арымбаева',
-      desc: 'Vitae sapien pellentesque habitant morbi nunc. Viverra aliquet  porttitor rhoncus libero justo laoreet sit amet vitae.',
+      desc: '🗺️ Соосновательца проекта по борьбе со школьным насилием "Саякат". Проект выиграл грант от программы Justice Accelerator, спонсируемой Управлением Организации Объединенных Наций по наркотикам и преступности (УНП ООН)\n' +
+        '📚Соорганизаторка тренинга профессионального развития Аксесс для преподавателей английского языка со всего Кыргызстана\n' +
+        '🚀 Менторка Leadership Academy 2020',
     },
   ];
+  
+  const mentors = [...data, ...data];
   const { t } = useTranslation();
   return (
     <section className='pb-20 bg-[#F8F9FA] mentors'>

@@ -8,10 +8,13 @@ import alignRight from "../assets/images/align-right.svg";
 
 const TextMessage = () => {
   const [message, setMessage] = useState("");
+  
+  console.log(message);
   return (
     <section>
       <div className="relative">
         <textarea
+          onChange={(e) => setMessage(e.target.value)}
           type={"text"}
           placeholder={"Написать сообщение..."}
           className="min-h-[300px] border rounded-[8px] border-[#AEAEAE] w-full p-4"

@@ -192,7 +192,7 @@ const EditProfileModal = ({ onClose }) => {
           <div className="flex gap-3 justify-between mt-2 w-full">
             <Dropwdown
               label={t('Profile.editProfile.region')}
-              options={["Кант", "Чуй", "Ош"]}
+              options={["Ыссык-Кол", "Чуй", "Ош", "Талас", "Жалал-Абад", "Баткен", "Нарын"]}
               onChange={handleRegionChange}
               value={!currentRegion ? "Не выбрано" : currentRegion}
             />

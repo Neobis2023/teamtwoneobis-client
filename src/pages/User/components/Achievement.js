@@ -21,13 +21,15 @@ const Achievement = ({imgUrl, name, amount, achievement}) => {
           borderRadius: '50%',
           marginBottom: '10px'
         }}>
-          <img src={achievement?.image?.url} alt='achievement' style={{width: '100%', height: '100%'}} />
+          <img src={achievement?.image?.url} alt='achievement' style={{width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center'}} />
         </div>
-        <p className='text-[clamp(0.675rem,_0.972vw,_1.175rem)] text-white font-bold px-2 py-1 bg-[#00CEFF] rounded-[8px]'
-           style={{width: '80%', textAlign: 'center'}}
-        >{achievement?.title}</p>
-        <p className='text-[#403A64] text-[clamp(0.55rem,_0.83vw,_1.05rem)]' style={{ textAlign: 'center' }}>{achievement?.description}</p>
-      </div>
+        <div style={{ width: '80%', height: '70px', display: 'flex', flexDirection: 'column', overflow: 'hidden'}}>
+          <p className='text-[clamp(0.675rem,_0.972vw,_1.175rem)] text-white font-bold px-2 py-1 bg-[#F5E3FF] rounded-[8px]'
+             style={{width: '100%', textAlign: 'center', color: '#403A64', marginBottom: '5px'}}
+          >{achievement?.title}</p>
+          <p className='text-[#403A64] text-[clamp(0.55rem,_0.83vw,_1.05rem)]' style={{ textAlign: 'center' }}>{achievement?.description}</p>
+        </div>
+        </div>
     )
   }
   

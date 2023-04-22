@@ -3,8 +3,12 @@ import search from "./assets/images/search.svg";
 import userPhoto from "./assets/images/userPhoto.svg";
 import menu from "./assets/images/menu.svg";
 import axios from "axios";
+import {giveUserStatus} from '../../../utils/giveUserStatusInRussion';
 
 const User = ({ id, image, firstName, lastName, email, phoneNumber, status, isDeleted }) => {
+  
+  
+  
   return (
     <div
       className={`${
@@ -22,13 +26,13 @@ const User = ({ id, image, firstName, lastName, email, phoneNumber, status, isDe
       <div>{email}</div>
       <div className="text-[#616161]">{phoneNumber}</div>
       <div className="text-[#292D32] text-[0.875rem]">
-        {status === 'VISITOR' ? "Пользователь" : null}
+        { giveUserStatus(status) }
       </div>
       <div className="flex items-center gap-2">
         <div
           className={`bg-[rgba(64,_58,_100,_0.1)] px-3 py-1 rounded-[33px] text-[#E21C1C]           ${
             isDeleted ? "text-[#E21C1C]" : "text-[#616161]"
-          }`} 
+          }`}
         >
           <p className={`opacity-100 font-semibold`}>
             {isDeleted ? "Да" : "Нет"}
@@ -48,130 +52,10 @@ const Users = () => {
   const [searchValue, setSearchValue] = useState("");
   const [users, setUsers] = useState([]);
 
-  // const users = [
-  //   {
-  //     id: 1,
-  //     imgUrl: userPhoto,
-  //     fullName: "Девид Вуд",
-  //     email: "david@gmail.com",
-  //     phoneNumber: "+996709123456",
-  //     status: "Ментор",
-  //     isBlocked: false,
-  //   },
-  //   {
-  //     id: 2,
-  //     imgUrl: userPhoto,
-  //     fullName: "Линда Роуз",
-  //     email: "linda@gmail.com",
-  //     phoneNumber: "+99676599999",
-  //     status: "Ментор",
-  //     isBlocked: true,
-  //   },
-  //   {
-  //     id: 3,
-  //     imgUrl: userPhoto,
-  //     fullName: "Спанч Боб",
-  //     email: "spanchbob@gmail.com",
-  //     phoneNumber: "+99670945645",
-  //     status: "Ментор",
-  //     isBlocked: true,
-  //   },
-  //   {
-  //     id: 4,
-  //     imgUrl: userPhoto,
-  //     fullName: "Принц Саудии",
-  //     email: "prince@gmail.com",
-  //     phoneNumber: "+99670456456",
-  //     status: "Ментор",
-  //     isBlocked: true,
-  //   },
-  //   {
-  //     id: 5,
-  //     imgUrl: userPhoto,
-  //     fullName: "Диана Грег",
-  //     email: "diana@gmail.com",
-  //     phoneNumber: "+996709655555",
-  //     isBlocked: false,
-  //   },
-  //   {
-  //     id: 6,
-  //     imgUrl: userPhoto,
-  //     fullName: "Ханна Раппопорт",
-  //     email: "henna@gmail.com",
-  //     phoneNumber: "+99670000000",
-  //     isBlocked: true,
-  //   },
-  //   {
-  //     id: 7,
-  //     imgUrl: userPhoto,
-  //     fullName: "Эльза Шиф",
-  //     email: "elsa@gmail.com",
-  //     phoneNumber: "+9967345455",
-  //     isBlocked: false,
-  //   },
-  //   {
-  //     id: 8,
-  //     imgUrl: userPhoto,
-  //     fullName: "Эвелина Леви",
-  //     email: "evelina@gmail.com",
-  //     phoneNumber: "+996709123456",
-  //     isBlocked: false,
-  //   },
-  //   {
-  //     id: 9,
-  //     imgUrl: userPhoto,
-  //     fullName: "Ланг Имбер",
-  //     email: "lang@gmail.com",
-  //     phoneNumber: "+9967345354",
-  //     isBlocked: false,
-  //   },
-  //   {
-  //     id: 10,
-  //     imgUrl: userPhoto,
-  //     fullName: "Спанч Боб",
-  //     email: "spanchbob@gmail.com",
-  //     phoneNumber: "+99673748573",
-  //     isBlocked: false,
-  //   },
-  //   {
-  //     id: 11,
-  //     imgUrl: userPhoto,
-  //     fullName: "Спанч Боб",
-  //     email: "spanchbob@gmail.com",
-  //     phoneNumber: "+99655333343",
-  //     isBlocked: true,
-  //   },
-  //   {
-  //     id: 12,
-  //     imgUrl: userPhoto,
-  //     fullName: "Спанч Боб",
-  //     email: "spanchbob@gmail.com",
-  //     phoneNumber: "+996723672362",
-  //     isBlocked: true,
-  //   },
-  //   {
-  //     id: 13,
-  //     imgUrl: userPhoto,
-  //     fullName: "Спанч Боб",
-  //     email: "spanchbob@gmail.com",
-  //     phoneNumber: "+996709123400",
-  //     isBlocked: false,
-  //   },
-  //   {
-  //     id: 14,
-  //     imgUrl: userPhoto,
-  //     fullName: "Спанч Боб",
-  //     email: "spanchbob@gmail.com",
-  //     phoneNumber: "+996709654321",
-  //     isBlocked: false,
-  //   },
-  // ];
-
   useEffect(() => {
     axios.get("https://girls4girls.herokuapp.com/api/user").then(res => setUsers(res.data.data))
   }, [])
-
-
+  
   return (
     <section className="bg-[#EAF0FF] w-full flex flex-col justify-end">
       <div className="px-6 min-h-[85%] mt-[15vh]">
@@ -207,14 +91,11 @@ const Users = () => {
               })
             :
               users.filter((user) => {
-                return ((user.firstName.toLowerCase().includes(searchValue.toLocaleLowerCase()) || user.email.toLowerCase().includes(searchValue.toLocaleLowerCase()) || user.lastName.toLowerCase().includes(searchValue.toLocaleLowerCase()) || user.phoneNumber.toLowerCase().includes(searchValue.toLocaleLowerCase())))      
+                return ((user.firstName.toLowerCase().includes(searchValue.toLocaleLowerCase()) || user.email.toLowerCase().includes(searchValue.toLocaleLowerCase()) || user.lastName.toLowerCase().includes(searchValue.toLocaleLowerCase()) || user.phoneNumber.toLowerCase().includes(searchValue.toLocaleLowerCase())))
               }).map((user) => {
                 return <User {...user} key={user.id} />
               })
             }
-            {/* {   users &&           users.map((user) => {
-                return <User {...user} key={user.id} />;
-              })} */}
           </div>
         </div>
       </div>

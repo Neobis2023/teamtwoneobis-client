@@ -8,6 +8,14 @@ const Navbar = () => {
   const { t } = useTranslation();
   const isActiveVideoblog = location.pathname.startsWith('/videoblog');
 
+  const scrollToBottom = () => {
+    window.scrollTo({
+      left: 0,
+      top: document.body.scrollHeight,
+      behavior: 'smooth',
+    })
+  }
+  
   return (
     <nav className="header__nav basis-3/6">
       <ul className="header__links flex justify-between gap-4">
@@ -24,7 +32,8 @@ const Navbar = () => {
           <NavLink to="forum" className={'nav'} isActive={() => location.pathname === '/forum'}>{t('Main.Nav.Forum')}</NavLink>
         </li>
         <li className={styles.header__link}>
-          <NavLink to="contacts" className={'nav'} isActive={() => location.pathname === '/contacts'}>{t('Main.Nav.Contacts')}</NavLink>
+          {/*<NavLink to="contacts" onclick className={'nav'} isActive={() => location.pathname === '/contacts'}>{t('Main.Nav.Contacts')}</NavLink>*/}
+          <p onClick={scrollToBottom} style={{ cursor: 'pointer'}}>{t('Main.Nav.Contacts')}</p>
         </li>
       </ul>
     </nav>

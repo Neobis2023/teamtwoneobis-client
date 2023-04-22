@@ -4,6 +4,7 @@ import filledHeart from "../assets/images/filledHeart.svg";
 
 import axios from "../api/axios";
 import VideoPlayer from "../../../helpers/videoplayer/VideoPlayer";
+import {useAddToWatchedMutation} from '../../../helpers/reduxToolkit/apis/video-blog-api';
 
 const Blog = memo(({ blog }) => {
   const date = new Date(blog.createdAt);
@@ -14,6 +15,9 @@ const Blog = memo(({ blog }) => {
     const storedValue = localStorage.getItem(`blog-${blog.id}-isFavorite`);
     return storedValue !== null ? JSON.parse(storedValue) : false;
   });
+  
+  const [addToWatched, { data, isLoading }] = useAddToWatchedMutation();
+  
   useEffect(() => {
     const token = localStorage.getItem("token");
     setToken(token);
@@ -49,7 +53,7 @@ const Blog = memo(({ blog }) => {
   const handleFavorites = async () => {
     try {
       if (isFavorite) {
-        await axios.delete(`/like/${blog.id}`, {
+        await axios.put(`/like/toggle?blogId=${blog.id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -57,8 +61,8 @@ const Blog = memo(({ blog }) => {
         setIsFavorite(false);
         localStorage.setItem(`blog-${blog.id}-isFavorite`, "false");
       } else {
-        await axios.post(
-          `/like/${blog.id}`,
+        await axios.put(
+          `/like/toggle?blogId=${blog.id}`,
           {
             blogId: blog.id,
           },
@@ -79,7 +83,7 @@ const Blog = memo(({ blog }) => {
   return (
     <div className="basis-[31%] rounded-[8px] flex h-auto flex-col gap-2 mb-[5%]">
       <div className="flex flex-col gap-2">
-        <div className="">
+        <div className="" onClick={() => addToWatched(blog.id)}>
           <VideoPlayer videoUrl={blog.videoUrl} />
         </div>
 
@@ -99,7 +103,7 @@ const Blog = memo(({ blog }) => {
         </div>
       </div>
       <div className="">
-        <div className="flex justify-between items-center">
+        <div style={{ height: '60px', alignItems: 'flex-start'}} className="flex justify-between items-center">
           <p className="text-[#662D91] font-bold text-[clamp(1rem,_1.39vw,_1.5rem)]">
             {blog.title}
           </p>
