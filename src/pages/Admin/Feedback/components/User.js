@@ -27,7 +27,7 @@ const User = ({ id, imgUrl, fullName, date, message, time, email }) => {
       <div className="flex justify-between">
         <div className="flex gap-3">
           {" "}
-          <img src={imgUrl} alt="user" />
+          <img src={imgUrl} alt="user" className="w-10 h-10 rounded-full"/>
           <p className="text-[#06152B] text-[0.875rem] font-bold">{fullName}</p>
         </div>
         <div className="text-[#000] text-[0.7rem]">{date}</div>
