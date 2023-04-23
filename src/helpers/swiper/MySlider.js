@@ -166,7 +166,7 @@ const MySlider = ({
             return (
               <SwiperSlide key={event.id}>
                 <div className="flex flex-col gap-4">
-                  <img src={event.imgSource} alt={"event"} />
+                  <img src={event.imgSource} alt={"event"} className="w-68 h-44 rounded-[12px]"/>
                   <p className="text-[#5D5A88] font-bold text-[clamp(1.2rem,_1.66vw,_1.8rem)]">
                     {event.eventName}
                   </p>

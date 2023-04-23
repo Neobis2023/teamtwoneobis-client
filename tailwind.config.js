@@ -8,6 +8,11 @@ module.exports = {
       backgroundImage: {
         'education': "url('./images/main.png')",
       },
+      screens: {
+        'xxs': '320px',
+        'xs': '480px',
+        'nine': '920px', 
+      }
     },
   },
   plugins: [],
