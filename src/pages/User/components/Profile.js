@@ -52,9 +52,9 @@ const Profile = () => {
           <div className="flex gap-3 overflow-x-hidden" style={{ marginBottom: '40px'}}>
             { isLoading
               ? <LoadingSpinner />
-              : data.jetons.filter((jeton) => jeton.type === 'VIDEO').map((achievement, index) => (
+              : data?.jetons ? data?.jetons.filter((jeton) => jeton.type === 'VIDEO').map((achievement, index) => (
               <div className="basis-auto" key={index}><Achievement achievement={achievement} /></div>
-            ))}
+            )) : <div className="mx-auto mt-4">Пусто...</div>}
           </div>
   
           <div className="flex justify-between mb-2">
@@ -65,9 +65,9 @@ const Profile = () => {
           <div className="flex gap-3 overflow-x-hidden" style={{ marginBottom: '40px'}}>
             { isLoading
               ? <LoadingSpinner />
-              : data.jetons.filter((jeton) => jeton.type === 'TEST').map((achievement, index) => (
+              : data?.jetons ? data?.jetons.filter((jeton) => jeton.type === 'TEST').map((achievement, index) => (
                 <div className="basis-auto" key={index}><Achievement achievement={achievement} /></div>
-              ))}
+              )) : <div className="mx-auto mt-4">Пусто...</div>}
           </div>
   
           <div className="flex justify-between mb-2">
@@ -78,9 +78,9 @@ const Profile = () => {
           <div className="flex gap-3 overflow-x-hidden" style={{ marginBottom: '40px'}}>
             { isLoading
               ? <LoadingSpinner />
-              : data?.jetons.filter((jeton) => jeton.type === 'CARD').map((achievement, index) => (
+              : data?.jetons ? data?.jetons.filter((jeton) => jeton.type === 'CARD').map((achievement, index) => (
                 <div className="basis-auto" key={index}><Achievement achievement={achievement} /></div>
-              ))}
+              )) : <div className="mx-auto mt-4">Пусто...</div>}
           </div>
           
         </div>
@@ -94,7 +94,7 @@ const Profile = () => {
             </p>
           </div>
           <div className="flex gap-4">
-            {favoriteBlogs.length ? favoriteBlogs.slice(0, 3).map((videoblog, index) => (<div key={index} className="basis-1/3"><Blog blog={videoblog.blog} /></div>)) : <div className="mx-auto mt-4">Не найдено...</div>}
+            {favoriteBlogs.length ? favoriteBlogs.slice(0, 3).map((videoblog, index) => (<div key={index} className="basis-1/3"><Blog blog={videoblog.blog} /></div>)) : <div className="mx-auto mt-4">Пусто...</div>}
           </div>
         </div>
       </div>
