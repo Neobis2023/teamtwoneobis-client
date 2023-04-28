@@ -37,7 +37,8 @@ const SigninForm = () => {
       if (response.status === 200 || response.status === 201) {
         actions.resetForm();
         localStorage.setItem("token", response.data.access_token.toString());
-        console.log(response)
+        console.log(response, 'this is response')
+        console.log(response.data.access_token.toString(), 'this is token')
         const token = response.data.access_token.toString();
         const getUser = await axios.get('/user/profile', {
           headers: {

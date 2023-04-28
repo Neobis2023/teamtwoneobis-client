@@ -3,6 +3,7 @@ import userPhoto from '../assets/images/userPhoto.svg';
 import SaveButton from "../../components/SaveButton";
 import axios from "../../../Videoblog/api/axios";
 import {textShortener} from '../../../../utils/text-shortener';
+import DeleteButton from "../../components/DeleteButton";
 
 
 const User = ({ id, image, firstName, lastName, email, phoneNumber, handleClick, questionnaire, statusInfo }) => {
@@ -76,30 +77,10 @@ const User = ({ id, image, firstName, lastName, email, phoneNumber, handleClick,
       </div>
       <div>{textShortener(email, 20)}</div>
       <div className="text-[#616161]">{phoneNumber}</div>
-      {/* {statusInfo.applyStatus === 'PENDING' ? <div className="flex items-center gap-2">
-        <button
-          type="button"
-          className="text-[#FFFFFF] font-bold bg-[#9960C3] p-2 rounded-[8px]"
-        >
-          Одобрить
-        </button>
-        <button
-          type="button"
-          className="text-[#9960C3] font-bold bg-transparent border border-[#9960C3] p-2 rounded-[8px]"
-        >
-          Отклонить
-        </button>
-      </div> : statusInfo.applyStatus === 'APPROVED' ? <p className="text-base text-green-500">Одобрено</p> : <p className="text-base text-red-500">Отклонено</p>} */}
                 {statusUser === "В ожидании" ? (
             <div className="flex gap-2">
               <SaveButton text={"Одобрить"} onClick={handleApprove} />
-              <button
-                type="button"
-                className="rounded-[8px] bg-[transparent] text-[#9960C3] border border-[#9960C3] p-2"
-                onClick={handleDecline}
-              >
-                Отклонить
-              </button>
+              <DeleteButton onClick={handleDecline} text={"Отклонить"} />
             </div>
           ) : (
             <p className="text-base text-green-500">{statusUser}</p>

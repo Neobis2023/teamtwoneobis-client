@@ -3,18 +3,18 @@ import Button from "./Button/Button";
 import userPhoto from './assets/images/video-photo.svg'
 import { useTranslation } from "react-i18next";
 
-const Events = ({ imgSource, eventName, eventId, description, time, date, location, handleClick }) => {
+const Events = ({ imgSource, eventName, eventNameKG, eventId, description, descriptionKG, time, date, location, handleClick }) => {
   const eventUrl = eventName?.toLowerCase().split(' ').join('-');
   const newDate = new Date(date);
   const options = { day: "numeric", month: "numeric", year: "numeric" };
   const formattedDate = newDate.toLocaleDateString("en-GB", options);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   return (
     <div className="pb-20">
       <div className="myWrapper flex justify-between items-center">
         <div className="basis-1/2 flex flex-col gap-8">
           <p className="text-[#9960C3] font-bold text-[clamp(2.2rem,_2.5vw,_2.5rem)]">
-            {eventName}
+            {i18n.language==='ru' ? eventName : eventNameKG}
           </p>
           <div className="text-[clamp(.8rem,_1.1vw,_1.3rem)] flex flex-col gap-2">
             <div className="text-[#9E7CB8]">
@@ -29,7 +29,7 @@ const Events = ({ imgSource, eventName, eventId, description, time, date, locati
               </p>
             </div>
             <div className="text-[#403A64] font-normal">
-              {description}
+              {i18n.language==='ru' ? description : descriptionKG}
             </div>
           </div>
           <div className="flex gap-2">

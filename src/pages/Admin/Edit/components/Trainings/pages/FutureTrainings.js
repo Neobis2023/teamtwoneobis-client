@@ -19,21 +19,6 @@ const FutureTrainings = () => {
       questionnaireId: idOfQuestionnaire,
       lecturers: JSON.stringify(lecturersId)
     }
-
-    // const formData = new FormData();
-    // formData.append("title", training.title);
-    // formData.append("titleKG", training.titleKG);
-    // formData.append("description", training.description);
-    // formData.append("descriptionKG", training.descriptionKG);
-    // formData.append("address", training.address);
-    // formData.append("image", training.image);
-    // formData.append("eventDate", training.eventDate);
-    // formData.append("deadlineDate", training.deadlineDate);
-    // formData.append("time", training.time);
-    // formData.append("location", training.location);
-    // formData.append("questionnaireId", idOfQuestionnaire);
-    // formData.append("lecturers", JSON.stringify(lecturersId));
-
     console.log(trainingData);
     axios.post('/training', trainingData, {
       headers: {

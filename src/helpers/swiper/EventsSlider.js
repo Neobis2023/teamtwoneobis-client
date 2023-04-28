@@ -44,6 +44,8 @@ const EventsSlider = ({ events }) => {
                   eventId={event?.id}
                   imgSource={event?.images[0]?.url}
                   eventName={event?.title}
+                  eventNameKG={event?.titleKG}
+                  descriptionKG={event?.descriptionKG}
                   description={event?.description}
                   time={event?.time}
                   date={event?.eventDate}
