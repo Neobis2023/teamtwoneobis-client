@@ -9,10 +9,12 @@ import InputDate from "./components/InputDate";
 import Dropdown from "./components/Dropdown";
 import axios from "./api/axios";
 import Modal from "./components/Modal";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 const ApplyForm = ({ questionnaire }) => {
   // const [pageNumber, setPageNumber] = useState(1);
-
+  const navigate = useNavigate();
+  const location = useLocation();
   const [isModalActive, setIsModalActive] = useState(false);
   const CURRENT_YEAR = new Date().getFullYear();
   const [eventName, setEventName] = useState("");
@@ -63,7 +65,9 @@ const ApplyForm = ({ questionnaire }) => {
 
   const handleSubmit = async () => {
     const token = localStorage.getItem("token");
-    console.log(token)
+    const refreshToken = localStorage.getItem("refreshToken");
+    console.log(token);
+    console.log(refreshToken);
     console.log(questionnaireData);
     try {
       const res = await axios.post(
@@ -85,7 +89,8 @@ const ApplyForm = ({ questionnaire }) => {
       console.log(trainingId, questionnaireResponseId);
 
       const isApplied = await axios.post(
-        `/training/apply?trainingId=${trainingId}&questionnaireResponseId=${questionnaireResponseId}`, null,
+        `/training/apply?trainingId=${trainingId}&questionnaireResponseId=${questionnaireResponseId}`,
+        null,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -97,16 +102,56 @@ const ApplyForm = ({ questionnaire }) => {
       console.log(isApplied);
     } catch (e) {
       console.log(e);
+      console.log(e.response.status);
+      if (e.response.status === 401) {
+        const newToken = await axios.post("/auth/refresh", {
+          refresh_token: refreshToken,
+        });
+        console.log(newToken.data.access_token, "newtoken");
+        // const updatedToken = newToken.data.access_token;
+        const updatedToken = false;
+
+        try {
+          const res = await axios.post(
+            "/questionnaire/response",
+            questionnaireData,
+            {
+              headers: {
+                Authorization: `Bearer ${updatedToken}`,
+                "Content-Type": "application/json",
+              },
+            }
+          );
+
+          console.log(res, "withg updated");
+
+          const trainingId = sessionStorage.getItem("eventId");
+          const questionnaireResponseId = res.data.id;
+
+          const isApplied = await axios.post(
+            `/training/apply?trainingId=${trainingId}&questionnaireResponseId=${questionnaireResponseId}`,
+            null,
+            {
+              headers: {
+                Authorization: `Bearer ${updatedToken}`,
+              },
+            }
+          );
+
+          setIsModalActive(true);
+          console.log(isApplied, "with updated");
+        } catch (e) {
+          console.log(e, "with updated");
+          localStorage.clear();
+          navigate('/signin', { state: { from: location } });
+        }
+      }
     }
   };
-
-  // const handleDateChange = (date) => {
-  //   setSelectedDate(date);
-  // }
   return (
     <section className="w-[85%]">
-      {isModalActive ? <Modal onClose={() => setIsModalActive(false)}/> : null}
-      
+      {isModalActive ? <Modal onClose={() => setIsModalActive(false)} /> : null}
+
       <div className="myWrapper py-10 flex items-start">
         <Back className={"w-[20%] mt-2"} />
         <div className="w-[75%]">

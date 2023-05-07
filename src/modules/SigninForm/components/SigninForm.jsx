@@ -37,6 +37,7 @@ const SigninForm = () => {
       if (response.status === 200 || response.status === 201) {
         actions.resetForm();
         localStorage.setItem("token", response.data.access_token.toString());
+        localStorage.setItem("refreshToken", response.data.refresh_token.toString());
         console.log(response, 'this is response')
         console.log(response.data.access_token.toString(), 'this is token')
         const token = response.data.access_token.toString();
